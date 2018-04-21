@@ -10,11 +10,41 @@ import java.io.*;
 
 public class MiniNet {
 	public static void main(String[] args) {
-		FileReader F = null;
+		PrintWriter writer = null;
+		PrintWriter twriter = null;
+		
 		int input = 0;
 		
 		Scanner sc = new Scanner (System.in);
+		writer = new PrintWriter("relations.txt");
+		twriter = new PrintWriter("people.txt");
 		
+		try {
+			writer = new PrintWriter("relations.txt");
+			
+			
+			writer.write("Alex Smith, Ben Turner, friends");
+			writer.write("Ben Turner, Zoe Foster, couple");
+			writer.write("Ben Turner, Mark Turner, parent");
+			writer.write("Mark Turner, Zoe Foster, parent");
+			
+			writer.close();
+			
+			twriter = new PrintWriter("people.txt");
+			
+			writer.write("Alex Smith, “”, “student at RMIT”, M, 21, WA");
+			writer.write("Ben Turner, “BenPhoto.jpg”, “manager at Coles”, M, 35, VIC");
+			writer.write("Hannah White, “Hannah.png”, “student at PLC”, F, 14, VIC");
+			writer.write("Zoe Foster, “”, “Founder of ZFX”, F, 28, VIC");
+			writer.write("Mark Turner, “Mark.jpeg”, “”, M, 2, VIC");
+			
+			writer.close();
+			
+			
+		}catch(IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
 		
 		
 		//Author: KWOK
@@ -130,13 +160,16 @@ public class MiniNet {
 					}
 				
 				}
-				catch(TooYoungException e4) {
-					System.out.println("Cannot make friends with Young Child.");
+				catch(TooYoungException e) {
+					System.err.println("Cannot make friends with Young Child.");
+					System.exit(0);
 				
 				}
-				catch(NotToBeFriendException e5) {
-					System.out.println("Cannot make an Adult and child friend with age gap larger than 3.");
+				catch(NotToBeFriendException e) {
+					System.err.println("Cannot make an Adult and child friend with age gap larger than 3.");
+					System.exit(0);
 				}
+				
 				
 					
 	}else if (input  == 7) {
@@ -207,14 +240,17 @@ public class MiniNet {
 						
 					}
 				}
-				catch(NoParentException e6) {
+				catch(NoParentException e) {
 					System.err.println("Child cannot have one parent only.");
+					System.exit(0);
 				}
-				catch(NoAvailableException e7) {
+				catch(NoAvailableException e) {
 					System.err.println("Cannot make two Adult a couple if one of them have another Couple.");
+					System.exit(0);
 				}
-				catch(NotToBeCoupleException e8) {
-					System.out.println("Cannot be Couple if one of them are not Adult.");
+				catch(NotToBeCoupleException e) {
+					System.err.println("Cannot be Couple if one of them are not Adult.");
+					System.exit(0);
 				}
 
 			}else if (input == 0) {
