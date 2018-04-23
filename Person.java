@@ -328,6 +328,7 @@ public abstract class Person{
 		Person.profile.remove(selection- 1);
 		
 		Person.addperson();
+		System.out.println("Persons have been sucessfully updated.");
 	}
 			
 			
@@ -342,7 +343,7 @@ public abstract class Person{
 	
 	
 	Person.profile.remove(selection - 1);
-	
+	System.out.println("Persons have been deleted successfully.");
 		
     }
 	
