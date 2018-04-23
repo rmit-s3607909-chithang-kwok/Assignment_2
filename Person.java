@@ -313,7 +313,7 @@ public abstract class Person {
 	}
 	
 	public static void addperson(){
-	try {
+	//try {
 		Scanner sc1 = new Scanner(System.in);
 		String fo = "Freelance";
 		String sr = "Student at RMIT";
@@ -332,7 +332,7 @@ public abstract class Person {
 		System.out.println("Enter File: " + "1. BenPhoto.jpg " + " 2.Hannah.png" + " 3.Mark.jpeg " + "4.         ");
 		String filed = selectFile();
 		
-		System.out.println("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC" +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at Coles" + " 8. Founder of ZFX " + " 9. House worker");
+		System.out.println("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC " +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at Coles" + " 8. Founder of ZFX " + " 9. House worker");
 		String status = selectjob();
 		
 		System.out.println("Enter gender: 1. Male" + "   " + " 2. Female");
@@ -360,12 +360,29 @@ public abstract class Person {
 			
 			
 			profile.add(p);
-			} else if (status == sr || status == sp|| status == sk) throw new NotToBeClassmateException();
+			} else if (status == sr || status == sp|| status == sk) {
+				System.out.println("Young Child cannot attend school.");//throw new NotToBeClassmateException();
+			}
 		}	
 		
 		else if (age >=2 && age <= 16 ) {
-			if (status == fo || status == wk || status == mc || status == fz) {
+			if (status == sr || status == sp|| status == sk) {
 		
+			Person p = new Classmate();
+			System.out.println("You have added this person as Classmate");
+			p.setAge(age);
+			p.setFile(filed);
+			p.setName(name);
+			p.setGender(gender);
+			p.setStatus(status);
+			p.setState(state);
+			
+			
+			
+			profile.add(p);
+			
+				
+			}else if (!(status == sr || status == sp|| status == sk)) {
 			Person p = new Child();
 			System.out.println("You have added this person as Child");
 			p.setAge(age);
@@ -376,15 +393,13 @@ public abstract class Person {
 			p.setState(state);
 			
 			
-			
 			profile.add(p);
-			}else if (!(status == fo || status == wk || status == mc || status == fz))throw new NotToBeColleguesException();
-			
-		}
-		else if (age > 16 && age < 149) {
-			if (status == fo || status == wk || status == mc || status == fz) {
-			Person p = new Adult();
-			System.out.println("You have added this person as Adult");
+			} 
+		
+		}else if (age > 16 && age < 149) {
+			if ((status == fo || status == wk || status == mc || status == fz) && (status == sr || status == sp|| status == sk)) {
+			Person p = new Collegues();
+			System.out.println("You have added this person as Collegues");
 			p.setAge(age);
 			p.setFile(filed);
 			p.setName(name);
@@ -393,23 +408,58 @@ public abstract class Person {
 			p.setState(state);
 			
 			profile.add(p);
-			}else if (!(status == fo || status == wk || status == mc || status == fz)) throw new NotToBeColleguesException();
+			}else if (!(status == fo || status == wk || status == mc || status == fz) && !(status == sr || status == sp|| status == sk)) {
+		    Person p = new Adult();
+			System.out.println("You have added this person as Adult");
+			p.setAge(age);
+			p.setFile(filed);
+			p.setName(name);
+			p.setGender(gender);
+			p.setStatus(status);
+			p.setState(state);
 			
-		}
-		 else if (age < 0 && age > 150) throw new NoSuchAgeException();
+			profile.add(p);//throw new NotToBeColleguesException();
+			}else if (!(status == fo || status == wk || status == mc || status == fz) && (status == sr || status == sp|| status == sk)) {
+			    Person p = new Classmate();
+				System.out.println("You have added this person as Classmate");
+				p.setAge(age);
+				p.setFile(filed);
+				p.setName(name);
+				p.setGender(gender);
+				p.setStatus(status);
+				p.setState(state);
+				
+				profile.add(p);
+				
+			   
+			}else if ((status == fo || status == wk || status == mc || status == fz) && !(status == sr || status == sp|| status == sk)) {
+				Person p = new Classmate();
+				System.out.println("You have added this person as Classmate");
+				p.setAge(age);
+				p.setFile(filed);
+				p.setName(name);
+				p.setGender(gender);
+				p.setStatus(status);
+				p.setState(state);
 			
-		}
-	
-		catch(NoSuchAgeException e) {
-		System.err.println("There is no age less than zero or larger than 150.");
+				profile.add(p);   
+			}
+		}	 
 		
-	}
-	catch(NotToBeClassmateException e) {
-		System.err.println("YoungChild cannot be connected as Classmate.");
-	}
-	catch(NotToBeColleguesException e) {
-		System.err.println("Child cannot be connected as Collegues.");
-	}
+		 //else if (age < 0 && age > 150) { //throw new NoSuchAgeException();
+		
+		
+	
+		//catch(NoSuchAgeException e) {
+		//System.err.println("There is no age less than zero or larger than 150.");
+		
+	//}
+	//catch(NotToBeClassmateException e) {
+		//System.err.println("YoungChild cannot be connected as Classmate.");
+	//}
+	//catch(NotToBeColleguesException e) {
+		//System.err.println("Child cannot be connected as Collegues.");
+	//}
 	}	
 		
 	
