@@ -245,22 +245,29 @@ public abstract class Person{
 	    }
 	     
 	
-	public static void addfamily() {
+	public static void addfamily() throws Exception {
+		
 		Scanner sc = new Scanner(System.in);
 	
-		System.out.println("Enter name");
+		System.out.println("Enter name: ");
 		String name = sc.nextLine();
-	
-		System.out.println("Enter age");
-		int age = sc.nextInt();
-	
-		System.out.println("Enter Gender: " + " 1. Male" + "   " + "2. Female");
-		String gender = selectgender();
+		
+		System.out.println("Enter File: " + "1. BenPhoto.jpg " + " 2.Hannah.png" + " 3.Mark.jpeg " + "4.         ");
+		String filed = selectFile();
 	
 		System.out.println("Enter Relationship: " + " 1. Son" + "  "+"2. Daughter" + "  " + "3. Brother " + "  " + "4. Sister" + " 5. Father" + " 6. Mother" );
 		String status = selectfamily();
+		
+		System.out.println("Enter Gender: " + " 1. Male" + "   " + "2. Female");
+		String gender = selectgender();
+		
+		System.out.println("Enter age");
+		int age = sc.nextInt();
 	
-			
+		System.out.println("Enter State: 1. NSW" + " 2. VIC" + " 3. QL" + " 4. WA" + " 5. SA" + " 6. TAS" + " 7. NT");
+		String state = selectstate();
+		
+	
 			if (age > 0 && age <=2) {
 				YoungChild b = new YoungChild();
 				System.out.println("You have added this person as YoungChild");
@@ -304,20 +311,40 @@ public abstract class Person{
 				
 				
 				family.add(t);
-				
-				
-
 			}
 			
+		}
 			
-			
-			
-			
-			
-			
-
+	public static void UpdatePerson() throws Exception {
+		System.out.println("Please select one of the persons from the list.");
+		select(Person.profile);
 		
+		
+		int selection;
+		Scanner sc2 = new Scanner(System.in);
+		selection = sc2.nextInt();
+		
+		
+		Person.profile.remove(selection- 1);
+		
+		Person.addperson();
 	}
+			
+			
+    public static void RemovePerson() {
+    System.out.println("Please select one of the persons from the list.");
+	select(Person.profile);
+	
+	int selection;
+	Scanner sc2 = new Scanner(System.in);
+	selection = sc2.nextInt();
+	
+	
+	
+	Person.profile.remove(selection - 1);
+	
+		
+    }
 	
 	public static void addperson() throws Exception{
 	
@@ -463,8 +490,124 @@ public abstract class Person{
 	}
 	}	
 		
+	public static void CompareFriend() {
+		System.out.println("Please select two of the persons from the list to compared.");
+		select(Person.profile);
+		int selection;
+		int selection2;
+		Scanner sc2 = new Scanner(System.in);
+		selection = sc2.nextInt();
+		System.out.println("The first one is " + selection);
+		Scanner sc3 = new Scanner(System.in);
+		selection2 = sc3.nextInt();
+		System.out.println("The second one is " + selection2);
+		
+		
+		
+	if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Child)){
+			System.out.println("They are both Friends.");
+			
 	
+	}else if((Person.profile.get(selection-1) instanceof Adult) && (Person.profile.get(selection2-1) instanceof Adult)){
+				
+					System.out.println("They are both friends.");
+						
 	
+	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
+			
+			
+			System.out.println("You cannot add friends here because Baby supposed to have no friends.");
+			
+	}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
+		
+		
+		System.out.println("They are both classmate");
+		
+	}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
+		
+		
+		System.out.println("They are bot Collegues who are working together..");
+		
+		
+	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof Adult)){
+		   
+		System.out.println("You cannot add friends here because YoungChild cannot make friends with Adult.");
+		   
+	
+		}else {
+				System.out.println("They are both no relationship.");
+			}
+		
+		
+	}
+	
+	public static void CompareFamily() {
+		System.out.println("Please select one of the persons from the list to determine there relationships.");
+		select(Person.family);
+		
+		int selection;
+		int selection2;
+		Scanner sc2 = new Scanner(System.in);
+		selection = sc2.nextInt();
+		System.out.println("The first one is " + selection);
+		Scanner sc3 = new Scanner(System.in);
+		selection2 = sc3.nextInt();
+		System.out.println("The second one is " + selection2);
+		
+		
+		
+			if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)){
+					
+				System.out.println("They are children and parent relationship.");
+				
+				}
+	
+			else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)){
+				
+				System.out.println("They are parent and children relationship.");
+				
+				}
+	
+			else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof Adult)) {
+				
+				System.out.println("They are children and parent relationship.");
+				
+				}
+			else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof YoungChild)) {
+				
+				System.out.println("They are parent and children relationship.");
+				
+			}
+				
+				else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)) {
+					
+					System.out.println("They are children and parent relationship.");
+					
+					}
+				else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)) {
+					
+					System.out.println("They are parent and children relationship.");
+					
+				
+			}
+			else if ((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Adult)) {
+				
+				
+				System.out.println("They are either couples or children/parent relationship.");
+				
+				
+			}
+				else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Child)) {
+					
+					System.out.println("They are either brother or sister relationship");
+					
+				}
+					else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof YoungChild)) {
+						
+						System.out.println("They are both Babies.");
+				
+			}
+	}
 	
 	
 	public boolean equals(Object obj) {
@@ -475,6 +618,11 @@ public abstract class Person{
 	public String toString() {
 		return "[" + name + " " + filed + " " + status + " " + gender + " " + age + " " + state + " ]";
 	}		
-
+	public static void select(List list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(i + 1 +"-------------" + list.get(i));
+			}
+		}
 	}
+	
 	
