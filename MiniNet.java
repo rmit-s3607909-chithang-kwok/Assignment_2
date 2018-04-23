@@ -16,8 +16,8 @@ public class MiniNet {
 		int input = 0;
 		
 		Scanner sc = new Scanner (System.in);
-		writer = new PrintWriter("relations.txt");
-		twriter = new PrintWriter("people.txt");
+		//writer = new PrintWriter("relations.txt");
+		//twriter = new PrintWriter("people.txt");
 		
 		try {
 			writer = new PrintWriter("relations.txt");
@@ -118,7 +118,7 @@ public class MiniNet {
 				}
 			
 			else if (input == 6) {
-				try {
+				//try {
 				System.out.println("Please select two of the persons from the list to compared.");
 				select(Person.profile);
 				int selection;
@@ -139,17 +139,24 @@ public class MiniNet {
 			}else if((Person.profile.get(selection-1) instanceof Adult) && (Person.profile.get(selection2-1) instanceof Adult)){
 						
 							System.out.println("They are both friends.");
-						
-							
-			
-					
+								
 			
 			}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
 					
 					
 					System.out.println("You cannot add friends here because Baby supposed to have no friends.");
 					
-					
+			}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
+				
+				
+				System.out.println("They are both classmate");
+				
+			}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
+				
+				
+				System.out.println("They are bot Collegues who are working together..");
+				
+				
 			}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof Adult)){
 				   
 				System.out.println("You cannot add friends here because YoungChild cannot make friends with Adult.");
@@ -159,21 +166,21 @@ public class MiniNet {
 						System.out.println("They are both no relationship.");
 					}
 				
-				}
-				catch(TooYoungException e) {
-					System.err.println("Cannot make friends with Young Child.");
-					System.exit(0);
+				//}
+				//catch(TooYoungException e) {
+					//System.err.println("Cannot make friends with Young Child.");
+					//System.exit(0);
 				
-				}
-				catch(NotToBeFriendException e) {
-					System.err.println("Cannot make an Adult and child friend with age gap larger than 3.");
-					System.exit(0);
-				}
+				//}
+				//catch(NotToBeFriendException e) {
+				//	System.err.println("Cannot make an Adult and child friend with age gap larger than 3.");
+				//	System.exit(0);
+				//}
 				
 				
 					
 	}else if (input  == 7) {
-				try {
+				//try {
 				System.out.println("Please select one of the persons from the list to determine there relationships.");
 				select(Person.family);
 				
@@ -239,19 +246,19 @@ public class MiniNet {
 								System.out.println("They are both Babies.");
 						
 					}
-				}
-				catch(NoParentException e) {
-					System.err.println("Child cannot have one parent only.");
-					System.exit(0);
-				}
-				catch(NoAvailableException e) {
-					System.err.println("Cannot make two Adult a couple if one of them have another Couple.");
-					System.exit(0);
-				}
-				catch(NotToBeCoupleException e) {
-					System.err.println("Cannot be Couple if one of them are not Adult.");
-					System.exit(0);
-				}
+				//}
+				//catch(NoParentException e) {
+				//	System.err.println("Child cannot have one parent only.");
+				//	System.exit(0);
+				//}
+				//catch(NoAvailableException e) {
+				//	System.err.println("Cannot make two Adult a couple if one of them have another Couple.");
+				//	System.exit(0);
+				//}
+				//catch(NotToBeCoupleException e) {
+					//System.err.println("Cannot be Couple if one of them are not Adult.");
+					//System.exit(0);
+				//}
 
 			}else if (input == 0) {
 				System.out.println("Program Exit");
