@@ -35,11 +35,11 @@ public class MiniNet {
 			
 			twriter = new PrintWriter("people.txt");
 			
-			writer.write("Alex Smith, “”, “student at RMIT”, M, 21, WA");
-			writer.write("Ben Turner, “BenPhoto.jpg”, “manager at Coles”, M, 35, VIC");
-			writer.write("Hannah White, “Hannah.png”, “student at PLC”, F, 14, VIC");
-			writer.write("Zoe Foster, “”, “Founder of ZFX”, F, 28, VIC");
-			writer.write("Mark Turner, “Mark.jpeg”, “”, M, 2, VIC");
+			writer.write("Alex Smith, â€œâ€�, â€œstudent at RMITâ€�, M, 21, WA");
+			writer.write("Ben Turner, â€œBenPhoto.jpgâ€�, â€œmanager at Colesâ€�, M, 35, VIC");
+			writer.write("Hannah White, â€œHannah.pngâ€�, â€œstudent at PLCâ€�, F, 14, VIC");
+			writer.write("Zoe Foster, â€œâ€�, â€œFounder of ZFXâ€�, F, 28, VIC");
+			writer.write("Mark Turner, â€œMark.jpegâ€�, â€œâ€�, M, 2, VIC");
 			
 			writer.close();
 			
@@ -91,155 +91,23 @@ public class MiniNet {
 			}
 		
 			else if (input == 4) {
-				System.out.println("Please select one of the persons from the list.");
-				select(Person.profile);
-				
-				
-				int selection;
-				Scanner sc2 = new Scanner(System.in);
-				selection = sc2.nextInt();
-				
-				
-				Person.profile.remove(selection- 1);
-				
-				Person.addperson();
+				Person.UpdatePerson();
 					
 					}
 			else if (input == 5) {
-				System.out.println("Please select one of the persons from the list.");
-				select(Person.profile);
 				
-				int selection;
-				Scanner sc2 = new Scanner(System.in);
-				selection = sc2.nextInt();
-				
-				
-				
-				Person.profile.remove(selection - 1);
-				
-					
+				Person.RemovePerson();	
 				}
 			
 			else if (input == 6) {
 				
-				System.out.println("Please select two of the persons from the list to compared.");
-				select(Person.profile);
-				int selection;
-				int selection2;
-				Scanner sc2 = new Scanner(System.in);
-				selection = sc2.nextInt();
-				System.out.println("The first one is " + selection);
-				Scanner sc3 = new Scanner(System.in);
-				selection2 = sc3.nextInt();
-				System.out.println("The second one is " + selection2);
-				
-				
-				
-			if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Child)){
-					System.out.println("They are both Friends.");
-					
-			
-			}else if((Person.profile.get(selection-1) instanceof Adult) && (Person.profile.get(selection2-1) instanceof Adult)){
-						
-							System.out.println("They are both friends.");
-								
-			
-			}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
-					
-					
-					System.out.println("You cannot add friends here because Baby supposed to have no friends.");
-					
-			}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
-				
-				
-				System.out.println("They are both classmate");
-				
-			}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
-				
-				
-				System.out.println("They are bot Collegues who are working together..");
-				
-				
-			}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof Adult)){
-				   
-				System.out.println("You cannot add friends here because YoungChild cannot make friends with Adult.");
-				   
-			
-				}else {
-						System.out.println("They are both no relationship.");
-					}
-				
-				
+				Person.CompareFriend();
 				
 				
 					
 	}else if (input  == 7) {
 				
-				System.out.println("Please select one of the persons from the list to determine there relationships.");
-				select(Person.family);
-				
-				int selection;
-				int selection2;
-				Scanner sc2 = new Scanner(System.in);
-				selection = sc2.nextInt();
-				System.out.println("The first one is " + selection);
-				Scanner sc3 = new Scanner(System.in);
-				selection2 = sc3.nextInt();
-				System.out.println("The second one is " + selection2);
-				
-				
-				
-					if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)){
-							
-						System.out.println("They are children and parent relationship.");
-						
-						}
-			
-					else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)){
-						
-						System.out.println("They are parent and children relationship.");
-						
-						}
-			
-					else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof Adult)) {
-						
-						System.out.println("They are children and parent relationship.");
-						
-						}
-					else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof YoungChild)) {
-						
-						System.out.println("They are parent and children relationship.");
-						
-					}
-						
-						else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)) {
-							
-							System.out.println("They are children and parent relationship.");
-							
-							}
-						else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)) {
-							
-							System.out.println("They are parent and children relationship.");
-							
-						
-					}
-					else if ((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Adult)) {
-						
-						
-						System.out.println("They are either couples or children/parent relationship.");
-						
-						
-					}
-						else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Child)) {
-							
-							System.out.println("They are either brother or sister relationship");
-							
-						}
-							else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof YoungChild)) {
-								
-								System.out.println("They are both Babies.");
-						
-					}
+				Person.CompareFamily();
 				
 
 			}else if (input == 0) {
@@ -270,9 +138,10 @@ public static void display(List list) {
 		
 		}
 }
-public static void select(List list) {
-	for (int i = 0; i < list.size(); i++) {
-		System.out.println(i + 1 +"-------------" + list.get(i));
-		}
-	}
+//public static void select(List list) {
+	//for (int i = 0; i < list.size(); i++) {
+	//System.out.println(i + 1 +"-------------" + list.get(i));
+		//
+	//
+//
 }
