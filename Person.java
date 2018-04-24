@@ -491,7 +491,8 @@ public abstract class Person{
 	}
 	}	
 		
-	public static void CompareFriend() {
+	public static void CompareFriend() throws Exception{
+		try {
 		System.out.println("Please select two of the persons from the list to compared.");
 		select(Person.profile);
 		int selection;
@@ -516,8 +517,9 @@ public abstract class Person{
 	
 	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
 			
+		throw new TooYoungException();
 			
-			System.out.println("You cannot add friends here because Baby supposed to have no friends.");
+			
 			
 	}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
 		
@@ -533,16 +535,23 @@ public abstract class Person{
 	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof Adult)){
 		   
 		System.out.println("You cannot add friends here because YoungChild cannot make friends with Adult.");
-		   
+	}else if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Adult)){
+		     throw new NotToBeFriendException(); 
 	
 		}else {
 				System.out.println("They are both no relationship.");
 			}
+		}catch(NotToBeFriendException ex) {
+			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
 		
+		}catch(TooYoungException eg) {
+			System.err.println("Please dont make friend with young children");
+		}
+		}
 		
-	}
 	
-	public static void CompareFamily() {
+	public static void CompareFamily() throws Exception{
+		try {
 		System.out.println("Please select one of the persons from the list to determine there relationships.");
 		select(Person.family);
 		
@@ -608,6 +617,13 @@ public abstract class Person{
 						System.out.println("They are both Babies.");
 				
 			}
+	}catch(NoParentException eq) {
+		System.err.println("Please add a parent to each child. Child cannot be no two parent.");
+	}catch(NoAvailableException eh) {
+		System.err.println("Adult can only have one couple not connected to another couples.");
+	}catch(NotToBeCoupleException ek) {
+		System.err.println("Adult can only connect with Adult if they are couple.");
+	}
 	}
 	
 	
