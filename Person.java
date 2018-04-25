@@ -272,10 +272,12 @@ public abstract class Person{
 				YoungChild b = new YoungChild();
 				System.out.println("You have added this person as YoungChild");
 				
-				b.setName(name);
 				b.setAge(age);
+				b.setFile(filed);
+				b.setName(name);
 				b.setGender(gender);
 				b.setStatus(status);
+				b.setState(state);
 				
 				
 				family.add(b);
@@ -288,10 +290,12 @@ public abstract class Person{
 				Adult a = new Adult();
 				System.out.println("You have added this person as Adult");
 				
-				a.setName(name);
 				a.setAge(age);
+				a.setFile(filed);
+				a.setName(name);
 				a.setGender(gender);
 				a.setStatus(status);
+				a.setState(state);
 				
 				
 				family.add(a);
@@ -304,11 +308,12 @@ public abstract class Person{
 				Child t = new Child();
 				System.out.println("You have added this person as Child");
 				
-				t.setName(name);
 				t.setAge(age);
+				t.setFile(filed);
+				t.setName(name);
 				t.setGender(gender);
 				t.setStatus(status);
-				
+				t.setState(state);
 				
 				family.add(t);
 			}
@@ -507,54 +512,45 @@ public abstract class Person{
 		
 		
 	if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Child)){
-			System.out.println("They are both Friends.");
 			
-	
+		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");
+		
 	}else if((Person.profile.get(selection-1) instanceof Adult) && (Person.profile.get(selection2-1) instanceof Adult)){
 				
-					System.out.println("They are both friends.");
-						
+		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");	
 	
 	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
 			
-		throw new TooYoungException();
-			
-			
+		throw new TooYoungException();	
 			
 	}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
 		
-		
-		System.out.println("They are both classmate");
+		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "classmate");
 		
 	}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
 		
+		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "collegues");
 		
-		System.out.println("They are bot Collegues who are working together..");
-		
-		
-	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof Adult)){
-		   
-		System.out.println("You cannot add friends here because YoungChild cannot make friends with Adult.");
 	}else if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Adult)){
 		     throw new NotToBeFriendException(); 
 	
-		}else {
+	}else {
 				System.out.println("They are both no relationship.");
 			}
-		}catch(NotToBeFriendException ex) {
+	}catch(NotToBeFriendException ex) {
 			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
 		
-		}catch(TooYoungException eg) {
+	}catch(TooYoungException eg) {
 			System.err.println("Please dont make friend with young children");
-		}
-		}
+	}
+	}
 		
 	
 	public static void CompareFamily() throws Exception{
-		//try {
+		try {
 		System.out.println("Please select one of the persons from the list to determine there relationships.");
 		select(Person.family);
-		
+		select(Person.profile);
 		int selection;
 		int selection2;
 		Scanner sc2 = new Scanner(System.in);
@@ -568,62 +564,59 @@ public abstract class Person{
 		
 			if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)){
 					
-				System.out.println("They are children and parent relationship.");
+				throw new NoAvailableException();
 				
-				}
+			}
 	
 			else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)){
 				
-				System.out.println("They are parent and children relationship.");
+				throw new NotToBeCoupleException();
 				
-				}
+			}
 	
 			else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof Adult)) {
 				
-				System.out.println("They are children and parent relationship.");
+				System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "parent");
 				
-				}
+			}
 			else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof YoungChild)) {
 				
-				System.out.println("They are parent and children relationship.");
+				System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "parent");
 				
 			}
 				
 				else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Adult)) {
 					
-					System.out.println("They are children and parent relationship.");
+					throw new NoParentException();
 					
-					}
+			}
 				else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Child)) {
 					
-					System.out.println("They are parent and children relationship.");
-					
+					System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "parent");	
 				
 			}
-			else if ((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Adult)) {
+				else if ((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof Adult)) {
 				
+				System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "couple");
 				
-				System.out.println("They are either couples or children/parent relationship.");
-				
-				
-			}
-				else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Child)) {
+			}	else if((Person.family.get(selection-1) instanceof Child) && (Person.family.get(selection2-1) instanceof Child)) {
 					
-					System.out.println("They are either brother or sister relationship");
+					System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "brother/sister");
 					
-				}
-					else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof YoungChild)) {
+			}	else if((Person.family.get(selection-1) instanceof YoungChild) && (Person.family.get(selection2-1) instanceof YoungChild)) {
 						
-						System.out.println("They are both Babies.");
+					System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "brother/sister");
 				
+			}	else {
+					System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "no relationship");
 			}
-	//}catch(NoParentException eq) {
-	//	System.err.println("Please add a parent to each child. Child cannot be no two parent.");
-	//}catch(NoAvailableException eh) {
-	//	System.err.println("Adult can only have one couple not connected to another couples.");
-	//}catch(NotToBeCoupleException ek) {
-	//	System.err.println("Adult can only connect with Adult if they are couple.");
-	//}
+	}catch(NoParentException eq) {
+		System.err.println("Please add a parent to each child. Child cannot be no two parent.");
+	}catch(NoAvailableException eh) {
+		System.err.println("Adult can only have one couple not connected to another couples.");
+	}catch(NotToBeCoupleException ek) {
+		System.err.println("Adult can only connect with Adult if they are couple.");
+	}
 	}
 	
 	
