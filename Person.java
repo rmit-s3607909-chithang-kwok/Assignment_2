@@ -356,7 +356,7 @@ public abstract class Person{
 		String wk = "Working at KFC";
 		String sk = "Student at kindergarden";
 		String lj = "looking for jobs";
-		String mc = "manager at Coles";
+		String mc = "manager at ZFX";
 		String fz = "Founder of ZFX";
 		String hw = "House Worker";
 		
@@ -367,7 +367,7 @@ public abstract class Person{
 		System.out.println("Enter File: " + "1. BenPhoto.jpg " + " 2.Hannah.png" + " 3.Mark.jpeg " + "4.         ");
 		String filed = selectFile();
 		
-		System.out.println("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC " +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at Coles" + " 8. Founder of ZFX " + " 9. House worker");
+		System.out.println("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC " +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at ZFX" + " 8. Founder of ZFX " + " 9. House worker");
 		String status = selectjob();
 		
 		System.out.println("Enter gender: 1. Male" + "   " + " 2. Female");
@@ -551,7 +551,7 @@ public abstract class Person{
 		
 	
 	public static void CompareFamily() throws Exception{
-		try {
+		//try {
 		System.out.println("Please select one of the persons from the list to determine there relationships.");
 		select(Person.family);
 		
@@ -617,13 +617,13 @@ public abstract class Person{
 						System.out.println("They are both Babies.");
 				
 			}
-	}catch(NoParentException eq) {
-		System.err.println("Please add a parent to each child. Child cannot be no two parent.");
-	}catch(NoAvailableException eh) {
-		System.err.println("Adult can only have one couple not connected to another couples.");
-	}catch(NotToBeCoupleException ek) {
-		System.err.println("Adult can only connect with Adult if they are couple.");
-	}
+	//}catch(NoParentException eq) {
+	//	System.err.println("Please add a parent to each child. Child cannot be no two parent.");
+	//}catch(NoAvailableException eh) {
+	//	System.err.println("Adult can only have one couple not connected to another couples.");
+	//}catch(NotToBeCoupleException ek) {
+	//	System.err.println("Adult can only connect with Adult if they are couple.");
+	//}
 	}
 	
 	
