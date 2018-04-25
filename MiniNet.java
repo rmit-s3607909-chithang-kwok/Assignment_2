@@ -105,7 +105,7 @@ public class MiniNet {
 				
 				
 					
-	}else if (input  == 7) {
+			}else if (input  == 7) {
 				
 				Person.CompareFamily();
 				
