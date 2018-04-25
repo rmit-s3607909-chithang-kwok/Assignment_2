@@ -19,8 +19,8 @@ public class MiniNet {
 		int input = 0;
 		
 		Scanner sc = new Scanner (System.in);
-		//writer = new PrintWriter("relations.txt");
-		//twriter = new PrintWriter("people.txt");
+		writer = new PrintWriter("relations.txt");
+		twriter = new PrintWriter("people.txt");
 		
 		try {
 			writer = new PrintWriter("relations.txt");
