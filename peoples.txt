@@ -1,0 +1,8 @@
+Alex Smith, “”, “student at RMIT”, M, 35, WA
+Ben Turner, “BenPhoto.jpg”, “manager at ZFX”, M, 45, VIC
+Hannah Write, “Hannah.png”, “student at PLC”, F, 12, VIC
+Zoe Foster, “”, “Founder of ZFX”, F, 33, VIC
+Mark Turner, “Mark.jpeg”, “”, M, 2 VIC
+John Smith, “”, “student at PLC”, M, 12, VIC
+Mary Hopkin, “”, “House Worker”, F, 38, TAS
+Alex Turner, “”, “student at LaTrobe”, M, 12, VIC
