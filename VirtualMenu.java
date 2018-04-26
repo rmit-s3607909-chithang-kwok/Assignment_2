@@ -1,51 +1,86 @@
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.geometry.Orientation;
-import javafx.stage.Stage;
-//import java.util.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
-public class VirtualMenu extends Application {
-	@Override // Override the start method in the Application class
-	public void start(Stage primaryStage) {
-		// Create a pane and set its properties
-		FlowPane pane=new FlowPane(Orientation.VERTICAL,5,5);//hGap=5,vGap = 5
-        // FlowPane pane=new FlowPane(Orientation.HORIZONTAL,5,5);//hGap=5,vGap = 5
-		pane.setPadding(new Insets(11, 12, 13, 14));
-		// Place nodes in the pane
+public class VirtualMenu extends Frame {
+	
+	VirtualMenu (){
+		super ("Menu");
+		setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));
+	
 		
-		//Scanner sc = new Scanner (System.in);
-		//int input = 0;
+		Button b1 = new Button ("1. List everyone");
+		Button b2 = new Button ("2. Add a person");
+		Button b3 = new Button ("3. Add a family");
+		Button b4 = new Button ("4. Update a person");
+		Button b5 = new Button ("5. Delete select person");
+		Button b6 = new Button ("6. List two people if they are friends?");
+		Button b7 = new Button ("7. List Two people if they are family?");
+		Button b8 = new Button ("0. Exit");
 		
-		pane.getChildren().addAll(new Label("Welcome to MiniNet"),
-				                  new Label("___________________"),
-				                  new Label("1. Add a person"), 
-				                  new Label("2. Select a person"),
-				                  new Label("3. Display the profile of the select person."),
-				                  new Label("4. Delete the selected person"),
-		                          new Label("5. Check if this two person are connected."),
-		                          new Label("6. Define the relation between two people."), 
-		                          new Label("7. Find out the name of a persons children or the name of the parents."),
-		                          new Label("0. Exit"),
-		                          new Label("Enter an Option:")
-		                          , new TextField()); 
-		                         
-		                        
-		                          
-		                          
-				      
-		//input = sc.nextInt();
-		TextField tfMi = new TextField();
-		tfMi.setPrefColumnCount(4);
-		pane.getChildren().add(tfMi);
-		// Create a scene and place it in the stage
-		Scene scene = new Scene(pane, 200, 250);
-		primaryStage.setTitle("ShowFlowPane"); // Set the stage title
-		primaryStage.setScene(scene); // Place the scene in the stage
-		primaryStage.show(); // Display the stage
-	}
+		add(b1);
+		add(b2);
+		add(b3);
+		add(b4);
+		add(b5);
+		add(b6);
+		add(b7);
+		add(b8);
+		
+		pack();
+		
+		setVisible(true);
+		
+		b1.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+				try{
+					FileReader file = new FileReader("H:\\workspace\\Advancing Programming\\.settings\\people.txt");
+				
+				
+					BufferedReader reader = new BufferedReader(file);
+				
+					String text = "";
+					String line = reader.readLine();
+					while (line != null)
+						{
+							text += line;
+							line = reader.readLine();
+						}
+					System.out.println(text);
+				}catch(IOException e) {
+					System.out.println("");
+					System.exit(0);
+					}
+			}
+		});
+		
+		b8.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.exit(0);	
+			}
+		});
+	}    
 }
