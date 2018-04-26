@@ -486,18 +486,20 @@ public abstract class Person{
 	
 	}catch(NoSuchAgeException e1) {
 		System.err.println("There is no age less than zero or larger than 150.");
-		
+		System.exit(0);
 	}
 	catch(NotToBeClassmateException e2) {
 		System.err.println("YoungChild cannot be connected as Classmate.");
+		System.exit(0);
 	}
 	catch(NotToBeColleguesException e3) {
 		System.err.println("Child cannot be connected as Collegues.");
+		System.exit(0);
 	}
 	}	
 		
 	public static void CompareFriend() throws Exception{
-		try {
+		
 		System.out.println("Please select two of the persons from the list to compared.");
 		select(Person.profile);
 		int selection;
@@ -511,39 +513,21 @@ public abstract class Person{
 		
 		
 		
-	if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Child)){
+	if((((Person) profile.get(selection-1)).CompareAge(Person.profile.get(selection2-1)) == true)){
+		
+			System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");
 			
-		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");
+	//}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
 		
-	}else if((Person.profile.get(selection-1) instanceof Adult) && (Person.profile.get(selection2-1) instanceof Adult)){
-				
-		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");	
-	
-	}else if((Person.profile.get(selection-1) instanceof YoungChild) && (Person.profile.get(selection2-1) instanceof YoungChild)){
-			
-		throw new TooYoungException();	
-			
-	}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
+		//System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "classmate");
 		
-		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "classmate");
+	//}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
 		
-	}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
+		//System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "collegues");
 		
-		System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "collegues");
-		
-	}else if((Person.profile.get(selection-1) instanceof Child) && (Person.profile.get(selection2-1) instanceof Adult)){
-		     throw new NotToBeFriendException(); 
-	
-	}else {
-				System.out.println("They are both no relationship.");
-			}
-	}catch(NotToBeFriendException ex) {
-			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
-		
-	}catch(TooYoungException eg) {
-			System.err.println("Please dont make friend with young children");
 	}
-	}
+	
+}
 		
 	
 	public static void CompareFamily() throws Exception{
@@ -609,20 +593,52 @@ public abstract class Person{
 				
 			}	else {
 					System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "no relationship");
+				}
+		}catch(NoParentException eq) {
+			System.err.println("Please add a parent to each child. Child cannot be no two parent.");
+			System.exit(0);
+		}catch(NoAvailableException eh) {
+			System.err.println("Adult can only have one couple not connected to another couples.");
+			System.exit(0);
+		}catch(NotToBeCoupleException ek) {
+			System.err.println("Adult can only connect with Adult if they are couple.");
+			System.exit(0);
+		}
+	}
+	
+	public boolean CompareAge (Object obj) throws Exception {
+		try {
+		if (this == null) {
+			return false;
+		}
+		if (this instanceof YoungChild || obj instanceof YoungChild) {
+			throw new TooYoungException();
+		}
+		if ((this instanceof Child && obj instanceof Adult) ||(obj instanceof Child && this instanceof Adult)) {
+			throw new AdultNotToBeFriendException();
+		}
+		Person other = (Person) obj;
+		if (this instanceof Child && obj instanceof Child) {
+			if(this.getAge() - other.getAge() > 3 || other.getAge() - this.getAge() > 3) {
+				throw new NotToBeFriendException();
 			}
-	}catch(NoParentException eq) {
-		System.err.println("Please add a parent to each child. Child cannot be no two parent.");
-	}catch(NoAvailableException eh) {
-		System.err.println("Adult can only have one couple not connected to another couples.");
-	}catch(NotToBeCoupleException ek) {
-		System.err.println("Adult can only connect with Adult if they are couple.");
+			else return true;
+		}
+		else return true;
+		}catch(TooYoungException eg) {
+			System.err.println("Please dont make friend with young children");
+			return false;
+		}catch(NotToBeFriendException ex) {
+			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
+			return false;
+		}catch(AdultNotToBeFriendException ab) {
+			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
+			return false;
+		}
 	}
-	}
-	
-	
 	public boolean equals(Object obj) {
 		Person p = (Person) obj;
-		return this.name.equals(p.name) && this.gender.equals(p.gender) && this.age == p.age && this.status.equals(p.status);
+		return this.name.equals(p.name);
 	}
 	
 	public String toString() {
@@ -634,5 +650,4 @@ public abstract class Person{
 			}
 		}
 	}
-	
 	
