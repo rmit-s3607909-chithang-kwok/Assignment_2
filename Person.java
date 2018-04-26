@@ -26,7 +26,7 @@ public abstract class Person{
 	static class NoParentException extends Exception{}
 	static class NoAvailableException extends Exception{}
 	static class NotToBeCoupleException extends Exception{}
-	
+	static class AdultNotToBeFriendException extends Exception{};
 
 	public int getAge() {
 		return age;
@@ -629,10 +629,10 @@ public abstract class Person{
 			System.err.println("Please dont make friend with young children");
 			return false;
 		}catch(NotToBeFriendException ex) {
-			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
+			System.err.println("Please dont make both Children a friends as their age cannot be greater than 3 years old.");
 			return false;
 		}catch(AdultNotToBeFriendException ab) {
-			System.err.println("Please dont make Adult and Children a friends or Both Children age cannot be greater than 3 years old.");
+			System.err.println("Please dont make Adult and Children a friends who cannot be greater than 3 years old.");
 			return false;
 		}
 	}
