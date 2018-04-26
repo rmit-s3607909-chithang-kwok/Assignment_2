@@ -5,60 +5,21 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Panel;
 import java.io.*;
 
 
 public class MiniNet {
 	public static void main(String[] args) throws Exception {
-		PrintWriter writer = null;
-		PrintWriter twriter = null;
 		
-		
+		new VirtualMenu();
 		
 		
 		int input = 0;
 		
 		Scanner sc = new Scanner (System.in);
-		writer = new PrintWriter("relations.txt");
-		twriter = new PrintWriter("people.txt");
-		
-		try {
-			writer = new PrintWriter("relations.txt");
-			
-			
-		    writer.write("Alex Smith, Ben Turner, friend");
-			writer.write	("Ben Turner, Mark Hopkin, couple");
-			writer.write	("Mark Turner, Ben Turner, parent");
-			writer.write	("Mark Turner, Mary Hopkin, parent");
-			writer.write	("Alex Turner, Mark Hopkin, parent");
-			writer.write("Alex Turner, Ben Turner, parent");
-			writer.write("Alex Smith, Klay Thomas, couple");
-			writer.write	("Alex Turner, John Smith, friend");
-			writer.write	("John Smith, Alex Smith, parent");
-			writer.write	("John Smith, Klay Thomas, parent");
-			writer.write	("Zoe Foster, Alex Smith, colleagues");
-			writer.write	("Hannah White, John Smith, classmate");
-			
-			writer.close();
-			
-			twriter = new PrintWriter("people.txt");
-			
-			twriter.write("Alex Smith, “”, “student at RMIT”, M, 35, WA");
-			twriter.write("Ben Turner, “BenPhoto.jpg”, “manager at ZFX”, M, 45, VIC");
-			twriter.write("Hannah Write, “Hannah.png”, “student at PLC”, F, 12, VIC");
-			twriter.write("Zoe Foster, “”, “Founder of ZFX”, F, 33, VIC");		
-			twriter.write("Mark Turner, “Mark.jpeg”, “”, M, 2 VIC");
-			twriter.write("John Smith, “”, “student at PLC”, M, 12, VIC");
-			twriter.write("Mary Hopkin, “”, “House Worker”, F, 38, TAS");
-			twriter.write("Alex Turner, “”, “student at LaTrobe”, M, 12, VIC");
-
-			twriter.close();
-			
-			
-		}catch(IOException e) {
-			System.err.println("File cannot be created, or cannot be opened");
-			System.exit(0);
-		}
 		
 		
 		//Author: KWOK
