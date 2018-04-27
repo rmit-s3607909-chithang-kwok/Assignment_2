@@ -268,57 +268,57 @@ public abstract class Person{
 		String state = selectstate();
 		
 	
-			if (age > 0 && age <=2) {
-				YoungChild b = new YoungChild();
-				System.out.println("You have added this person as YoungChild");
+		if (age > 0 && age <=2) {
+			YoungChild b = new YoungChild();
+			System.out.println("You have added this person as YoungChild");
 				
-				b.setAge(age);
-				b.setFile(filed);
-				b.setName(name);
-				b.setGender(gender);
-				b.setStatus(status);
-				b.setState(state);
-				
-				
-				family.add(b);
+			b.setAge(age);
+			b.setFile(filed);
+			b.setName(name);
+			b.setGender(gender);
+			b.setStatus(status);
+			b.setState(state);
 				
 				
-
-			}
-			
-			else if (age > 16) {
-				Adult a = new Adult();
-				System.out.println("You have added this person as Adult");
-				
-				a.setAge(age);
-				a.setFile(filed);
-				a.setName(name);
-				a.setGender(gender);
-				a.setStatus(status);
-				a.setState(state);
-				
-				
-				family.add(a);
+			family.add(b);
 				
 				
 
-			}
-			
-			else if (age <= 16 && age > 2) {
-				Child t = new Child();
-				System.out.println("You have added this person as Child");
-				
-				t.setAge(age);
-				t.setFile(filed);
-				t.setName(name);
-				t.setGender(gender);
-				t.setStatus(status);
-				t.setState(state);
-				
-				family.add(t);
-			}
-			
 		}
+		
+		else if (age > 16) {
+			Adult a = new Adult();
+			System.out.println("You have added this person as Adult");
+				
+			a.setAge(age);
+			a.setFile(filed);
+			a.setName(name);
+			a.setGender(gender);
+			a.setStatus(status);
+			a.setState(state);
+				
+				
+			family.add(a);
+				
+				
+
+		}
+			
+		else if (age <= 16 && age > 2) {
+			Child t = new Child();
+			System.out.println("You have added this person as Child");
+				
+			t.setAge(age);
+			t.setFile(filed);
+			t.setName(name);
+			t.setGender(gender);
+			t.setStatus(status);
+			t.setState(state);
+			
+			family.add(t);
+		}
+			
+	}
 			
 	public static void UpdatePerson() throws Exception {
 		System.out.println("Please select one of the persons from the list.");
@@ -338,17 +338,17 @@ public abstract class Person{
 			
 			
     public static void RemovePerson() {
-    System.out.println("Please select one of the persons from the list.");
-	select(Person.profile);
-	
-	int selection;
-	Scanner sc2 = new Scanner(System.in);
-	selection = sc2.nextInt();
-	
-	
-	
-	Person.profile.remove(selection - 1);
-	System.out.println("Persons have been deleted successfully.");
+	    System.out.println("Please select one of the persons from the list.");
+		select(Person.profile);
+		
+		int selection;
+		Scanner sc2 = new Scanner(System.in);
+		selection = sc2.nextInt();
+		
+		
+		
+		Person.profile.remove(selection - 1);
+		System.out.println("Persons have been deleted successfully.");
 		
     }
 	
@@ -365,7 +365,7 @@ public abstract class Person{
 		String fz = "Founder of ZFX";
 		String hw = "House Worker";
 		
-      try {
+	
 		System.out.println("Enter name: ");
 		String name = sc1.nextLine();
 		
@@ -374,128 +374,67 @@ public abstract class Person{
 		
 		System.out.println("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC " +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at ZFX" + " 8. Founder of ZFX " + " 9. House worker");
 		String status = selectjob();
-		
+			
 		System.out.println("Enter gender: 1. Male" + "   " + " 2. Female");
 		String gender = selectgender();
-		
+			
 		System.out.println("Enter age");
 		int age = sc1.nextInt();
-		
+			
 		System.out.println("Enter State: 1. NSW" + " 2. VIC" + " 3. QL" + " 4. WA" + " 5. SA" + " 6. TAS" + " 7. NT");
 		String state = selectstate();
 		
 		
-		
-		if ( age >= 0 && age <= 2) {
-			if (!(status == sr || status == sp|| status == sk)) {
-			
-			Person p = new YoungChild();
+		if (age > 0 && age <=2) {
+			YoungChild b = new YoungChild();
 			System.out.println("You have added this person as YoungChild");
-			p.setAge(age);
-			p.setFile(filed);
-			p.setName(name);
-			p.setGender(gender);
-			p.setStatus(status);
-			p.setState(state);
-			
-			
-			profile.add(p);
-			} else if (status == sr || status == sp|| status == sk) {
-				throw new NotToBeClassmateException();
-			}
-		}	
-		
-		else if (age > 2 && age <= 16 ) {
-		
-			if (status == sr || status == sp|| status == sk) {
-		
-			Person p = new Classmate();
-			System.out.println("You have added this person as Classmate");
-			p.setAge(age);
-			p.setFile(filed);
-			p.setName(name);
-			p.setGender(gender);
-			p.setStatus(status);
-			p.setState(state);
-			
-			
-			
-			profile.add(p);
-			
-				
-			}else if (!(status == sr || status == sp|| status == sk)) {
-			Person p = new Child();
-			System.out.println("You have added this person as Child");
-			p.setAge(age);
-			p.setFile(filed);
-			p.setName(name);
-			p.setGender(gender);
-			p.setStatus(status);
-			p.setState(state);
-			
-			
-			profile.add(p);
-			
-			} else if (status == mc || status == hw) {
-				throw new NotToBeColleguesException();
-			}
-		
-		}else if (age > 16 && age < 149) {
-			if (status == fo || status == wk || status == mc || status == fz)  {
-			Person p = new Collegues();
-			System.out.println("You have added this person as Collegues");
-			p.setAge(age);
-			p.setFile(filed);
-			p.setName(name);
-			p.setGender(gender);
-			p.setStatus(status);
-			p.setState(state);
-			
-			profile.add(p);
-			}else if (status == sr || status == sp|| status == sk){
-		    Person p = new Classmate();
-			System.out.println("You have added this person as Classmate");
-			p.setAge(age);
-			p.setFile(filed);
-			p.setName(name);
-			p.setGender(gender);
-			p.setStatus(status);
-			p.setState(state);
-			
-			profile.add(p);
-			}else if (!(status == fo || status == wk || status == mc || status == fz || status == sr || status == sp|| status == sk)) {
-			    Person p = new Adult();
-				System.out.println("You have added this person as Adult");
-				p.setAge(age);
-				p.setFile(filed);
-				p.setName(name);
-				p.setGender(gender);
-				p.setStatus(status);
-				p.setState(state);
-				
-				profile.add(p);
-				
-			}
-			
-		 
-		
-		}else if (age < 0 && age >= 150) { 
-			throw new NoSuchAgeException();
+					
+			b.setAge(age);
+			b.setFile(filed);
+			b.setName(name);
+			b.setGender(gender);
+			b.setStatus(status);
+			b.setState(state);
+					
+					
+			profile.add(b);
+					
+					
+
 		}
 			
-	
-	}catch(NoSuchAgeException e1) {
-		System.err.println("There is no age less than zero or larger than 150.");
-		System.exit(0);
-	}
-	catch(NotToBeClassmateException e2) {
-		System.err.println("YoungChild cannot be connected as Classmate.");
-		System.exit(0);
-	}
-	catch(NotToBeColleguesException e3) {
-		System.err.println("Child cannot be connected as Collegues.");
-		System.exit(0);
-	}
+			else if (age > 16) {
+				Adult a = new Adult();
+				System.out.println("You have added this person as Adult");
+					
+				a.setAge(age);
+				a.setFile(filed);
+				a.setName(name);
+				a.setGender(gender);
+				a.setStatus(status);
+				a.setState(state);
+					
+					
+				profile.add(a);
+					
+					
+
+			}
+				
+			else if (age <= 16 && age > 2) {
+				Child t = new Child();
+				System.out.println("You have added this person as Child");
+					
+				t.setAge(age);
+				t.setFile(filed);
+				t.setName(name);
+				t.setGender(gender);
+				t.setStatus(status);
+				t.setState(state);
+				
+				profile.add(t);
+			}
+			
 	}	
 		
 	public static void CompareFriend() throws Exception{
@@ -513,21 +452,13 @@ public abstract class Person{
 		
 		
 		
-	if((((Person) profile.get(selection-1)).CompareAge(Person.profile.get(selection2-1)) == true)){
-		
-			System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "friends");
-			
-	//}else if((Person.profile.get(selection-1) instanceof Classmate) && (Person.profile.get(selection2-1) instanceof Classmate)){
-		
-		//System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "classmate");
-		
-	//}else if((Person.profile.get(selection-1) instanceof Collegues) && (Person.profile.get(selection2-1) instanceof Collegues)){
-		
-		//System.out.println(Person.profile.get(selection-1) + "," + Person.profile.get(selection2-1) + "," + "collegues");
-		
-	}
+		if((((Person) profile.get(selection-1)).CompareAge(Person.profile.get(selection2-1))) == true){
+
+			System.out.println(profile.get(selection - 1) + " and " + profile.get(selection2-1) +  " are friends now");
 	
-}
+		}
+	
+	}
 		
 	
 	public static void CompareFamily() throws Exception{
@@ -608,31 +539,34 @@ public abstract class Person{
 	
 	public boolean CompareAge (Object obj) throws Exception {
 		try {
-		if (this == null) {
-			return false;
-		}
-		if (this instanceof YoungChild || obj instanceof YoungChild) {
-			throw new TooYoungException();
-		}
-		if ((this instanceof Child && obj instanceof Adult) ||(obj instanceof Child && this instanceof Adult)) {
-			throw new AdultNotToBeFriendException();
-		}
-		Person other = (Person) obj;
-		if (this instanceof Child && obj instanceof Child) {
-			if(this.getAge() - other.getAge() > 3 || other.getAge() - this.getAge() > 3) {
-				throw new NotToBeFriendException();
+			if (this == null) {
+				return false;
+			}
+			if (this instanceof YoungChild || obj instanceof YoungChild) {
+				throw new TooYoungException();
+			}
+			if ((this instanceof Child && obj instanceof Adult)||(obj instanceof Child && this instanceof Adult)) {
+				
+				throw new AdultNotToBeFriendException();
+			}
+			Person other = (Person) obj;
+			if (this instanceof Child && obj instanceof Child) {
+				if(this.getAge() - other.getAge() > 3 || other.getAge() - this.getAge() > 3) {
+					throw new NotToBeFriendException();
+				}
+				else return true;
 			}
 			else return true;
-		}
-		else return true;
+			
 		}catch(TooYoungException eg) {
 			System.err.println("Please dont make friend with young children");
 			return false;
-		}catch(NotToBeFriendException ex) {
-			System.err.println("Please dont make both Children a friends as their age cannot be greater than 3 years old.");
-			return false;
 		}catch(AdultNotToBeFriendException ab) {
-			System.err.println("Please dont make Adult and Children a friends who cannot be greater than 3 years old.");
+			System.err.println("Please dont make Adult and Children a friends who cannot be greater than 3 years old.");				
+			return false;		
+		}
+			catch(NotToBeFriendException ac) {
+			System.err.println("Please dont make both Children a friends as their age cannot be greater than 3 years old.");
 			return false;
 		}
 	}
@@ -642,7 +576,7 @@ public abstract class Person{
 	}
 	
 	public String toString() {
-		return "[" + name + " " + filed + " " + status + " " + gender + " " + age + " " + state + " ]";
+		return  name;
 	}		
 	public static void select(List list) {
 		for (int i = 0; i < list.size(); i++) {
