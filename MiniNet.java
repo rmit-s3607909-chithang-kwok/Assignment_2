@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Panel;
@@ -14,6 +11,49 @@ import java.io.*;
 public class MiniNet {
 	public static void main(String[] args) throws Exception {
 		
+		
+		
+		FileWriter writer = null;
+		FileWriter writer1 = null;
+		
+
+		try {
+			writer = new FileWriter("peoples.txt");
+
+			writer.write("[Alex Smith, “”, “student at RMIT”, M, 35, WA], ");
+			writer.write("[Ben Turner, “BenPhoto.jpg”, “manager at ZFX”, M, 45, VIC], \n");
+			writer.write("[Hannah Write, “Hannah.png”, “student at PLC”, F, 12, VIC], \n");
+			writer.write("[Zoe Foster, “”, “Founder of ZFX”, F, 33, VIC], \n");
+			writer.write("[Mark Turner, “Mark.jpeg”, “”, M, 2 VIC], \n");
+			writer.write("[John Smith, “”, “student at PLC”, M, 12, VIC], \n");
+			writer.write("[Mary Hopkin, “”, “House Worker”, F, 38, TAS], ");
+			writer.write("[Alex Turner, “”, “student at LaTrobe”, M, 12, VIC], \n");
+			
+
+			writer.close();// flushes the stream.
+
+			writer1 = new FileWriter("relation.txt");
+
+			writer1.write("[Alex Smith, Ben Turner, friend], \n");
+			writer1.write("[Ben Turner, Mark Hopkin, couple], \n");
+			writer1.write("[Mark Turner, Ben Turner, parent], \n");
+			writer1.write("[Mark Turner, Mary Hopkin, parent], \n");
+			writer1.write("[Alex Turner, Mark Hopkin, parent], \n");
+			writer1.write("[Alex Turner1 Ben Turner, parent], \n");
+			writer1.write("[Alex Smith, Klay Thomas, couple], \n");
+			writer1.write("[Alex Turner, John Smith, friend], \n");
+			writer1.write("[John Smith, Alex Smith, parent], \n");
+			writer1.write("[John Smith, Klay Thomas, parent], \n");
+			writer1.write("[Zoe Foster, Alex Smith, colleagues], \n");
+			writer1.write("[Hannah White, John Smith, classmate], \n");
+
+			writer1.close();// flushes the stream.
+			
+		} catch (IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
+	
 		new VirtualMenu();
 		
 		

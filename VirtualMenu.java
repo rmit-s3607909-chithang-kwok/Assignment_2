@@ -54,19 +54,34 @@ public class VirtualMenu extends Frame {
 				// TODO Auto-generated method stub
 				
 				try{
-					FileReader file = new FileReader("H:\\workspace\\Advancing Programming\\.settings\\people.txt");
+					FileReader file = new FileReader("/Users/gary/eclipse-workspace/Assignment/peoples.txt");
+					
+					FileReader file1 = new FileReader("/Users/gary/eclipse-workspace/Assignment/relation.txt");
 				
 				
 					BufferedReader reader = new BufferedReader(file);
+					BufferedReader reader1 = new BufferedReader(file1);
 				
 					String text = "";
+					String text1 = "";
+					
 					String line = reader.readLine();
+					String line1 = reader1.readLine();
 					while (line != null)
 						{
 							text += line;
 							line = reader.readLine();
+							
 						}
+					while (line1 != null)
+					{
+						text1 += line1;
+						line1 = reader1.readLine();
+						
+					}
 					System.out.println(text);
+					System.out.println(text1);
+					
 				}catch(IOException e) {
 					System.out.println("");
 					System.exit(0);
