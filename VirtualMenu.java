@@ -17,13 +17,20 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
 
 public class VirtualMenu extends Frame {
 	
 	VirtualMenu (){
 		super ("Menu");
-		setLayout(new FlowLayout(FlowLayout.CENTER, 20, 40));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 60));
 	
+		
+		
 		
 		Button b1 = new Button ("1. List everyone");
 		Button b2 = new Button ("2. Add a person");
@@ -53,6 +60,7 @@ public class VirtualMenu extends Frame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				
+				
 				try{
 					FileReader file = new FileReader("/Users/gary/eclipse-workspace/Assignment/peoples.txt");
 					
@@ -62,6 +70,9 @@ public class VirtualMenu extends Frame {
 					BufferedReader reader = new BufferedReader(file);
 					BufferedReader reader1 = new BufferedReader(file1);
 				
+					
+					
+					
 					String text = "";
 					String text1 = "";
 					
@@ -79,14 +90,21 @@ public class VirtualMenu extends Frame {
 						line1 = reader1.readLine();
 						
 					}
-					System.out.println(text);
-					System.out.println(text1);
+					
+					JOptionPane.showMessageDialog(null, text);
+					JOptionPane.showMessageDialog(null, text1);
+					
+					
 					
 				}catch(IOException e) {
+					
 					System.out.println("");
 					System.exit(0);
 					}
 			}
+				
+				
+				
 		});
 		
 		b8.addActionListener(new ActionListener(){
