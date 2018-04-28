@@ -39,7 +39,7 @@ public class AddPersonWindow {
 		pane.add(new Label("Enter name: "),0,0);
 		TextField t1 = new TextField();
 		pane.add(t1,1,0);
-		pane.add(new Label("Enter File: " + "1. BenPhoto.jpg " + " 2.Hannah.png" + " 3.Mark.jpeg " + "4.         "),0,1);
+		pane.add(new Label("Enter File: " + "1. AlexPhoto.jpg " + " 2.BenPhoto.jpg" + " 3.Hannah.png " + "4. ZoePhoto.jpg " + "5. Mark.jpg " +  "6. JohnPhoto.jpg " + "7. MaryPhoto.jpg " + "8. ATurnerPhoto.jpg "),0,1);
 		TextField t2 = new TextField();
 		pane.add(t2,1,1);
 		pane.add(new Label("Enter job:  1. Freelance" + " 2. Student at RMIT " + " 3. Student at PLC " + "4. Working at KFC " +  "5. Student at kindergarden "  + " 6. Looking for jobs " +  " 7. manager at ZFX" + " 8. Founder of ZFX " + " 9. House worker"),0,2);
