@@ -42,7 +42,7 @@ public class MiniNet extends Application implements EventHandler<ActionEvent> {
 			writer.write("[Ben Turner, 'BenPhoto.jpg', manager at ZFX, M, 45, VIC], \n");
 			writer.write("[Hannah Write, 'Hannah.png', student at PLC, F, 12, VIC], \n");
 			writer.write("[Zoe Foster, 'ZoePhoto.jpg', Founder of ZFX, F, 33, VIC], \n");
-			writer.write("[Mark Turner, 'Mark.jpeg', looking for job, M, 2 VIC], \n");
+			writer.write("[Mark Turner, 'Mark.jpeg', looking for jobs, M, 2 VIC], \n");
 			writer.write("[John Smith, 'JohnPhoto.jpeg, student at PLC, M, 12, VIC], \n");
 			writer.write("[Mary Hopkin, 'MaryPhoto.jpeg, House Worker, F, 38, TAS], \n");
 			writer.write("[Alex Turner, 'ATurnerPhoto.jpeg, student at LaTrobe, M, 12, VIC], \n");
