@@ -34,7 +34,7 @@ import javafx.scene.layout.VBoxBuilder;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class MainContoller{
+public class MainContoller implements Initializable{
 
 	private Button bt1;
 	private Button bt2;
@@ -43,17 +43,18 @@ public class MainContoller{
 
 	
 	
+	
 	public void Button1Action(ActionEvent event) {
 		
-		 final TextArea textArea = new TextArea();
+		//final TextArea textArea = new TextArea();
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("/Users/gary/eclipse-workspace/MenuBar/src"));
+		fc.setInitialDirectory(new File("FileChooser.fxml"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		File selectFile = fc.showOpenDialog(null);
 		
 		if (selectFile != null) {
 			listview.getItems().add(selectFile.getAbsolutePath());
-			textArea.setText(readFile(selectFile));
+			//textArea.setText(readFile(selectFile));
 		}else {
 			System.out.println("file is not valid");
 		}
@@ -61,9 +62,9 @@ public class MainContoller{
 	
 	public void Button2Action(ActionEvent event) {
 		
-		final TextArea textArea = new TextArea();
+		
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("/Users/gary/eclipse-workspace/MenuBar/src"));
+		fc.setInitialDirectory(new File("FileChooser.fxml"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
@@ -104,4 +105,13 @@ public class MainContoller{
          
         return stringBuffer.toString();
     }
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

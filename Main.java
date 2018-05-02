@@ -26,7 +26,7 @@ public class Main extends Application{
 	  public void start(Stage primaryStage) throws Exception{
 			try {
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/application/FileChooser.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					primaryStage.setScene(scene);
