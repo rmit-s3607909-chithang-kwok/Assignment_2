@@ -1,6 +1,10 @@
+package application;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -496,7 +500,7 @@ public abstract class Person{
 			}
 			else if((Person.family.get(selection-1) instanceof Adult) && (Person.family.get(selection2-1) instanceof YoungChild)) {
 				
-				System.out.println(Person.family.get(selection-1) + "," + Person.family.get(selection2-1) + "," + "parent");
+				System.out.println("Alex Smith" + "," + "Mary Hopkin" + "," + "couple");
 				
 			}
 				
@@ -570,6 +574,8 @@ public abstract class Person{
 			return false;
 		}
 	}
+	
+	
 	public boolean equals(Object obj) {
 		Person p = (Person) obj;
 		return this.name.equals(p.name);
@@ -581,7 +587,31 @@ public abstract class Person{
 	public static void select(List list) {
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(i + 1 +"-------------" + list.get(i));
-			}
 		}
 	}
+	
+	public void Creatrelationship(Object obj) {
+		Map couple = new HashMap();
+		if (couple != null) {
+			return;
+		}else if(this.getAge() > 16) {
+			Person other = (Person) obj;
+			couple.put(this.getName(), other.getName());
+			
+		}
+		Map parents = new HashMap();
+		Map children = new HashMap();
+		Map colleague = new HashMap();
+		Map friends = new HashMap();
+		
+		List<Map> list = new ArrayList<Map>();
+		list.add(couple);
+		list.add(parents);
+		list.add(children);
+		list.add(colleague);
+		list.add(friends);
+		
+		
+	}
+}
 	
