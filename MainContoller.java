@@ -3,6 +3,7 @@ package application;
 
 
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,43 +38,49 @@ import javafx.stage.Stage;
 public class MainContoller implements Initializable{
 
 	private Button bt1;
+	
 	private Button bt2;
 	
 	private ListView listview;
-
 	
-	
+    private TextArea textarea;
+    
+	private Desktop desktop = Desktop.getDesktop();
 	
 	public void Button1Action(ActionEvent event) {
 		
-		//final TextArea textArea = new TextArea();
+		
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("FileChooser.fxml"));
+		//fc.setInitialDirectory(new File("FileChooser.fxml"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		File selectFile = fc.showOpenDialog(null);
 		
 		if (selectFile != null) {
-			listview.getItems().add(selectFile.getAbsolutePath());
-			//textArea.setText(readFile(selectFile));
+			openFile(selectFile);
+			//listview.getItems().add(selectFile.getName());
+			//textarea.setText(readFile(selectFile));
 		}else {
 			System.out.println("file is not valid");
 		}
 	}
 	
-	public void Button2Action(ActionEvent event) {
+	public void Button2Action(ActionEvent event){
 		
 		
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("FileChooser.fxml"));
+		//fc.setInitialDirectory(new File("FileChooser.fxml"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
-		List<File> selectFiles = fc.showOpenMultipleDialog(null);
+	List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
 		if (selectFiles != null) {
-			for (int i = 0; i < selectFiles.size();i++) {
-			listview.getItems().add(selectFiles.get(i).getAbsolutePath());
+			//for (int i = 0; i < selectFiles.size();i++) {
+				
+			
+				 for (File file : selectFiles) {
+                     openFile(file);
 			
 			}
-		}else {
+	}else {
 			System.out.println("file is not valid");
 		}
 	}
@@ -112,6 +119,15 @@ public class MainContoller implements Initializable{
 		// TODO Auto-generated method stub
 		
 	}
-
+	private void openFile(File file) {
+        try {
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(
+                FileChooserSample.class.getName()).log(
+                    Level.SEVERE, null, ex
+                );
+        }
+    }
 	
 }
