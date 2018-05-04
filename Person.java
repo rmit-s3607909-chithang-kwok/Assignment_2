@@ -590,28 +590,37 @@ public abstract class Person{
 		}
 	}
 	
-	public void Creatrelationship(Object obj) {
+	public boolean CreatRelationship(Object obj) throws Exception {
 		Map couple = new HashMap();
-		if (couple != null) {
-			return;
-		}else if(this.getAge() > 16) {
-			Person other = (Person) obj;
-			couple.put(this.getName(), other.getName());
+		try {
+			if (couple != null) {
+				throw new NoAvailableException();
+			}
 			
+			if (this instanceof YoungChild || obj instanceof YoungChild) {
+				throw new NotToBeCoupleException();
+			}
+			
+			if (this instanceof Child || obj instanceof Child) {
+				throw new NotToBeCoupleException();
+			}
+			
+			
+			if (couple == null && this.getAge() > 16) {
+				Person other = (Person) obj;
+				couple.put(this.getName(), other.getName());
+				
+				List<Map> list = new ArrayList<Map>();
+				list.add(couple);
+				return true;
+			}
+			else return false;
+
+		}catch (NoAvailableException e) {
+			return false; 
+		}catch (NotToBeCoupleException e) {
+			return false;
 		}
-		Map parents = new HashMap();
-		Map children = new HashMap();
-		Map colleague = new HashMap();
-		Map friends = new HashMap();
-		
-		List<Map> list = new ArrayList<Map>();
-		list.add(couple);
-		list.add(parents);
-		list.add(children);
-		list.add(colleague);
-		list.add(friends);
-		
-		
 	}
 }
 	
