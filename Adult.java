@@ -44,11 +44,12 @@ public class Adult extends Person {
 			if (!(obj instanceof Adult)) {
 				throw new NotToBeCoupledException();
 			}
-			if () {
+			
+			Adult a = (Adult) obj;
+			if (this.couplelist.size() == 1 || a.couplelist.size() == 1) {
 				throw new NoAvailableException();
 			}
 			else {
-				Adult a = (Adult) obj;
 				this.couplelist.add(a);
 										//add back
 			}
@@ -101,7 +102,7 @@ public class Adult extends Person {
 		}
 	}
 	
-	public void indentify(Object obj) {
+	public boolean indentify(Object obj) {
 		
 	}
 }
