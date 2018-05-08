@@ -102,7 +102,7 @@ public class Adult extends Person {
 		}
 	}
 	
-	public boolean indentify(Object obj) {
+	public void indentify(Object obj) {
 		
 	}
 }
