@@ -70,7 +70,7 @@ public class Child extends Person {
 		}
 	}
 	
-	public boolean indentify(Object obj) {
+	public void indentify(Object obj) {
 		try {
 			if (this.parentslist.size() < 2) {   //No parents or only one parent
 				throw new NoParentException();
@@ -81,20 +81,14 @@ public class Child extends Person {
 			if (this.parentslist.contains(obj)) {
 				Adult a = (Adult) obj;
 				System.out.println(this.getName() + " " + a.getName() + " " + "family");
-				return true;
 			}
 			else {
 				System.out.println("They are not family");
-				return false;
 			}
 		}catch(NoParentException e){
 			System.out.println("No parents");
-			return false;
 		}
-		
-		
-		
-	}
+	}	
 	
 	
 	
