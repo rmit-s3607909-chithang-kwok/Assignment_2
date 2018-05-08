@@ -25,14 +25,15 @@ public class YoungChild extends Person {
 	
 	public boolean identify(Object obj) throws Exception{
 		try {
-			if (this.parentslist.size() < 2) {
+			if (this.parentslist.size() < 2) {   //No parents or only one parent
 				throw new NoParentException();
 			}
-			if (this.parentslist() ) {
+			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { // Parents are not couple
 				throw new NoParentException();
 			}
 			if (this.parentslist.contains(obj)) {
-				System.out.println("They are family");
+				Adult a = (Adult) obj;
+				System.out.println(this.getName() + " " + a.getName() + " " + "family");
 				return true;
 			}
 			else {
@@ -40,7 +41,7 @@ public class YoungChild extends Person {
 				return false;
 			}
 		}catch(NoParentException e){
-			System.out.println("This ");
+			System.out.println("No parents");
 			return false;
 		}
 		
