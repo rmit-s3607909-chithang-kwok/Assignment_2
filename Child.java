@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Child extends Person {
 	List<Child> friendslist = new ArrayList<Child>();
 	List<Adult> parentslist = new ArrayList<Adult>();
@@ -71,8 +70,32 @@ public class Child extends Person {
 		}
 	}
 	
-	public void indentify(Object obj) {
+	public boolean indentify(Object obj) {
+		try {
+			if (this.parentslist.size() < 2) {   //No parents or only one parent
+				throw new NoParentException();
+			}
+			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { // Parents are not couple
+				throw new NoParentException();
+			}
+			if (this.parentslist.contains(obj)) {
+				Adult a = (Adult) obj;
+				System.out.println(this.getName() + " " + a.getName() + " " + "family");
+				return true;
+			}
+			else {
+				System.out.println("They are not family");
+				return false;
+			}
+		}catch(NoParentException e){
+			System.out.println("No parents");
+			return false;
+		}
+		
+		
 		
 	}
+	
+	
 	
 }
