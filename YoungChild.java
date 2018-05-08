@@ -1,28 +1,50 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class YoungChild extends Person{
-	private int age;
-	private String name;
-	private String filed;
-	private String gender;
-	private String status;
-	private String state;
-	//Author: JIANG
-    // we use baby as a type of person and they don't have friends and only they have parent.
+public class YoungChild extends Person {
+	List<Adult> parentslist = new ArrayList<Adult>();
+	public class NoParentException extends Exception{}
 
-	public YoungChild() {
-		this.age=age;
-		this.name=name;
-		this.filed=filed;
-		this.gender=gender;
-		this.status=status;
-		this.state=state;
+	public void connectparents(Object obj) {
+		
+		if (this.parentslist.size() == 2) {
+			System.out.println("Fail to add parents");
+			return;
+		}
+		else {
+			if (obj instanceof Adult) {
+			Adult a = (Adult) obj;
+			System.out.println("You have added");
+			this.parentslist.add(a);
+			}
+			else {
+				return;
+			}
+		}	
 	}
 	
-	
-	
-	
+	public boolean identify(Object obj) throws Exception{
+		try {
+			if (this.parentslist.size() < 2) {
+				throw new NoParentException();
+			}
+			if (this.parentslist() ) {
+				throw new NoParentException();
+			}
+			if (this.parentslist.contains(obj)) {
+				System.out.println("They are family");
+				return true;
+			}
+			else {
+				System.out.println("They are not family");
+				return false;
+			}
+		}catch(NoParentException e){
+			System.out.println("This ");
+			return false;
+		}
+		
+	}
+
 	
 }
