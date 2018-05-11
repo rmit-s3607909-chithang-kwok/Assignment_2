@@ -22,14 +22,15 @@ public class Adult extends Person {
 		try {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
-				this.friendslist.add(a); //添加朋友
+				this.friendslist.add(a); //add friends
 										 //add back 
 			} 
 			if (obj instanceof Child) {
-				throw new NotToBeFriendsException(); //判断年龄
+				throw new NotToBeFriendsException(); 
 			}
 			if (obj instanceof YoungChild) {
-				throw new TooYoungException(); //判断年龄
+				throw new TooYoungException(); //age
+				
 			}
 		}catch (NotToBeFriendsException e){
 			System.out.println("You cannnot add a child");
@@ -77,15 +78,25 @@ public class Adult extends Person {
 	}
 	
 	public void connectparents(Object obj) {
-		
-		this.parentslist.add(e);
-		
+		if (this.parentslist.size() == 2) {
+			System.out.println("Fail to add parents");
+		}
+		else if (obj instanceof Adult) {
+			Adult a = (Adult) obj;
+			System.out.println("You have added");
+			this.parentslist.add(a);
+		}
 	}
 	
 	public void connectchildren(Object obj) {
-		
-		this.childrenlist.add(e);
-		
+		if (!(obj instanceof Adult)) {
+			Person p = (Person) obj;
+			this.childrenlist.add(p);
+									// add back
+		}
+		else {
+			System.out.println(" You cannot add adult as your children");
+		}
 	}
 	
 	public void connectclassmates(Object obj) throws Exception{
@@ -103,6 +114,49 @@ public class Adult extends Person {
 	}
 	
 	public void indentify(Object obj) {
+		if (this.friendslist.contains(obj)) { // identify friends
+			Child c = (Child) obj;
+			System.out.println(c.getName() + " " + this.getName() + " friends");
+		}
+		else {
+			System.out.println("They are not friends");
+		}
 		
+		if (this.classmatelist.contains(obj)) { // identify classmates
+			Person p = (Person) obj;
+			System.out.println(p.getName() + " " + this.getName() + " classmates");
+		}
+		else {
+			System.out.println("They are not classmates");
+		}
+		
+		if (this.parentslist.contains(obj)) {	// identify parents
+			Adult a = (Adult) obj;
+			System.out.println(a.getName() + " " + this.getName() + " parents");
+		}else 
+		
+		if (this.couplelist.contains(obj)) {	//identify couple
+			Adult a = (Adult) obj;
+			System.out.println(a.getName() + " " + this.getName() + " couple");
+		} 
+		else {
+			System.out.println("They are not couple");
+		}
+		
+		if (this.colleaguelist.contains(obj)) {  	//identify colleagues
+			Adult a = (Adult) obj;
+			System.out.println(a.getName() + " " + this.getName() + " colleagues");
+		}
+		else {
+			System.out.println("They are not colleagues");
+		}
+		
+		if (this.childrenlist.contains(obj)) { 		// identify children
+			Person p = (Person) obj;
+			System.out.println(p.getName() + " " + this.getName() + " child");
+		}
+		else {
+			System.out.println("They are not family");
+		}
 	}
 }
