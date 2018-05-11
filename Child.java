@@ -42,18 +42,12 @@ public class Child extends Person {
 	public void connectparents(Object obj) {	
 		if (this.parentslist.size() == 2) {
 			System.out.println("Fail to add parents");
-			return;
 		}
-		else {
-			if (obj instanceof Adult) {
-				Adult a = (Adult) obj;
-				System.out.println("You have added");
-				this.parentslist.add(a);
-			}
-			else {	
-				return;
-			}
-		}	
+		else if (obj instanceof Adult) {
+			Adult a = (Adult) obj;
+			System.out.println("You have added");
+			this.parentslist.add(a);
+		}
 	}
 	
 	public void connectclassmates(Object obj) throws Exception{
@@ -80,7 +74,7 @@ public class Child extends Person {
 			}
 			if (this.parentslist.contains(obj)) {
 				Adult a = (Adult) obj;
-				System.out.println(this.getName() + " " + a.getName() + " " + "family");
+				System.out.println(a.getName() + " " + this.getName() + " parents");
 			}
 			else {
 				System.out.println("They are not family");
@@ -88,8 +82,21 @@ public class Child extends Person {
 		}catch(NoParentException e){
 			System.out.println("No parents");
 		}
+		
+		if (this.friendslist.contains(obj)) {
+			Child c = (Child) obj;
+			System.out.println(c.getName() + " " + this.getName() + " friends");
+		}
+		else {
+			System.out.println("They are not friends");
+		}
+		
+		if (this.classmatelist.contains(obj)) {
+			Person p = (Person) obj;
+			System.out.println(p.getName() + " " + this.getName() + " classmates");
+		}
+		else {
+			System.out.println("They are not classmates");
+		}
 	}	
-	
-	
-	
 }
