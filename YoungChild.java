@@ -13,6 +13,9 @@ public class YoungChild extends Person {
 			Adult a = (Adult) obj;
 			System.out.println("You have added");
 			this.parentslist.add(a);
+			if (!(a.childrenlist.contains(this))) {
+				a.childrenlist.add(this);
+			}
 		}
 	}
 	
@@ -36,6 +39,8 @@ public class YoungChild extends Person {
 		}
 		
 	}
+	
+	
 
 	
 }
