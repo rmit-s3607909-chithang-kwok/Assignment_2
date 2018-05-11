@@ -6,24 +6,17 @@ public class YoungChild extends Person {
 	public class NoParentException extends Exception{}
 
 	public void connectparents(Object obj) {
-		
 		if (this.parentslist.size() == 2) {
 			System.out.println("Fail to add parents");
-			return;
 		}
-		else {
-			if (obj instanceof Adult) {
+		else if (obj instanceof Adult) {
 			Adult a = (Adult) obj;
 			System.out.println("You have added");
 			this.parentslist.add(a);
-			}
-			else {
-				return;
-			}
-		}	
+		}
 	}
 	
-	public void indentify(Object obj) {
+	public void identify(Object obj) throws Exception{
 		try {
 			if (this.parentslist.size() < 2) {   //No parents or only one parent
 				throw new NoParentException();
@@ -33,7 +26,7 @@ public class YoungChild extends Person {
 			}
 			if (this.parentslist.contains(obj)) {
 				Adult a = (Adult) obj;
-				System.out.println(this.getName() + " " + a.getName() + " " + "family");
+				System.out.println(a.getName() + " " + this.getName() + " parents");
 			}
 			else {
 				System.out.println("They are not family");
@@ -41,7 +34,8 @@ public class YoungChild extends Person {
 		}catch(NoParentException e){
 			System.out.println("No parents");
 		}
-	}	
+		
+	}
 
 	
 }
