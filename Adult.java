@@ -22,8 +22,10 @@ public class Adult extends Person {
 		try {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
-				this.friendslist.add(a); //add friends
-										 //add back 
+				this.friendslist.add(a); 			//add friends
+				if (!(a.friendslist.contains(this))) {
+					a.friendslist.add(this);			//add back
+				}					
 			} 
 			if (obj instanceof Child) {
 				throw new NotToBeFriendsException(); 
@@ -52,7 +54,9 @@ public class Adult extends Person {
 			}
 			else {
 				this.couplelist.add(a);
-										//add back
+				if (!(a.couplelist.contains(this))) {
+					a.couplelist.add(this);				//add back
+				}						
 			}
 		}catch(NoAvailableException e) {
 			System.out.println("Has been coupled with others");
@@ -70,7 +74,9 @@ public class Adult extends Person {
 			else {
 				Adult a = (Adult) obj;
 				this.colleaguelist.add(a);
-											//add back
+				if (!(a.colleaguelist.contains(this))) {
+					a.colleaguelist.add(this);						//add back
+				}
 			}
 		}catch (NotToBeColleagueException e) {
 			System.out.println("Cannot connect a child or young child in a colleague relation");
@@ -85,14 +91,26 @@ public class Adult extends Person {
 			Adult a = (Adult) obj;
 			System.out.println("You have added");
 			this.parentslist.add(a);
+				if (!(a.childrenlist.contains(this))) {
+					a.childrenlist.add(this);
+				}
 		}
 	}
 	
 	public void connectchildren(Object obj) {
-		if (!(obj instanceof Adult)) {
-			Person p = (Person) obj;
-			this.childrenlist.add(p);
-									// add back
+		if (obj instanceof YoungChild) {
+			YoungChild y = (YoungChild) obj;
+			this.childrenlist.add(y);
+			if (!(y.parentslist.contains(this))) {
+				y.parentslist.add(this);//add back
+			}
+		}
+		if (obj instanceof Child) {
+			Child c = (Child) obj;
+			this.childrenlist.add(c);
+			if (!(c.parentslist.contains(this))) {
+				c.parentslist.add(this);
+			}
 		}
 		else {
 			System.out.println(" You cannot add adult as your children");
@@ -104,9 +122,19 @@ public class Adult extends Person {
 			if (obj instanceof YoungChild) {
 				throw new NotToBeClassmateException();
 			}
-			else {
-				Person p = (Person) obj;
-				this.classmatelist.add(p);
+			if (obj instanceof Child) {
+				Child c = (Child) obj;
+				this.classmatelist.add(c);
+				if (!(c.classmatelist.contains(this))) {
+					c.classmatelist.add(this);
+				}
+			}
+			if (obj instanceof Adult) {
+				Adult a = (Adult) obj;
+				this.classmatelist.add(a);
+				if (!(a.classmatelist.contains(this))) {
+					a.classmatelist.add(this);
+				}
 			}
 		}catch (NotToBeClassmateException e) {
 			System.out.println("Cannot connect a young child in a classmate relation");
