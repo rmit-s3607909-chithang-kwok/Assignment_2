@@ -51,7 +51,7 @@ public class MainContoller implements Initializable{
 		
 		
 		FileChooser fc = new FileChooser();
-		//fc.setInitialDirectory(new File("FileChooser.fxml"));
+		fc.setInitialDirectory(new File("C:\\Users\\PC\\eclipse-workspace\\Assignment\\src\\application"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		File selectFile = fc.showOpenDialog(null);
 		
@@ -68,18 +68,20 @@ public class MainContoller implements Initializable{
 		
 		
 		FileChooser fc = new FileChooser();
-		//fc.setInitialDirectory(new File("FileChooser.fxml"));
+		fc.setInitialDirectory(new File("C:\\Users\\PC\\eclipse-workspace\\Assignment\\src\\application"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 	List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
 		if (selectFiles != null) {
 			//for (int i = 0; i < selectFiles.size();i++) {
-				
+				//listview.getItems().add(((File) selectFiles).getName());
 			
 				 for (File file : selectFiles) {
-                     openFile(file);
+                    openFile(file);
 			
-			}
+	
+			 //}
+				 }
 	}else {
 			System.out.println("file is not valid");
 		}
@@ -124,7 +126,7 @@ public class MainContoller implements Initializable{
             desktop.open(file);
         } catch (IOException ex) {
             Logger.getLogger(
-                FileChooserSample.class.getName()).log(
+                FileChooser.class.getName()).log(
                     Level.SEVERE, null, ex
                 );
         }
