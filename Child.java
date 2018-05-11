@@ -28,7 +28,9 @@ public class Child extends Person {
 				}
 				else {
 					this.friendslist.add(c);
-											//add back
+					if (!(c.friendslist.contains(this))) {
+						c.friendslist.add(this);//add back
+					}
 				}
 			}
 			
@@ -47,6 +49,9 @@ public class Child extends Person {
 			Adult a = (Adult) obj;
 			System.out.println("You have added");
 			this.parentslist.add(a);
+			if (!(a.childrenlist.contains(this))) {
+				a.childrenlist.add(this);
+			}
 		}
 	}
 	
@@ -55,9 +60,19 @@ public class Child extends Person {
 			if (obj instanceof YoungChild) {
 				throw new NotToBeClassmateException();
 			}
-			else {
-				Person p = (Person) obj;
-				this.classmatelist.add(p);
+			if (obj instanceof Child) {
+				Child c = (Child) obj;
+				this.classmatelist.add(c);
+				if (!(c.classmatelist.contains(this))) {
+					c.classmatelist.add(this);
+				}
+			}
+			if (obj instanceof Adult) {
+				Adult a = (Adult) obj;
+				this.classmatelist.add(a);
+				if (!(a.classmatelist.contains(this))) {
+					a.classmatelist.add(this);
+				}
 			}
 		}catch (NotToBeClassmateException e) {
 			System.out.println("Cannot connect a young child in a classmate relation");
