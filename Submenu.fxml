@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <header>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="252.0" prefWidth="480.0">
-         <children>
-            <Button layoutX="71.0" layoutY="55.0" mnemonicParsing="false" text="List Person" />
-            <Button layoutX="201.0" layoutY="55.0" mnemonicParsing="false" text="Add Person" />
-            <Button layoutX="317.0" layoutY="55.0" mnemonicParsing="false" text="Select Person" />
-            <Button layoutX="313.0" layoutY="201.0" mnemonicParsing="false" text="Back To Previous Menu" />
-            <Label layoutX="50.0" layoutY="14.0" text="Please choose one of the following 6 options?">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button layoutX="95.0" layoutY="113.0" mnemonicParsing="false" text="Connect Person" />
-            <Button layoutX="247.0" layoutY="113.0" mnemonicParsing="false" text="Check Person Identify" />
-         </children></AnchorPane>
-    </header>
-    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </content>
-    <expandableContent>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-    </expandableContent>
-</DialogPane>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="109.0" layoutY="58.0" text="Please choose one of the following six option?">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="94.0" layoutY="161.0" mnemonicParsing="false" text="Display Person Info" />
+      <Button layoutX="264.0" layoutY="161.0" mnemonicParsing="false" text="Add Person" />
+      <Button layoutX="399.0" layoutY="161.0" mnemonicParsing="false" text="Select Person" />
+      <Button layoutX="94.0" layoutY="254.0" mnemonicParsing="false" text="Person Connect" />
+      <Button layoutX="257.0" layoutY="254.0" mnemonicParsing="false" text="Person Identity" />
+      <Button layoutX="373.0" layoutY="319.0" mnemonicParsing="false" text="Back to Previous Menu" />
+   </children>
+</AnchorPane>
