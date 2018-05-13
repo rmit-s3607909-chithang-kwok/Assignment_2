@@ -10,13 +10,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//import guidemo.Person;
 import javafx.scene.control.ListView;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.FileChooser;
@@ -32,6 +37,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextAreaBuilder;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.VBoxBuilder;
 import javafx.stage.FileChooser;
@@ -77,7 +83,7 @@ public class DisplayFile implements Initializable{
 		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 		FileChooser fc = new FileChooser();
 		fc.setInitialDirectory(new File("C:\\Users\\PC\\eclipse-workspace\\Assignment"));
-		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
+		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt", "image file", "*.jpg*"));
 		List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
 		if (selectFiles != null) {
@@ -140,6 +146,8 @@ public class DisplayFile implements Initializable{
         return stringBuffer.toString();
     }
 
+	
+	    
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
