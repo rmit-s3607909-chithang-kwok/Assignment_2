@@ -5,16 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SelectPerson">
    <children>
-      <Button layoutX="101.0" layoutY="181.0" mnemonicParsing="false" text="Update Person" />
-      <Button layoutX="380.0" layoutY="181.0" mnemonicParsing="false" text="Delete Person" />
+      <Button fx:id="bt1" layoutX="101.0" layoutY="181.0" mnemonicParsing="false" onAction="#UpdatePerson" text="Update Person" />
+      <Button fx:id="bt2" layoutX="380.0" layoutY="181.0" mnemonicParsing="false" onAction="#DeletePerson" text="Delete Person" />
       <Label layoutX="210.0" layoutY="85.0" text="Person Selection">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="393.0" layoutY="273.0" mnemonicParsing="false" text="Back To Previous Menu" />
+      <Button fx:id="bt3" layoutX="393.0" layoutY="273.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back To Previous Menu" />
    </children>
 </AnchorPane>

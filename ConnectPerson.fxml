@@ -5,20 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectPerson">
    <children>
       <Label layoutX="87.0" layoutY="62.0" text="Please choose one of the following seven options?">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="55.0" layoutY="141.0" mnemonicParsing="false" text="Connect Friend" />
-      <Button layoutX="221.0" layoutY="141.0" mnemonicParsing="false" text="Connect Couple" />
-      <Button layoutX="413.0" layoutY="141.0" mnemonicParsing="false" text="Connect Collegue" />
-      <Button layoutX="55.0" layoutY="252.0" mnemonicParsing="false" text="Connect Parent" />
-      <Button layoutX="229.0" layoutY="252.0" mnemonicParsing="false" text="Connect Children" />
-      <Button layoutX="413.0" layoutY="252.0" mnemonicParsing="false" text="Connect Classmate" />
-      <Button layoutX="395.0" layoutY="323.0" mnemonicParsing="false" text="Back To Previous Menu" />
+      <Button fx:id="bt1" layoutX="55.0" layoutY="141.0" mnemonicParsing="false" onAction="#ConnectFriend" text="Connect Friend" />
+      <Button fx:id="bt2" layoutX="221.0" layoutY="141.0" mnemonicParsing="false" onAction="#ConnectCouple" text="Connect Couple" />
+      <Button fx:id="bt3" layoutX="413.0" layoutY="141.0" mnemonicParsing="false" onAction="#ConnectCollegue" text="Connect Collegue" />
+      <Button fx:id="bt4" layoutX="55.0" layoutY="252.0" mnemonicParsing="false" onAction="#ConnectParent" text="Connect Parent" />
+      <Button fx:id="bt5" layoutX="229.0" layoutY="252.0" mnemonicParsing="false" onAction="#ConnectChildren" text="Connect Children" />
+      <Button fx:id="bt6" layoutX="413.0" layoutY="252.0" mnemonicParsing="false" onAction="#ConnectClassmate" text="Connect Classmate" />
+      <Button fx:id="bt7" layoutX="395.0" layoutY="323.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back To Previous Menu" />
    </children>
 </AnchorPane>
