@@ -59,7 +59,7 @@ public class DisplayFile implements Initializable{
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\Users\\PC\\eclipse-workspace\\Assignment"));
+		fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		File selectFile = fc.showOpenDialog(null);
 		
@@ -82,7 +82,7 @@ public class DisplayFile implements Initializable{
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\Users\\PC\\eclipse-workspace\\Assignment"));
+		fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt", "image file", "*.jpg*"));
 		List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
@@ -118,8 +118,8 @@ public class DisplayFile implements Initializable{
 	}
 	
 	
-	private String readFile(File selectFile){
-        StringBuilder stringBuffer = new StringBuilder();
+        private String readFile(File selectFile){	
+		StringBuilder stringBuffer = new StringBuilder();
         BufferedReader bufferedReader = null;
          
         try {
@@ -139,12 +139,12 @@ public class DisplayFile implements Initializable{
             try {
                 bufferedReader.close();
             } catch (IOException ex) {
-                Logger.getLogger(DisplayFile.class.getName()).log(Level.SEVERE, null, ex);
-            }
+               Logger.getLogger(DisplayFile.class.getName()).log(Level.SEVERE, null, ex);
+           }
         } 
          
-        return stringBuffer.toString();
-    }
+       return stringBuffer.toString();
+   }
 
 	
 	    
