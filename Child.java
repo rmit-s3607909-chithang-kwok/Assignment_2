@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class Child extends Person {
+	
+
 	List<Child> friendslist = new ArrayList<Child>();
 	List<Adult> parentslist = new ArrayList<Adult>();
 	List<Person> classmatelist = new ArrayList<Person>();
@@ -11,7 +15,10 @@ public class Child extends Person {
 	public class TooYoungException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 	
-	
+	public Child(String name, Image filed, String status, String gender, int age, String state) {
+		super(name, filed, status, gender, age, state);
+		// TODO Auto-generated constructor stub
+	}
 	public void connectfriends(Object obj) throws Exception{
 		try {
 			if (obj instanceof Adult) {

@@ -1,7 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class Adult extends Person {
+	
+	
+
 	List<Adult> friendslist = new ArrayList<Adult>();
 	List<Adult> couplelist = new ArrayList<Adult>();
 	List<Adult> colleaguelist = new ArrayList<Adult>();
@@ -16,6 +21,10 @@ public class Adult extends Person {
 	public class NotToBeColleagueException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 
+	public Adult(String name, Image filed, String status, String gender, int age, String state) {
+		super(name, filed, status, gender, age, state);
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	public void connectfriends(Object obj) throws Exception{

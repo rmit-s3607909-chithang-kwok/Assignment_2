@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class YoungChild extends Person {
+	
+
 	List<Adult> parentslist = new ArrayList<Adult>();
 	public class NoParentException extends Exception{}
+	
+	public YoungChild(String name, Image filed, String status, String gender, int age, String state) {
+		super(name, filed, status, gender, age, state);
+		// TODO Auto-generated constructor stub
+	}
 
 	public void connectparents(Object obj) {
 		if (this.parentslist.size() == 2) {
