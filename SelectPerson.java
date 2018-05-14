@@ -21,7 +21,7 @@ public class SelectPerson implements Initializable{
 	
 	public void UpdatePerson (ActionEvent event)throws Exception{
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("SelectPerson.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("PersonInfo.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
@@ -30,7 +30,7 @@ public class SelectPerson implements Initializable{
 
 	public void DeletePerson (ActionEvent event)throws Exception{
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("SelectPerson.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("PersonInfo.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);

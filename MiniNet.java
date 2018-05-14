@@ -1,78 +1,95 @@
-import java.util.Scanner;
+//package application;
 
-public class Mininet {
-	public static void mian (String[] args) {
-		int input = 0;
-		Scanner sc = new Scanner (System.in);
-		do {
-			System.out.println("Welcome to the MiniNet program. Please add a person first (min 2 persons) before you can use another functions. ");
-			System.out.println(" ");
-			System.out.println("MiniNet Menu");
-			System.out.println("=================================");
-			System.out.println("1. List everyone");
-			System.out.println("2. Add a person");
-			System.out.println("3. Select a person");
-			
-			System.out.println("4. Connect person");
 
-			System.out.println("5. Update a person");
-			System.out.println("6. Identify");
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextAreaBuilder;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
+public class MiniNet extends Application{
+
 	
-			System.out.println("7. Exit");
-			System.out.println("                                ");
-			System.out.println("Enter an Option:                ");
-			
-			input = sc.nextInt();
-			System.out.println("  Your options are:  " + input);
-			
-			
-			
-			if (input == 1) {
-				
-				
-				
-			}
-			
-			else if (input == 2) {
-			
-			}
-			
-			else if (input == 3) {
-			
-			}
-		
-			else if (input == 4) {
-		
-					
-					}
-			else if (input == 5) {
-				
-				}
-			
-			else if (input == 6) {
-				
-		
-				
-					
-			}else if (input  == 7) {
-				
-
-				
-
-			}else if (input == 8) {
-				System.out.println("Program Exit");
-			}
-			
-			
-			
-			else if (input != 1 && input != 2 && input !=3 && input != 4 && input != 5 && input != 6 && input != 7 && input != 8) {
-				System.out.println("Invalid option");
-			} 
-			
-		} while(input != 0);
+		// TODO Auto-generated constructor stub
+	  public void start(Stage primaryStage) throws Exception{
+			try {
+		    primaryStage.setTitle("DisplayFile");
+			Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					primaryStage.setScene(scene);
+					primaryStage.show();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		}
 	
+	  
 
-
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+			WriteFile();
+			launch(args);
 	}
 
-}
+	public static void WriteFile() {
+		FileWriter writer = null;
+		FileWriter writer1 = null;
+		
+
+		try {
+			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt");
+
+			writer.write("Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, \n");
+			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
+			writer.write("Hannah Write, 'HannahWrite.png', 'student at PLC', M, 12, VIC, \n");
+			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
+			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
+			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
+			writer.write("Mary Hopkin, 'MaryHopkin.jpeg, 'House Worker', F, 38, TAS, \n");
+			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 12, VIC, \n");
+			writer.write("Klay Thomas, 'KlayThomas.jpeg, 'House Worker', F, 33, NSW, \n");
+			
+
+			writer.close();// flushes the stream.
+
+			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
+
+			writer1.write("Alex Smith, Ben Turner, friend, \n");
+			writer1.write("Ben Turner, Mark Hopkin, couple, \n");
+			writer1.write("Ben Turner, Mary Turner, parent, \n");
+			writer1.write("Mark Hopkin, Mary Turner, parent, \n");
+			writer1.write("Alex Turner, Mark Hopkin, parent, \n");
+			writer1.write("Alex Turner, Ben Turner, parent, \n");
+			writer1.write("Alex Smith, Klay Thomas, couple, \n");
+			writer1.write("Alex Turner, John Smith, friend, \n");
+			writer1.write("John Smith, Klay Thomas, parent, \n");
+			writer1.write("Alex Smith, Zoe Foster, colleagues, \n");
+			writer1.write("John Smith, Hannah White, classmate, \n");
+
+			writer1.close();// flushes the stream.
+			
+		} catch (IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
+		
+	}
+	}
+
+	        
+

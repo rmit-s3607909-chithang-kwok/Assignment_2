@@ -15,7 +15,7 @@ public class Person {
 	private String status;
 	private String state;
 	
-	public Person() {
+	public Person(String name, Image filed, String status, String gender, int age, String state) {
 		this.name=name;
 		this.filed=filed;
 		this.status=status;
@@ -64,7 +64,7 @@ public class Person {
 	
 	public void addperson() throws Exception{
 		if (age >= 0 && age <=2) {
-			YoungChild y = new YoungChild();
+			YoungChild y = new YoungChild(name, filed, status, gender, age, state);
 			System.out.println("You have added this person as YoungChild");
 				
 			y.setAge(age);
@@ -79,7 +79,7 @@ public class Person {
 		}
 		
 		else if (age <= 16 && age > 2) {
-			Child c = new Child();
+			Child c = new Child(name, filed, status, gender, age, state);
 			System.out.println("You have added this person as Child");
 				
 			c.setAge(age);
@@ -93,7 +93,7 @@ public class Person {
 		}
 		
 		else if (age > 16) {
-			Adult a = new Adult();
+			Adult a = new Adult(name, filed, status, gender, age, state);
 			System.out.println("You have added this person as Adult");
 				
 			a.setAge(age);
@@ -105,5 +105,7 @@ public class Person {
 				
 			profile.add(a);
 		}
-	}	
+	}
+
+	
 }

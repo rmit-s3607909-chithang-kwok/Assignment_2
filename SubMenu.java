@@ -45,7 +45,7 @@ public class SubMenu implements Initializable{
 	public void AddPerson (ActionEvent event) throws Exception{
 		
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("PersonalInfo.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
