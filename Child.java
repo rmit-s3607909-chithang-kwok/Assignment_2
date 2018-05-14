@@ -5,7 +5,10 @@ import javafx.scene.image.Image;
 
 public class Child extends Person {
 	
-
+	// Assume that they are friends only when they are
+	// both child. They can be Classmate if they are
+	// both in the same school. (using peoples.txt)
+	
 	List<Child> friendslist = new ArrayList<Child>();
 	List<Adult> parentslist = new ArrayList<Adult>();
 	List<Person> classmatelist = new ArrayList<Person>();

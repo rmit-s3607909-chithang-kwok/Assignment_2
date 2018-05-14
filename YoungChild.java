@@ -5,6 +5,9 @@ import javafx.scene.image.Image;
 
 public class YoungChild extends Person {
 	
+	//We are going to identify the YoungChild Specification
+	//if they have one parent or no parent it will
+	//come up with an exception.
 
 	List<Adult> parentslist = new ArrayList<Adult>();
 	public class NoParentException extends Exception{}

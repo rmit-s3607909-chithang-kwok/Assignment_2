@@ -5,7 +5,10 @@ import javafx.scene.image.Image;
 
 public class Adult extends Person {
 	
-	
+	//We assume that Adult can have colleague only.
+	//And identify if they are couple or they are 
+	// classmate. Basically they can be friend only
+	// if they are both Adult.
 
 	List<Adult> friendslist = new ArrayList<Adult>();
 	List<Adult> couplelist = new ArrayList<Adult>();

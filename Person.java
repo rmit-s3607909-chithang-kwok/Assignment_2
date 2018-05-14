@@ -5,7 +5,8 @@ import javafx.scene.image.Image;
 
 public class Person {
 	public class NoSuchAgeException extends Exception{}
-
+	
+	// Person class declaration //
 	List <Person>profile = new ArrayList<Person>();
 	
 	private int age;
@@ -61,7 +62,7 @@ public class Person {
 		this.state = state;
 	}
 	
-	
+	//AddPerson declaration//
 	public void addperson() throws Exception{
 		if (age >= 0 && age <=2) {
 			YoungChild y = new YoungChild(name, filed, status, gender, age, state);

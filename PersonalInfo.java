@@ -50,8 +50,10 @@ public class PersonalInfo implements Initializable {
      private TextField AgeTextField;
      private TextField StateTextField;
     
-    @FXML private Button detailedPersonViewButton;
-    
+     private Button detailedPersonViewButton;
+     private Button AddPerson;
+     private Button DeletePerson;
+     private Button BackToPValue;
     
     /**
      * This method will allow the user to double click on a cell and update
@@ -87,13 +89,21 @@ public class PersonalInfo implements Initializable {
      * This method will allow the user to double click on a cell and update
      * the age of the person
      */
-    //public void changeAgeCellEvent(CellEditEvent edittedCell)
-   // {
-    //    Person personSelected =  tableView.getSelectionModel().getSelectedItem();
-    //    personSelected.setAge(edittedCell.getNewValue().toString());
-   // }
+    public void changeAgeCellEvent(CellEditEvent edittedCell)
+    {
+        Person personSelected =  tableView.getSelectionModel().getSelectedItem();
+        personSelected.setAge(edittedCell.getNewValue().toString());
+    }
     
-    
+    /**
+     * This method will allow the user to double click on a cell and update
+     * the gender of the person
+     */
+    public void changeGenderCellEvent(CellEditEvent edittedCell)
+    {
+        Person personSelected =  tableView.getSelectionModel().getSelectedItem();
+        personSelected.setGender(edittedCell.getNewValue().toString());
+    }
     /**
      * This method will enable the detailed view button once a row in the table is
      * selected
@@ -106,11 +116,11 @@ public class PersonalInfo implements Initializable {
     
     /**
      * When this method is called, it will change the Scene to 
-     * a TableView example
+     * a SubMenu
      */
     public void changeScreenButtonPushed(ActionEvent event) throws IOException
     {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("DisplayDetails.fxml"));
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
         
         //This line gets the Stage information
@@ -206,7 +216,7 @@ public class PersonalInfo implements Initializable {
     public void newPersonButtonPushed()
     {
         Person newPerson = new Person(NameTextField.getText(),
-        							  (ImageTextField).getFiled(),
+        							 ImageTextField.getFiled(),
                                       StatusTextField.getText(),
                                       GenderTextField.getText(),
                                       AgeTextField.getText(),

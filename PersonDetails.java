@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class PersonDetails implements Initializable {
     
     private ImageView photo;
     
+    private Button bt1;
+    
     /**
      * This method accepts a person to initialize the view
      * @param person 
@@ -49,7 +52,7 @@ public class PersonDetails implements Initializable {
     
         /**
      * When this method is called, it will change the Scene to 
-     * a TableView example
+     * a Person Info example
      */
     public void changeScreenButtonPushed(ActionEvent event) throws IOException
     {
