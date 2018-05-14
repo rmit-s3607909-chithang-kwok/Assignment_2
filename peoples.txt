@@ -1,6 +1,6 @@
 Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, 
 Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, 
-Hannah Write, 'HannahWrite.png', 'student at PLC', M, 12, VIC, 
+Hannah Write, 'HannahWrite.jpg', 'student at PLC', M, 12, VIC, 
 Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, 
 Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, 
 John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, 

@@ -56,7 +56,7 @@ public class MiniNet extends Application{
 
 			writer.write("Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, \n");
 			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
-			writer.write("Hannah Write, 'HannahWrite.png', 'student at PLC', M, 12, VIC, \n");
+			writer.write("Hannah Write, 'HannahWrite.jpg', 'student at PLC', M, 12, VIC, \n");
 			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
 			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
 			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
