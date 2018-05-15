@@ -30,7 +30,7 @@ public class PersonDetails implements Initializable {
     private Label AgeLabel;
     private Label StateLabel;
     
-    private ImageView photo;
+    private ImageView ImageLabel;
     
     private Button bt1;
     
@@ -46,7 +46,7 @@ public class PersonDetails implements Initializable {
         GenderLabel.setText(selectedPerson.getGender());
         AgeLabel.setText(Integer.toString(selectedPerson.getAge()));
         StateLabel.setText(selectedPerson.getState());
-        photo.setImage(selectedPerson.getFiled());
+        ImageLabel.setImage(selectedPerson.getFiled());
     }
     
     

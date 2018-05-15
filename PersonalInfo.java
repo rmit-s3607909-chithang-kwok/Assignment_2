@@ -5,6 +5,12 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
+
+import com.sun.javafx.scene.control.skin.IntegerFieldSkin;
+
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,15 +22,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumnBase;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * FXML Controller class
@@ -40,21 +54,26 @@ public class PersonalInfo implements Initializable {
      private TableColumn<Person, String> StatusColumn;
      private TableColumn<Person, String> GenderColumn;
      private TableColumn<Person, String> StateColumn;
-     private TableColumn<Person, String> AgeColumn;
+     private TableColumn<Person, Integer> AgeColumn;
     
     //These instance variables are used to create new Person objects
      private TextField NameTextField;
      private TextField ImageTextField;
      private TextField StatusTextField;
      private TextField GenderTextField;
-     private TextField AgeTextField;
+     private TextFormatter AgeTextField;
      private TextField StateTextField;
     
      private Button detailedPersonViewButton;
      private Button AddPerson;
      private Button DeletePerson;
      private Button BackToPValue;
+     
     
+        
+
+     
+     
     /**
      * This method will allow the user to double click on a cell and update
      * the name of the person
@@ -91,9 +110,12 @@ public class PersonalInfo implements Initializable {
      */
     public void changeAgeCellEvent(CellEditEvent edittedCell)
     {
+    	
+    	
+    	
         Person personSelected =  tableView.getSelectionModel().getSelectedItem();
         personSelected.setAge(edittedCell.getNewValue().toString());
-    }
+   }
     
     /**
      * This method will allow the user to double click on a cell and update
@@ -162,10 +184,10 @@ public class PersonalInfo implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //set up the columns in the table
         NameColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Name"));
-        //ImageColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Image"));
+       // ImageColumn.setCellValueFactory(new PropertyValueFactory<Person, Image>("Image"));
         StatusColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Status"));
         GenderColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Gender"));
-        AgeColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("Age"));
+        AgeColumn.setCellValueFactory(new PropertyValueFactory<Person, Integer>("Age"));
         StateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("State"));
         
         //load dummy data
@@ -178,7 +200,7 @@ public class PersonalInfo implements Initializable {
        // ImageColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         StatusColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         GenderColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        AgeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        AgeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         StateColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         
         
@@ -215,8 +237,8 @@ public class PersonalInfo implements Initializable {
      */
     public void newPersonButtonPushed()
     {
-        Person newPerson = new Person(NameTextField.getText(),
-        							 ImageTextField.getFiled(),
+        
+		Person newPerson = new Person(NameTextField.getText(),
                                       StatusTextField.getText(),
                                       GenderTextField.getText(),
                                       AgeTextField.getText(),
