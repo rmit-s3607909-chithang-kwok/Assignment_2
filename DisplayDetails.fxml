@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../GUIDemo/src/guidemo/grey_theme.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonalInfo">
+   <children>
+      <Button fx:id="BackToPValue" layoutX="551.0" layoutY="516.0" mnemonicParsing="false" onAction="#changeScreenButtonPushed" prefHeight="17.0" prefWidth="211.0" text="GoBackToPreviousMenu" />
+      <VBox layoutX="26.0" layoutY="19.0" prefHeight="281.0" prefWidth="542.0" spacing="10.0">
+         <children>
+            <Label text="TableView Object">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableView" onMouseClicked="#userClickedOnTable" prefHeight="430.0" prefWidth="542.0">
+              <columns>
+                <TableColumn fx:id="NameColumn" onEditCommit="#changeNameCellEvent" prefWidth="113.60001182556152" text="Name" />
+                <TableColumn fx:id="StatusColumn" onEditCommit="#changeStateCellEvent" prefWidth="96.79998779296875" text="Status" />
+                  <TableColumn fx:id="GenderColumn" onEditCommit="#changeGenderCellEvent" prefWidth="98.4000244140625" text="Gender" />
+                  <TableColumn fx:id="AgeColumn" onEditCommit="#changeAgeCellEvent" prefWidth="90.39996337890625" text="Age" />
+                  <TableColumn fx:id="StateColumn" onEditCommit="#changeStateCellEvent" prefWidth="148.79995727539062" text="State" />
+              </columns>
+            </TableView>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="NameTextField" prefHeight="26.0" prefWidth="73.0" promptText="Name" />
+                  <TextField fx:id="StatusTextField" prefHeight="26.0" prefWidth="81.0" promptText="Status" />
+                  <TextField fx:id="GenderTextField" prefHeight="26.0" prefWidth="81.0" promptText="Gender" />
+                  <TextField fx:id="AgeTextField" prefHeight="26.0" prefWidth="89.0" promptText="Age" />
+                  <TextField fx:id="StateTextField" prefHeight="26.0" prefWidth="102.0" promptText="State" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="AddPerson" mnemonicParsing="false" onAction="#newPersonButtonPushed" prefWidth="175.0" text="Add New Person" />
+                  <Button fx:id="DeletePerson" mnemonicParsing="false" onAction="#deleteButtonPushed" prefWidth="175.0" text="Delete Person(s) " />
+                  <Button fx:id="detailedPersonViewButton" mnemonicParsing="false" onAction="#changeSceneToDetailedPersonView" text="Detailed Person View" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
