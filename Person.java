@@ -18,24 +18,32 @@ public class Person {
 	private String status;
 	private String state;
 
+	
+	public Person() {
+		this.name="";
+		this.status="";
+		this.gender="";
+		this.age=0;
+		this.state="";
+	}
 	public Person(String name, String status, String gender, int age, String state) {
 		this.name=name;
 		this.status=status;
 		this.gender=gender;
 		this.age=age;
 		this.state=state;
-		filed = new Image ("");
+		//filed = new Image ("koala.jpg");
 	}
 	
 	
-	public Person(String name, Image filed, String status, String gender, int age, String state) {
-		this.name=name;
-		this.filed=filed;
-		this.status=status;
-		this.gender=gender;
-		this.age=age;
-		this.state=state;
-	}
+	//public Person(String name, Image filed, String status, String gender, int age, String state) {
+	//	this.name=name;
+	//	this.filed=filed;
+	//	this.status=status;
+	//	this.gender=gender;
+	//	this.age=age;
+	//	this.state=state;
+	//}
 	
 	
 	
@@ -80,7 +88,7 @@ public class Person {
 	//AddPerson declaration//
 	public void addperson() throws Exception{
 		if (age >= 0 && age <=2) {
-			YoungChild y = new YoungChild(name, filed, status, gender, age, state);
+			YoungChild y = new YoungChild();
 			System.out.println("You have added this person as YoungChild");
 				
 			y.setAge(age);
@@ -95,7 +103,7 @@ public class Person {
 		}
 		
 		else if (age <= 16 && age > 2) {
-			Child c = new Child(name, filed, status, gender, age, state);
+			Child c = new Child();
 			System.out.println("You have added this person as Child");
 				
 			c.setAge(age);
@@ -109,7 +117,7 @@ public class Person {
 		}
 		
 		else if (age > 16) {
-			Adult a = new Adult(name, filed, status, gender, age, state);
+			Adult a = new Adult();
 			System.out.println("You have added this person as Adult");
 				
 			a.setAge(age);
@@ -126,5 +134,7 @@ public class Person {
 	    {
 	        return String.format(" " + getName() + " , " + getFiled() + " , " + getStatus() + " , " + getGender() + " , " + getAge() + " , " + getState() + " ");
 	    }
+	 
+	  }
 	
-}
+
