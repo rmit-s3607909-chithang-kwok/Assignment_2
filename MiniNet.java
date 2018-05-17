@@ -1,136 +1,314 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+public class Mininet {
 
-public class Person {
-	public class NoSuchAgeException extends Exception{}
-	
-	static ArrayList<Person> profile = new ArrayList<Person>();
-	private int age;
-	private String name;
-	private String file;
-	private String gender;
-	private String status;
-	private String state;
-	
-	
-	public Person() {
-		super();
-		this.age = age;
-		this.name = name;
-		this.file = file;
-		this.gender = gender;
-		this.status = status;
-		this.state = state;
-	}	
-	
-	
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getFile() {
-		return file;
-	}
-	public void setFile(String file) {
-		this.file = file;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	
+	public static void main (String[] args) throws Exception {
+		class TooYoungException extends Exception{}
+		class NoChildException extends Exception{}
+		class NotToBeClassmateException extends Exception{}
+		class NoColleagueException extends Exception{}
+		class NoCoupleException extends Exception{}
 
+		int input;
+		
+		Scanner sc = new Scanner (System.in);
+		do {
+			System.out.println("Welcome to the MiniNet program. Please add a person first (min 2 persons) before you can use another functions. ");
+			System.out.println(" ");
+			System.out.println("MiniNet Menu");
+			System.out.println("=================================");
+			System.out.println("1. List everyone");
+			System.out.println("2. Add a person");
+			System.out.println("3. Select a person");
+			
+			System.out.println("4. Connect person");
+
+			System.out.println("5. Update a person");
+			System.out.println("6. Identify");
 	
-	public void addperson() {
-		
-		Scanner sc1 = new Scanner (System.in);
-		
-		System.out.println("Name: ");
-		name = sc1.nextLine();
-		System.out.println("Gender: ");
-		gender = sc1.nextLine();
-		System.out.println("Age: ");
-		age = sc1.nextInt();
-//		System.out.println("Field:");
-//		file = sc1.nextLine();
-//		System.out.println("Status: ");
-//		status = sc1.nextLine();
-//		System.out.println("State:");
-//		state = sc1.nextLine();
-		
-		
-		
-		
-		if (age >= 0 && age <=2) {
-			YoungChild y = new YoungChild();
-			System.out.println("You have added this person as YoungChild");
-				
-			y.setAge(age);
-			y.setFile(file);
-			y.setName(name);
-			y.setGender(gender);
-			y.setStatus(status);
-			y.setState(state);
+			System.out.println("7. Exit");
+			System.out.println("                                ");
+			System.out.println("Enter an Option:                ");
 			
-			profile.add(y);
-				
-		}
-		
-		else if (age <= 16 && age > 2) {
-			Child c = new Child();
-			System.out.println("You have added this person as Child");
-				
-			c.setAge(age);
-			c.setFile(file);
-			c.setName(name);
-			c.setGender(gender);
-			c.setStatus(status);
-			c.setState(state);
+			input = sc.nextInt();
+			System.out.println("  Your options are:  " + input);
 			
-			profile.add(c);
-		}
+			
+			
+			if (input == 1) {
+				display(Person.profile);
+			}
+			
+			else if (input == 2) {
+				Person p = new Person();
+				p.addperson();
+			}
+			
+			else if (input == 3) {
+				display(Person.profile);
+				
+				Scanner sc1 = new Scanner (System.in);
+				int input1;
+				
+				System.out.println("Select person: ");
+				input1 = sc1.nextInt();
+				
+				if (Person.profile.get(input1 - 1) instanceof Adult) {
+					Adult a = (Adult) Person.profile.get(input1 - 1);
+					System.out.println("Friends List: " + a.friendslist);
+					System.out.println("Parents List: " + a.parentslist);
+					System.out.println("Children List: " + a.childrenlist);
+					System.out.println("Couple List: " + a.couplelist);
+					System.out.println("Classmates List: " + a.classmatelist);
+					System.out.println("Colleagues List: " + a.colleaguelist);
+				}
+				
+				if (Person.profile.get(input1 - 1) instanceof Child) {
+					Child c = (Child) Person.profile.get(input1 - 1);
+					System.out.println("Friends List: " + c.friendslist);
+					System.out.println("Parents List: " + c.parentslist);
+					System.out.println("Classmates List: " + c.classmatelist);
+				}
+				
+				if (Person.profile.get(input1 - 1) instanceof YoungChild) {
+					YoungChild y= (YoungChild) Person.profile.get(input1 - 1);
+					System.out.println("Parents List: " + y.parentslist);					
+				}
+			}
 		
-		else if (age > 16) {
-			Adult a = new Adult();
-			System.out.println("You have added this person as Adult");
+			else if (input == 4) {
+				Scanner sc1 = new Scanner (System.in);
+				int input1;
 				
-			a.setAge(age);
-			a.setFile(file);
-			a.setName(name);
-			a.setGender(gender);
-			a.setStatus(status);
-			a.setState(state);
+				do {
+					int input2;
+					int input3;
+					
+					
+					Scanner sc2 = new Scanner (System.in);
+					Scanner sc3 = new Scanner (System.in);
+					
+					System.out.println("1. Connect friends");
+					System.out.println("2. Connect parents");
+					System.out.println("3. Connect children");
+					System.out.println("4. Connect classmates");
+					System.out.println("5. Connect colleagues");
+					System.out.println("6. Connect couple");
+					System.out.println("7. Exit");
+					
+					input1 = sc1.nextInt();
+					
+					
+					if (input1 == 1) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();
+						
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectfriends(Person.profile.get(input3 - 1));
+						}
+						
+						if (Person.profile.get(input2 - 1) instanceof Child) {
+							Child c = (Child) Person.profile.get(input2 - 1);
+							c.connectfriends(Person.profile.get(input3 - 1));
+						}
+						
+						try {
+							if (Person.profile.get(input2 - 1) instanceof YoungChild) {		// Young Child
+								throw new TooYoungException();
+							}
+						}
+						catch (TooYoungException e){
+							System.out.println("Cannot make friends with a young child");
+						}
+					}
+					
+					else if (input1 == 2) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();
+						
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectparents(Person.profile.get(input3 - 1));
+						}
+						if (Person.profile.get(input2 - 1) instanceof Child) {
+							Child c = (Child) Person.profile.get(input2 - 1);
+							c.connectparents(Person.profile.get(input3 - 1));
+						}
+						if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+							YoungChild y = (YoungChild) Person.profile.get(input2 - 1);
+							y.connectparents(Person.profile.get(input3 - 1));
+						}
+						
+					}
+					
+					else if (input1 == 3) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectchildren(Person.profile.get(input3 - 1));
+						}
+						try {
+							if (Person.profile.get(input2 - 1) instanceof Child) {
+								throw new NoChildException();
+							}
+							if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+								throw new NoChildException();
+							}
+						}
+						catch (NoChildException e) {
+							System.out.println("Child or young child cannot add children");
+						}
+						
+						// Child and YoungChild
+					}
+					
+					else if (input1 == 4) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();	
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectclassmates(Person.profile.get(input3 - 1));
+						}
+						
+						if (Person.profile.get(input2 - 1) instanceof Child) {
+							Child c = (Child) Person.profile.get(input2 - 1);
+							c.connectclassmates(Person.profile.get(input3 - 1));
+						}
+						
+						try {
+							if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+								throw new NotToBeClassmateException();
+							}																	//Young Child
+						}catch (NotToBeClassmateException e) {
+							System.out.println("Cannot connect a young child in a classmate relation");
+						}
+					}
+					
+					else if (input1 == 5) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();
+						
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectcolleague(Person.profile.get(input3 - 1));
+						}
+						
+						try {
+							if (Person.profile.get(input2 - 1) instanceof Child) {
+								throw new NoColleagueException();
+							}
+							if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+								throw new NoColleagueException();
+							}
+						}
+						catch (NoColleagueException e) {
+							System.out.println("Child or young child cannot add colleague");
+						}
+						
+						//Child and Young Child
+						
+					}
+					else if (input1 == 6) {
+						display(Person.profile);
+						System.out.println("Select first person");
+						input2 = sc2.nextInt();
+						System.out.println("Select second person");
+						input3 = sc3.nextInt();
+						
+						if (Person.profile.get(input2 - 1) instanceof Adult) {
+							Adult a = (Adult) Person.profile.get(input2 - 1);
+							a.connectcouple(Person.profile.get(input3 - 1));
+						}
+						//Child and Young Child
+						try {
+							if (Person.profile.get(input2 - 1) instanceof Child) {
+								throw new NoCoupleException();
+							}
+							if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+								throw new NoCoupleException();
+							}
+						}
+						catch (NoCoupleException e) {
+							System.out.println("Child or young child cannot add colleague");
+						}
+						
+					}
+					else if (input1 != 1 && input1 != 2 && input !=3 && input != 4 && input != 5 && input != 6) {
+						System.out.println("Invalid option");
+					}
+				}while(input1 != 7);
 				
-			profile.add(a);
-		}
+			}
+			else if (input == 5) {
+				
+			}
+			
+			else if (input == 6) {
+				int input2;
+				int input3;
+				
+				display(Person.profile);
+				
+				Scanner sc2 = new Scanner (System.in);
+				Scanner sc3 = new Scanner (System.in);
+				
+				System.out.println("Select first person");
+				input2 = sc2.nextInt();
+				System.out.println("Select second person");
+				input3 = sc3.nextInt();	
+				
+				if (Person.profile.get(input2 - 1) instanceof Adult) {
+					Adult a = (Adult) Person.profile.get(input2 - 1);
+					a.identify(Person.profile.get(input3 - 1));
+				}
+				if (Person.profile.get(input2 - 1) instanceof Child) {
+					Child c = (Child) Person.profile.get(input2 - 1);
+					c.identify(Person.profile.get(input3 - 1));
+				}
+				if (Person.profile.get(input2 - 1) instanceof YoungChild) {
+					YoungChild y = (YoungChild) Person.profile.get(input2 - 1);
+					y.identify(Person.profile.get(input3 - 1));
+				}		
+			}
+			
+			else if (input != 1 && input != 2 && input !=3 && input != 4 && input != 5 && input != 6 && input != 7) {
+				System.out.println("Invalid option");
+			} 
+			
+		} while(input != 7);
+	
+		
+
+
 	}
 	
-	public String toString() {
-		return (this.getName() + " " + this.getAge() + " " + this.getGender());
+	public static void display(List list) {
+		int i = 1;
+		for (Iterator it = list.iterator(); it.hasNext(); ) {
+			Person p = (Person)it.next();	
+			System.out.println(i + "------------------"+ p.getName());
+			i++;
+		}
 	}
-	
+
 }
