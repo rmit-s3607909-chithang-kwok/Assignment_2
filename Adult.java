@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.image.Image;
-
 public class Adult extends Person {
-	
-	//We assume that Adult can have colleague only.
-	//And identify if they are couple or they are 
-	// classmate. Basically they can be friend only
-	// if they are both Adult.
+	public Adult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	List<Adult> friendslist = new ArrayList<Adult>();
 	List<Adult> couplelist = new ArrayList<Adult>();
@@ -24,10 +21,6 @@ public class Adult extends Person {
 	public class NotToBeColleagueException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 
-	//public Adult(String name, Image filed, String status, String gender, int age, String state) {
-	//	super(name, filed, status, gender, age, state);
-		// TODO Auto-generated constructor stub
-	//}
 
 	
 	public void connectfriends(Object obj) throws Exception{
@@ -35,8 +28,9 @@ public class Adult extends Person {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
 				this.friendslist.add(a); 			//add friends
+				System.out.println("You add friends");
 				if (!(a.friendslist.contains(this))) {
-					a.friendslist.add(this);			//add back
+					a.friendslist.add(this);		//add back
 				}					
 			} 
 			if (obj instanceof Child) {
@@ -47,9 +41,9 @@ public class Adult extends Person {
 				
 			}
 		}catch (NotToBeFriendsException e){
-			System.out.println("You cannnot add a child");
+			System.out.println("Cannot make friends with a child ");
 		}catch (TooYoungException e) {
-			System.out.println("You cannot add a young child");
+			System.out.println("Cannot make friends with a young child");
 		}
 	
 	}
@@ -66,6 +60,7 @@ public class Adult extends Person {
 			}
 			else {
 				this.couplelist.add(a);
+				System.out.println("You add couple");
 				if (!(a.couplelist.contains(this))) {
 					a.couplelist.add(this);				//add back
 				}						
@@ -86,6 +81,7 @@ public class Adult extends Person {
 			else {
 				Adult a = (Adult) obj;
 				this.colleaguelist.add(a);
+				System.out.println("You add colleagues");
 				if (!(a.colleaguelist.contains(this))) {
 					a.colleaguelist.add(this);						//add back
 				}
@@ -101,7 +97,7 @@ public class Adult extends Person {
 		}
 		else if (obj instanceof Adult) {
 			Adult a = (Adult) obj;
-			System.out.println("You have added");
+			System.out.println("You add parents");
 			this.parentslist.add(a);
 				if (!(a.childrenlist.contains(this))) {
 					a.childrenlist.add(this);
@@ -113,13 +109,15 @@ public class Adult extends Person {
 		if (obj instanceof YoungChild) {
 			YoungChild y = (YoungChild) obj;
 			this.childrenlist.add(y);
+			System.out.println("You add children");
 			if (!(y.parentslist.contains(this))) {
-				y.parentslist.add(this);//add back
+				y.parentslist.add(this);					//add back
 			}
 		}
 		if (obj instanceof Child) {
 			Child c = (Child) obj;
 			this.childrenlist.add(c);
+			System.out.println("You add children");
 			if (!(c.parentslist.contains(this))) {
 				c.parentslist.add(this);
 			}
@@ -137,6 +135,7 @@ public class Adult extends Person {
 			if (obj instanceof Child) {
 				Child c = (Child) obj;
 				this.classmatelist.add(c);
+				System.out.println("You add classmates");
 				if (!(c.classmatelist.contains(this))) {
 					c.classmatelist.add(this);
 				}
@@ -144,6 +143,7 @@ public class Adult extends Person {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
 				this.classmatelist.add(a);
+				System.out.println("You add classmates");
 				if (!(a.classmatelist.contains(this))) {
 					a.classmatelist.add(this);
 				}
@@ -153,7 +153,7 @@ public class Adult extends Person {
 		}
 	}
 	
-	public void indentify(Object obj) {
+	public void identify(Object obj) {
 		if (this.friendslist.contains(obj)) { // identify friends
 			Child c = (Child) obj;
 			System.out.println(c.getName() + " " + this.getName() + " friends");
