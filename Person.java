@@ -1,59 +1,35 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class Person {
 	public class NoSuchAgeException extends Exception{}
 	
-	// Person class declaration //
-	List <Person>profile = new ArrayList<Person>();
-	
-	
+	static ArrayList<Person> profile = new ArrayList<Person>();
 	private int age;
 	private String name;
-	private Image filed;
+	private String file;
 	private String gender;
 	private String status;
 	private String state;
-
+	
 	
 	public Person() {
-		this.name="";
-		this.status="";
-		this.gender="";
-		this.age=0;
-		this.state="";
-	}
-	
-	public Person(String name, String status, String gender, int age, String state) {
-		this.name=name;
-		this.status=status;
-		this.gender=gender;
-		this.age=age;
-		this.state=state;
-		//filed = new Image ("koala.jpg");
-	}
-	
-	
-	//public Person(String name, Image filed, String status, String gender, int age, String state) {
-		//this.name=name;
-		//this.filed=filed;
-	//	this.status=status;
-	//	this.gender=gender;
-	//	this.age=age;
-	//	this.state=state;
-	//}
-	
+		super();
+		this.age = age;
+		this.name = name;
+		this.file = file;
+		this.gender = gender;
+		this.status = status;
+		this.state = state;
+	}	
 	
 	
 	public int getAge() {
 		return age;
 	}
 	public void setAge(int age) {
-		
 		this.age = age;
 	}
 	public String getName() {
@@ -62,11 +38,11 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Image getFiled() {
-		return filed;
+	public String getFile() {
+		return file;
 	}
-	public void setFiled(Image filed) {
-		this.filed = filed;
+	public void setFile(String file) {
+		this.file = file;
 	}
 	public String getGender() {
 		return gender;
@@ -87,14 +63,34 @@ public class Person {
 		this.state = state;
 	}
 	
-	//AddPerson declaration//
-	public void addperson() throws Exception{
+
+	
+	public void addperson() {
+		
+		Scanner sc1 = new Scanner (System.in);
+		
+		System.out.println("Name: ");
+		name = sc1.nextLine();
+		System.out.println("Gender: ");
+		gender = sc1.nextLine();
+		System.out.println("Age: ");
+		age = sc1.nextInt();
+//		System.out.println("Field:");
+//		file = sc1.nextLine();
+//		System.out.println("Status: ");
+//		status = sc1.nextLine();
+//		System.out.println("State:");
+//		state = sc1.nextLine();
+		
+		
+		
+		
 		if (age >= 0 && age <=2) {
 			YoungChild y = new YoungChild();
 			System.out.println("You have added this person as YoungChild");
 				
 			y.setAge(age);
-			y.setFiled(filed);
+			y.setFile(file);
 			y.setName(name);
 			y.setGender(gender);
 			y.setStatus(status);
@@ -109,7 +105,7 @@ public class Person {
 			System.out.println("You have added this person as Child");
 				
 			c.setAge(age);
-			c.setFiled(filed);
+			c.setFile(file);
 			c.setName(name);
 			c.setGender(gender);
 			c.setStatus(status);
@@ -123,7 +119,7 @@ public class Person {
 			System.out.println("You have added this person as Adult");
 				
 			a.setAge(age);
-			a.setFiled(filed);
+			a.setFile(file);
 			a.setName(name);
 			a.setGender(gender);
 			a.setStatus(status);
@@ -132,11 +128,9 @@ public class Person {
 			profile.add(a);
 		}
 	}
-	  public String toString()
-	    {
-	        return String.format(" " + getName() + " , " + getFiled() + " , " + getStatus() + " , " + getGender() + " , " + getAge() + " , " + getState() + " ");
-	    }
-	 
-	  }
 	
-
+	public String toString() {
+		return (this.getName() + " " + this.getAge() + " " + this.getGender());
+	}
+	
+}
