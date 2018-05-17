@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.image.Image;
-
 public class Child extends Person {
-	
-	// Assume that they are friends only when they are
-	// both child. They can be Classmate if they are
-	// both in the same school. (using peoples.txt)
-	
+	public Child() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	List<Child> friendslist = new ArrayList<Child>();
 	List<Adult> parentslist = new ArrayList<Adult>();
 	List<Person> classmatelist = new ArrayList<Person>();
@@ -18,10 +16,7 @@ public class Child extends Person {
 	public class TooYoungException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 	
-	//public Child(String name, Image filed, String status, String gender, int age, String state) {
-	//	super(name, filed, status, gender, age, state);
-		// TODO Auto-generated constructor stub
-	//}
+	
 	public void connectfriends(Object obj) throws Exception{
 		try {
 			if (obj instanceof Adult) {
@@ -38,8 +33,9 @@ public class Child extends Person {
 				}
 				else {
 					this.friendslist.add(c);
+					System.out.println("You add friends");
 					if (!(c.friendslist.contains(this))) {
-						c.friendslist.add(this);//add back
+						c.friendslist.add(this);			//add back
 					}
 				}
 			}
@@ -57,8 +53,8 @@ public class Child extends Person {
 		}
 		else if (obj instanceof Adult) {
 			Adult a = (Adult) obj;
-			System.out.println("You have added");
 			this.parentslist.add(a);
+			System.out.println("You add parents");
 			if (!(a.childrenlist.contains(this))) {
 				a.childrenlist.add(this);
 			}
@@ -73,6 +69,7 @@ public class Child extends Person {
 			if (obj instanceof Child) {
 				Child c = (Child) obj;
 				this.classmatelist.add(c);
+				System.out.println("You add classmates");
 				if (!(c.classmatelist.contains(this))) {
 					c.classmatelist.add(this);
 				}
@@ -80,6 +77,7 @@ public class Child extends Person {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
 				this.classmatelist.add(a);
+				System.out.println("You add classmates");
 				if (!(a.classmatelist.contains(this))) {
 					a.classmatelist.add(this);
 				}
@@ -89,7 +87,7 @@ public class Child extends Person {
 		}
 	}
 	
-	public void indentify(Object obj) {
+	public void identify(Object obj) {
 		try {
 			if (this.parentslist.size() < 2) {   //No parents or only one parent
 				throw new NoParentException();
