@@ -1,87 +1,136 @@
-//package application;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 
-import java.io.FileWriter;
-import java.io.IOException;
-
-import javafx.application.Application;
-
-import javafx.scene.Scene;
-
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-
-public class MiniNet extends Application{
+public class Person {
+	public class NoSuchAgeException extends Exception{}
+	
+	static ArrayList<Person> profile = new ArrayList<Person>();
+	private int age;
+	private String name;
+	private String file;
+	private String gender;
+	private String status;
+	private String state;
+	
+	
+	public Person() {
+		super();
+		this.age = age;
+		this.name = name;
+		this.file = file;
+		this.gender = gender;
+		this.status = status;
+		this.state = state;
+	}	
+	
+	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 
 	
-		// TODO Auto-generated constructor stub
-	  public void start(Stage primaryStage) throws Exception{
-			//try {
-		   // primaryStage.setTitle("DisplayFile");
-			Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
-			Scene scene = new Scene(root);
-		 //   scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-					primaryStage.setScene(scene);
-					primaryStage.show();
-		//}catch(Exception e) {
-		//	e.printStackTrace();
-		//}
+	public void addperson() {
+		
+		Scanner sc1 = new Scanner (System.in);
+		
+		System.out.println("Name: ");
+		name = sc1.nextLine();
+		System.out.println("Gender: ");
+		gender = sc1.nextLine();
+		System.out.println("Age: ");
+		age = sc1.nextInt();
+//		System.out.println("Field:");
+//		file = sc1.nextLine();
+//		System.out.println("Status: ");
+//		status = sc1.nextLine();
+//		System.out.println("State:");
+//		state = sc1.nextLine();
+		
+		
+		
+		
+		if (age >= 0 && age <=2) {
+			YoungChild y = new YoungChild();
+			System.out.println("You have added this person as YoungChild");
+				
+			y.setAge(age);
+			y.setFile(file);
+			y.setName(name);
+			y.setGender(gender);
+			y.setStatus(status);
+			y.setState(state);
+			
+			profile.add(y);
+				
 		}
+		
+		else if (age <= 16 && age > 2) {
+			Child c = new Child();
+			System.out.println("You have added this person as Child");
+				
+			c.setAge(age);
+			c.setFile(file);
+			c.setName(name);
+			c.setGender(gender);
+			c.setStatus(status);
+			c.setState(state);
+			
+			profile.add(c);
+		}
+		
+		else if (age > 16) {
+			Adult a = new Adult();
+			System.out.println("You have added this person as Adult");
+				
+			a.setAge(age);
+			a.setFile(file);
+			a.setName(name);
+			a.setGender(gender);
+			a.setStatus(status);
+			a.setState(state);
+				
+			profile.add(a);
+		}
+	}
 	
-	  
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-			WriteFile();
-			launch(args);
+	public String toString() {
+		return (this.getName() + " " + this.getAge() + " " + this.getGender());
 	}
-
-	public static void WriteFile() {
-		FileWriter writer = null;
-		FileWriter writer1 = null;
-		
-
-		try {
-			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt");
-
-			writer.write("Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, \n");
-			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
-			writer.write("Hannah Write, 'HannahWrite.jpg', 'student at PLC', M, 12, VIC, \n");
-			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
-			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
-			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
-			writer.write("Mary Hopkin, 'MaryHopkin.jpeg, 'House Worker', F, 38, TAS, \n");
-			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 12, VIC, \n");
-			writer.write("Klay Thomas, 'KlayThomas.jpeg, 'House Worker', F, 33, NSW, \n");
-			
-
-			writer.close();// flushes the stream.
-
-			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
-
-			writer1.write("Alex Smith, Ben Turner, friend, \n");
-			writer1.write("Ben Turner, Mark Hopkin, couple, \n");
-			writer1.write("Ben Turner, Mary Turner, parent, \n");
-			writer1.write("Mark Hopkin, Mary Turner, parent, \n");
-			writer1.write("Alex Turner, Mark Hopkin, parent, \n");
-			writer1.write("Alex Turner, Ben Turner, parent, \n");
-			writer1.write("Alex Smith, Klay Thomas, couple, \n");
-			writer1.write("Alex Turner, John Smith, friend, \n");
-			writer1.write("John Smith, Klay Thomas, parent, \n");
-			writer1.write("Alex Smith, Zoe Foster, colleagues, \n");
-			writer1.write("John Smith, Hannah White, classmate, \n");
-
-			writer1.close();// flushes the stream.
-			
-		} catch (IOException e) {
-			System.err.println("File cannot be created, or cannot be opened");
-			System.exit(0);
-		}
-		
-	}
-	}
-
-	        
-
+	
+}
