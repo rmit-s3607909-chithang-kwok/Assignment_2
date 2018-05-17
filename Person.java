@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -26,6 +27,7 @@ public class Person {
 		this.age=0;
 		this.state="";
 	}
+	
 	public Person(String name, String status, String gender, int age, String state) {
 		this.name=name;
 		this.status=status;
@@ -37,8 +39,8 @@ public class Person {
 	
 	
 	//public Person(String name, Image filed, String status, String gender, int age, String state) {
-	//	this.name=name;
-	//	this.filed=filed;
+		//this.name=name;
+		//this.filed=filed;
 	//	this.status=status;
 	//	this.gender=gender;
 	//	this.age=age;

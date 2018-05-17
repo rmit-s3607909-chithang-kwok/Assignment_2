@@ -5,17 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
+
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextAreaBuilder;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,16 +17,16 @@ public class MiniNet extends Application{
 	
 		// TODO Auto-generated constructor stub
 	  public void start(Stage primaryStage) throws Exception{
-			try {
-		    primaryStage.setTitle("DisplayFile");
+			//try {
+		   // primaryStage.setTitle("DisplayFile");
 			Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		 //   scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					primaryStage.setScene(scene);
 					primaryStage.show();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+		//}catch(Exception e) {
+		//	e.printStackTrace();
+		//}
 		}
 	
 	  

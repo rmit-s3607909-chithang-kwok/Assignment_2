@@ -1,3 +1,4 @@
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -22,19 +23,22 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class PersonInfo extends Application {
-
+	//This program is to add or delete the existing record for the person in the peoples.txt
+	//You can add, update, or delete person in the table by clicking Add or Delete Button.
+	//You can go to login pages when you click next Button.
     Stage window;
     TableView<Person> table;
     @ FXML TextField nameInput, StatusInput, GenderInput, AgeInput, StateInput;
 
     public static void main(String[] args) {
+    	WriteFile();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        window.setTitle("Add&DeletePerson - JavaFX");
+        window.setTitle("Welcome to Our Program - JavaFX");
 
         //Name column
         TableColumn<Person, String> nameColumn = new TableColumn<>("Name");
@@ -124,7 +128,7 @@ public class PersonInfo extends Application {
     
 
 	private void nextButtonClicked() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
 		Scene scene = new Scene(root);
 		 window.setScene(scene);
 	        window.show();
@@ -171,6 +175,48 @@ public class PersonInfo extends Application {
                 
         return Person;
     }
+    public static void WriteFile() {
+		FileWriter writer = null;
+		FileWriter writer1 = null;
+		
 
+		try {
+			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt");
+
+			writer.write("Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, \n");
+			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
+			writer.write("Hannah Write, 'HannahWrite.jpg', 'student at PLC', M, 12, VIC, \n");
+			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
+			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
+			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
+			writer.write("Mary Hopkin, 'MaryHopkin.jpeg, 'House Worker', F, 38, TAS, \n");
+			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 12, VIC, \n");
+			writer.write("Klay Thomas, 'KlayThomas.jpeg, 'House Worker', F, 33, NSW, \n");
+			
+
+			writer.close();// flushes the stream.
+
+			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
+
+			writer1.write("Alex Smith, Ben Turner, friend, \n");
+			writer1.write("Ben Turner, Mark Hopkin, couple, \n");
+			writer1.write("Ben Turner, Mary Turner, parent, \n");
+			writer1.write("Mark Hopkin, Mary Turner, parent, \n");
+			writer1.write("Alex Turner, Mark Hopkin, parent, \n");
+			writer1.write("Alex Turner, Ben Turner, parent, \n");
+			writer1.write("Alex Smith, Klay Thomas, couple, \n");
+			writer1.write("Alex Turner, John Smith, friend, \n");
+			writer1.write("John Smith, Klay Thomas, parent, \n");
+			writer1.write("Alex Smith, Zoe Foster, colleagues, \n");
+			writer1.write("John Smith, Hannah White, classmate, \n");
+
+			writer1.close();// flushes the stream.
+			
+		} catch (IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
+		
+	}
 
 }
