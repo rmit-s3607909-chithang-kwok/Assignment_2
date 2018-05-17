@@ -1,21 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.image.Image;
-
 public class YoungChild extends Person {
-	
-	//We are going to identify the YoungChild Specification
-	//if they have one parent or no parent it will
-	//come up with an exception.
+	public YoungChild() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	List<Adult> parentslist = new ArrayList<Adult>();
 	public class NoParentException extends Exception{}
-	
-	//public YoungChild(String name, Image filed, String status, String gender, int age, String state) {
-	//	super(name, filed, status, gender, age, state);
-		// TODO Auto-generated constructor stub
-	//}
 
 	public void connectparents(Object obj) {
 		if (this.parentslist.size() == 2) {
@@ -23,7 +17,7 @@ public class YoungChild extends Person {
 		}
 		else if (obj instanceof Adult) {
 			Adult a = (Adult) obj;
-			System.out.println("You have added");
+			System.out.println("You add parents");
 			this.parentslist.add(a);
 			if (!(a.childrenlist.contains(this))) {
 				a.childrenlist.add(this);
