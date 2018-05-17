@@ -10,46 +10,34 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.Month;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import guidemo.Person;
-import javafx.scene.control.ListView;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.fxml.Initializable;
-import javafx.application.Application;
+
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
+
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextAreaBuilder;
-import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 
 public class DisplayFile implements Initializable{
 
-	private Button bt1;
+	@FXML private Button bt1;
 	
-	private Button bt2;
+	@FXML private Button bt2;
 	
-	private Button bt3;
+	@FXML private Button bt3;
 	
     
 	private Desktop desktop = Desktop.getDesktop();
@@ -99,7 +87,7 @@ public class DisplayFile implements Initializable{
 			System.out.println("file is not valid");
 		}
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
 				
@@ -107,13 +95,22 @@ public class DisplayFile implements Initializable{
 	}
 	
         public void BackToPreviousMenu(ActionEvent event) throws Exception{
-		
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				primaryStage.setScene(scene);
-				primaryStage.show();
+        	Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            
+            //This line gets the Stage information
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            
+           
+            
+            window.setScene(tableViewScene);
+            window.show();
+		//Stage primaryStage = new Stage();
+		//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		//Scene scene = new Scene(root);
+	//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//		primaryStage.setScene(scene);
+		//		primaryStage.show();
 	
 	}
 	

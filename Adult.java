@@ -24,10 +24,10 @@ public class Adult extends Person {
 	public class NotToBeColleagueException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 
-	public Adult(String name, Image filed, String status, String gender, int age, String state) {
-		super(name, filed, status, gender, age, state);
+	//public Adult(String name, Image filed, String status, String gender, int age, String state) {
+	//	super(name, filed, status, gender, age, state);
 		// TODO Auto-generated constructor stub
-	}
+	//}
 
 	
 	public void connectfriends(Object obj) throws Exception{
