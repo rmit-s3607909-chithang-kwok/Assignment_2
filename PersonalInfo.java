@@ -2,16 +2,11 @@
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.Month;
+
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
-import java.util.regex.Pattern;
 
-import com.sun.javafx.scene.control.skin.IntegerFieldSkin;
 
-import javafx.beans.binding.IntegerBinding;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,24 +17,23 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Labeled;
+
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumnBase;
+
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
+
 import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.NumberStringConverter;
+
 
 /**
  * FXML Controller class
@@ -49,26 +43,24 @@ import javafx.util.converter.NumberStringConverter;
 public class PersonalInfo implements Initializable {
 
     //configure the table
-     private TableView<Person> table;
-     private TableColumn<Person, String> NameColumn;
-     private TableColumn<Person, Image>  ImageColumn;
-     private TableColumn<Person, String> StatusColumn;
-     private TableColumn<Person, String> GenderColumn;
-     private TableColumn<Person, String> StateColumn;
-     private TableColumn<Person, Integer> AgeColumn;
+	@FXML private TableView<Person> table;
+	@FXML private TableColumn<Person, String> NameColumn;
+	@FXML private TableColumn<Person, Image>  ImageColumn;
+	@FXML private TableColumn<Person, String> StatusColumn;
+	@FXML private TableColumn<Person, String> GenderColumn;
+	@FXML private TableColumn<Person, String> StateColumn;
+	@FXML private TableColumn<Person, Integer> AgeColumn;
     
     //These instance variables are used to create new Person objects
-     private TextField NameTextField;
-     private TextField ImageTextField;
-     private TextField StatusTextField;
-     private TextField GenderTextField;
-     private TextField AgeTextField;
-     private TextField StateTextField;
+	@FXML private TextField NameTextField;
+	@FXML private TextField ImageTextField;
+	@FXML private TextField StatusTextField;
+	@FXML private TextField GenderTextField;
+	@FXML private TextField AgeTextField;
+	@FXML private TextField StateTextField;
     
-     private Button detailedPersonViewButton;
-     private Button AddPerson;
-     private Button DeletePerson;
-     private Button BackToPValue;
+	@FXML private Button detailedPersonViewButton;
+     
      
     
         
@@ -92,7 +84,7 @@ public class PersonalInfo implements Initializable {
     public void changeStatusCellEvent(CellEditEvent edittedCell)
     {
         Person personSelected =  table.getSelectionModel().getSelectedItem();
-        personSelected.setStatus(edittedCell.getNewValue().toString());
+       personSelected.setStatus(edittedCell.getNewValue().toString());
     }
     
     /**
@@ -110,7 +102,7 @@ public class PersonalInfo implements Initializable {
      * the age of the person
      */
     public void changeAgeCellEvent(CellEditEvent edittedCell)
-    {
+   {
     	
     	
     	
@@ -201,7 +193,7 @@ public class PersonalInfo implements Initializable {
        StateColumn.setCellValueFactory(new PropertyValueFactory<Person, String>("State"));
         
         //load dummy data
-        table.setItems(getPerson());
+        table.setItems(getpeople());
         
         //Update the table to allow for the fields
         //to be editable
@@ -259,19 +251,19 @@ public class PersonalInfo implements Initializable {
     
    
 	//Get all of the Person
-	public ObservableList<Person> getPerson(){
-    ObservableList<Person> Person = FXCollections.observableArrayList();
-    Person.add(new Person("Alex Smith", "student at RMIT", "M", 35, "WA" ));
-    Person.add(new Person("Ben Turner", "manager at ZFX", "M", 45, "VIC" ));
-    Person.add(new Person("Hannah White", "student at PLC", "F", 12, "VIC" ));
-    Person.add(new Person("Zoe Foster", "Founder of ZFX", "M", 33, "VIC" ));
-    Person.add(new Person("Mary Turner", "looking for job", "F", 2, "VIC" ));
-    Person.add(new Person("john Smith", "student at PLC", "M", 12, "VIC" ));
-    Person.add(new Person("Mary Hopkin", "House Worker", "F", 38, "TAS" ));
-    Person.add(new Person("Alex Turner", "student at LaTrobe", "M", 22, "VIC" ));
-    Person.add(new Person("Klay Thomas", "House Worker", "F", 33, "NSW" ));
+	public ObservableList<Person> getpeople(){
+    ObservableList<Person> people = FXCollections.observableArrayList();
+    people.add(new Person("Alex Smith", "student at RMIT", "M", 35, "WA" ));
+    people.add(new Person("Ben Turner", "manager at ZFX", "M", 45, "VIC" ));
+    people.add(new Person("Hannah White", "student at PLC", "F", 12, "VIC" ));
+    people.add(new Person("Zoe Foster", "Founder of ZFX", "M", 33, "VIC" ));
+    people.add(new Person("Mary Turner", "looking for job", "F", 2, "VIC" ));
+    people.add(new Person("john Smith", "student at PLC", "M", 12, "VIC" ));
+    people.add(new Person("Mary Hopkin", "House Worker", "F", 38, "TAS" ));
+    people.add(new Person("Alex Turner", "student at LaTrobe", "M", 22, "VIC" ));
+    people.add(new Person("Klay Thomas", "House Worker", "F", 33, "NSW" ));
             
-    return Person;
+    return people;
 }
 }
 

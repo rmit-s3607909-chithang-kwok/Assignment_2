@@ -24,15 +24,15 @@ public class PersonDetails implements Initializable {
 
     private Person selectedPerson;
     
-    private Label NameLabel;
-    private Label StatusLabel;    
-    private Label GenderLabel;
-    private Label AgeLabel;
-    private Label StateLabel;
+    @FXML private Label NameLabel;
+    @FXML private Label StatusLabel;    
+    @FXML private Label GenderLabel;
+    @FXML private Label AgeLabel;
+    @FXML private Label StateLabel;
     
-    private ImageView ImageLabel;
+    @FXML private ImageView ImageLabel;
     
-    private Button bt1;
+    @FXML private Button bt1;
     
     /**
      * This method accepts a person to initialize the view
@@ -56,14 +56,15 @@ public class PersonDetails implements Initializable {
      */
     public void changeScreenButtonPushed(ActionEvent event) throws IOException
     {
-        Parent tableViewParent = FXMLLoader.load(getClass().getResource("PersonalInfo.fxml"));
+    	
+        Parent tableViewParent = FXMLLoader.load(getClass().getResource("PersonInfo.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
         
         //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+       Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         
-        window.setScene(tableViewScene);
-        window.show();
+       window.setScene(tableViewScene);
+       window.show();
     }
     
     
