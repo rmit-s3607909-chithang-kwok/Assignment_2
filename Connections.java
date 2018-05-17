@@ -1,5 +1,8 @@
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -47,31 +50,46 @@ public class Connections implements Initializable {
 		
 
 	    public void BackToPreviousMenu(ActionEvent event) throws Exception{
-	     	Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-	         Scene tableViewScene = new Scene(tableViewParent);
-	         
-	         //This line gets the Stage information
-	         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-	         
-	        
-	         
-	         window.setScene(tableViewScene);
-	         window.show();
+	    	Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	    	primaryStage.setScene(scene);
+			primaryStage.show();
 			
 		}
 
 		//Add button clicked
 	    public void addButtonClicked(ActionEvent event)throws Exception{
-	    	Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-	         Scene tableViewScene = new Scene(tableViewParent);
+	    	Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					
 	         
-	         //This line gets the Stage information
-	         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+	         PrintWriter writer = null;
+		 		
+		 		try {
+		 			writer = new PrintWriter("relation.txt");
+		 			BufferedWriter bwriter = new BufferedWriter(writer);
+		 			
+		 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
+		 			//appending the file
+		 			
+		 		} catch (FileNotFoundException e) {
+		 			System.err.println("File cannot be created, or cannot be opened");
+		 			System.exit(0);
+		 		}
+		 		
+		 		writer.write(FirstPeopleName.getText() + " , ");
+		 		writer.write(SecondPeopleName.getText() + " , " );
+		 		writer.write(TheirRelationship.getText() + " ");
+		 		
+		 		
+		 		writer.close();		
 	         
-	        
-	         
-	         window.setScene(tableViewScene);
-	         window.show();
+		 		primaryStage.setScene(scene);
+				primaryStage.show();
 	    }
 
 	   

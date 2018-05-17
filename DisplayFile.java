@@ -87,7 +87,7 @@ public class DisplayFile implements Initializable{
 			System.out.println("file is not valid");
 		}
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
 				
@@ -95,22 +95,13 @@ public class DisplayFile implements Initializable{
 	}
 	
         public void BackToPreviousMenu(ActionEvent event) throws Exception{
-        	Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-            Scene tableViewScene = new Scene(tableViewParent);
-            
-            //This line gets the Stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            
-           
-            
-            window.setScene(tableViewScene);
-            window.show();
-		//Stage primaryStage = new Stage();
-		//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		//Scene scene = new Scene(root);
-	//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		//		primaryStage.setScene(scene);
-		//		primaryStage.show();
+        	
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.show();
 	
 	}
 	

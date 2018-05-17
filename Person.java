@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.image.Image;
+
 
 public class Person {
 	public class NoSuchAgeException extends Exception{}
@@ -9,7 +11,7 @@ public class Person {
 	static ArrayList<Person> profile = new ArrayList<Person>();
 	private int age;
 	private String name;
-	private String file;
+	private Image file;
 	private String gender;
 	private String status;
 	private String state;
@@ -38,10 +40,10 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getFile() {
+	public Image getFile() {
 		return file;
 	}
-	public void setFile(String file) {
+	public void setFile(Image file) {
 		this.file = file;
 	}
 	public String getGender() {
@@ -134,3 +136,5 @@ public class Person {
 	}
 	
 }
+	
+

@@ -22,60 +22,33 @@ public class SelectPerson implements Initializable{
 	
 	
 	public void UpdatePerson (ActionEvent event)throws Exception{
-		Parent tableViewParent = FXMLLoader.load(getClass().getResource("PersonalInfo.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-       
-        
-        window.setScene(tableViewScene);
-        window.show();
-		//Stage primaryStage = new Stage();
-		//Parent root = FXMLLoader.load(getClass().getResource("PersonInfo.fxml"));
-		//Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//	primaryStage.setScene(scene);
-			//	primaryStage.show();
+		
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("AddPerson.fxml"));
+		Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.show();
 	}
 
 	public void DeletePerson (ActionEvent event)throws Exception{
-		Parent tableViewParent = FXMLLoader.load(getClass().getResource("PersonalInfo.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-       
-        
-        window.setScene(tableViewScene);
-        window.show();
-		//Stage primaryStage = new Stage();
-		////Parent root = FXMLLoader.load(getClass().getResource("PersonalInfo.fxml"));
-	//	Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		//		primaryStage.setScene(scene);
-			//	primaryStage.show();
+		
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("DeletePerson.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.show();
 	}
 	
 	public void BackToPreviousMenu (ActionEvent event)throws Exception{
-		Parent tableViewParent = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-        Scene tableViewScene = new Scene(tableViewParent);
-        
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        
-       
-        
-        window.setScene(tableViewScene);
-        window.show();
-		//Stage primaryStage = new Stage();
-		//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		//Scene scene = new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//	primaryStage.setScene(scene);
-			//	primaryStage.show();
+		
+		Stage primaryStage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				primaryStage.setScene(scene);
+				primaryStage.show();
 	}
 	
 	@Override
