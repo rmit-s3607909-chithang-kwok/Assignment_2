@@ -18,7 +18,8 @@ import javafx.stage.Stage;
 
 public class SubMenu implements Initializable{
 
-	
+	//Editted by Chit Hang Kwok
+	// This program is to show the submenu and you can choose the function you want.
 	private Button bt1;
 	
 	private Button bt2;

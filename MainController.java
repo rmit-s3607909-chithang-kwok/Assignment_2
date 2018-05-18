@@ -25,7 +25,9 @@ import javafx.stage.Stage;
 
 
 public class MainController implements Initializable{
-
+	//Editted by Chit Hang Kwok
+	//This program is to open the Login Page and I have set it to no username and Password so that 
+	//everyone can visit.
 	
 	@FXML private Label lblStatus;
 	

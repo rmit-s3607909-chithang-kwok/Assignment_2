@@ -12,7 +12,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class SelectPerson implements Initializable{
-	
+	// Editted by Chit Hang Kwok
+	//This program is to choose whether you want to update or delete selected people info from txt file.
 	@FXML private Button bt1;
 	
 	@FXML private Button bt2;

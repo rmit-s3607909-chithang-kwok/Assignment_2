@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class AddingPerson implements Initializable{
+	//Editted by Chit Hang Kwok
+	//This program is to add the peoples information to the txt file.
 	@FXML private Label name;
 	@FXML private Label status;
 	@FXML private Label gender;

@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 	import javafx.stage.Stage;
 
 	public class ConnectPerson implements Initializable{
+		//Editted by Chit Hang Kwok
+		//This program is to choose the appropriated relationship and added to the txt file. 
 		
 		private Button bt1;
 		

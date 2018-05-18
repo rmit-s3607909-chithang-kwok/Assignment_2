@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 
 
 public class Person {
+	//Editted by Wenpeng
+	// This program is to define the Person Class and inherit to all subclass.
 	public class NoSuchAgeException extends Exception{}
 	
 	static ArrayList<Person> profile = new ArrayList<Person>();

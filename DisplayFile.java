@@ -32,7 +32,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class DisplayFile implements Initializable{
-
+	//Editted by Chit Hang Kwok
+	//This program is to open the txt file and see the peoples details or relationship between them plus
+	// the photo for each people.
 	@FXML private Button bt1;
 	
 	@FXML private Button bt2;

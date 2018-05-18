@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class DeletePerson implements Initializable{
+	//Editted by Chit Hang Kwok
+	//This program is to delete the peoples information from the txt file.
 
 	@FXML private Label name;
 	@FXML private Label status;

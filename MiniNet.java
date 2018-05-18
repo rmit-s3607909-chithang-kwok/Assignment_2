@@ -16,8 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class MiniNet extends Application{
+	//Editted by Chit Hang Kwok
+	//This program is to open all the gui file.
 
-	
 		// TODO Auto-generated constructor stub
 	  public void start(Stage primaryStage) throws Exception{
 			//try {
@@ -42,14 +43,14 @@ public class MiniNet extends Application{
 			launch(args);
 
 	
-		
+			class TooYoungException extends Exception{}
+			class NoChildException extends Exception{}
+			class NotToBeClassmateException extends Exception{}
+			class NoColleagueException extends Exception{}
+			class NoCoupleException extends Exception{}
 	
 	
-	class TooYoungException extends Exception{}
-	class NoChildException extends Exception{}
-	class NotToBeClassmateException extends Exception{}
-	class NoColleagueException extends Exception{}
-	class NoCoupleException extends Exception{}
+	
 
 		int input;
 	

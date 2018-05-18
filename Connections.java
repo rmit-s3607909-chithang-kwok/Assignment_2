@@ -32,7 +32,8 @@ import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
 public class Connections implements Initializable {
-
+		//Editted by Chit Hang Kwok
+		//This program is to connect two peoples by method of classmate, collegue, friend, couple, parent and Children.
 	 	@FXML Label Name1;
 	 	@FXML Label Name2;
 	 	@FXML Label Relationship;
