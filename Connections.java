@@ -45,6 +45,7 @@ public class Connections implements Initializable {
 	
 	    @FXML Button bt1;
 	    @FXML Button bt2;
+	    @FXML Button bt3;
 	 
 		
 		
@@ -61,6 +62,39 @@ public class Connections implements Initializable {
 
 		//Add button clicked
 	    public void addButtonClicked(ActionEvent event)throws Exception{
+	    	Stage primaryStage = new Stage();
+			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+					
+	         
+	         PrintWriter writer = null;
+		 		
+		 		try {
+		 			writer = new PrintWriter("relation.txt");
+		 			BufferedWriter bwriter = new BufferedWriter(writer);
+		 			
+		 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
+		 			//appending the file
+		 			
+		 		} catch (FileNotFoundException e) {
+		 			System.err.println("File cannot be created, or cannot be opened");
+		 			System.exit(0);
+		 		}
+		 		
+		 		writer.write(FirstPeopleName.getText() + " , ");
+		 		writer.write(SecondPeopleName.getText() + " , " );
+		 		writer.write(TheirRelationship.getText() + " ");
+		 		
+		 		
+		 		writer.close();		
+	         
+		 		primaryStage.setScene(scene);
+				primaryStage.show();
+	    }
+	    
+	  //Add button clicked
+	    public void deleteButtonClicked(ActionEvent event)throws Exception{
 	    	Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
 			Scene scene = new Scene(root);

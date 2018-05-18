@@ -5,11 +5,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connections">
    <children>
-      <Button fx:id="bt1" layoutX="225.0" layoutY="241.0" mnemonicParsing="false" onAction="#addButtonClicked" text="Add" />
-      <Button fx:id="bt2" layoutX="436.0" layoutY="283.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back" />
+      <Button fx:id="bt1" layoutX="143.0" layoutY="241.0" mnemonicParsing="false" onAction="#addButtonClicked" text="Add" />
+      <Button fx:id="bt2" layoutX="483.0" layoutY="308.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back" />
       <Label layoutX="227.0" layoutY="39.0" text="Connections">
          <font>
             <Font name="System Bold Italic" size="18.0" />
@@ -21,5 +20,6 @@
       <TextField fx:id="FirstPeopleName" layoutX="56.0" layoutY="136.0" prefHeight="31.0" prefWidth="130.0" promptText="Name1" />
       <TextField fx:id="SecondPeopleName" layoutX="227.0" layoutY="136.0" prefHeight="31.0" prefWidth="130.0" promptText="Name2" />
       <TextField fx:id="TheirRelationship" layoutX="375.0" layoutY="136.0" prefHeight="31.0" prefWidth="124.0" promptText="Relationship" />
+      <Button fx:id="bt3" layoutX="305.0" layoutY="241.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Delete" />
    </children>
 </AnchorPane>
