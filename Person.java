@@ -1,7 +1,10 @@
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 
@@ -11,23 +14,28 @@ public class Person {
 	public class NoSuchAgeException extends Exception{}
 	
 	static ArrayList<Person> profile = new ArrayList<Person>();
-	private int age;
-	private String name;
-	private Image file;
-	private String gender;
-	private String status;
-	private String state;
+	int age;
+	String name;
+	Image file;
+	String gender;
+	String status;
+	String state;
 	
 	
-	public Person() {
-		super();
+	public Person(String name, String status, String gender, int age, String state) {
+		//super();
 		this.age = age;
 		this.name = name;
-		this.file = file;
+		//this.file = file;
 		this.gender = gender;
 		this.status = status;
 		this.state = state;
 	}	
+	public Person(String name1, String name2, String relation) {
+		this.name=name1;
+		this.name=name2;
+		this.status=relation;
+	}
 	
 	
 	public int getAge() {
@@ -81,20 +89,20 @@ public class Person {
 		age = sc1.nextInt();
 //		System.out.println("Field:");
 //		file = sc1.nextLine();
-//		System.out.println("Status: ");
-//		status = sc1.nextLine();
-//		System.out.println("State:");
-//		state = sc1.nextLine();
+		System.out.println("Status: ");
+		status = sc1.nextLine();
+	System.out.println("State:");
+		state = sc1.nextLine();
 		
 		
 		
 		
 		if (age >= 0 && age <=2) {
-			YoungChild y = new YoungChild();
+			YoungChild y = new YoungChild(name, status, gender, age, state);
 			System.out.println("You have added this person as YoungChild");
 				
 			y.setAge(age);
-			y.setFile(file);
+		//	y.setFile(file);
 			y.setName(name);
 			y.setGender(gender);
 			y.setStatus(status);
@@ -105,11 +113,11 @@ public class Person {
 		}
 		
 		else if (age <= 16 && age > 2) {
-			Child c = new Child();
+			Child c = new Child(name, status, gender, age, state);
 			System.out.println("You have added this person as Child");
 				
 			c.setAge(age);
-			c.setFile(file);
+		//	c.setFile(file);
 			c.setName(name);
 			c.setGender(gender);
 			c.setStatus(status);
@@ -119,11 +127,11 @@ public class Person {
 		}
 		
 		else if (age > 16) {
-			Adult a = new Adult();
+			Adult a = new Adult(name, status, gender, age, state);
 			System.out.println("You have added this person as Adult");
 				
 			a.setAge(age);
-			a.setFile(file);
+		//	a.setFile(file);
 			a.setName(name);
 			a.setGender(gender);
 			a.setStatus(status);
@@ -134,8 +142,11 @@ public class Person {
 	}
 	
 	public String toString() {
-		return (this.getName() + " " + this.getAge() + " " + this.getGender());
+		return (this.getName() + " " + this.getStatus()+ "" + this.getGender() + "" + this.getAge() + " " + this.getState());
 	}
+
+
+	
 	
 }
 	

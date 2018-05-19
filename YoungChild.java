@@ -1,11 +1,12 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class YoungChild extends Person {
 	//Editted by Wenpeng
 		//This program is to add all the YoungChild relationship. If they have no relation it will throws an exception.
-	public YoungChild() {
-		super();
+	public YoungChild(String name, String gender, String status, int age, String state) {
+		super(name, status, gender, age, state);
 		// TODO Auto-generated constructor stub
 	}
 

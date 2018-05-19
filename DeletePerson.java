@@ -1,9 +1,11 @@
+
 import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -16,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DeletePerson implements Initializable{
@@ -34,10 +37,11 @@ public class DeletePerson implements Initializable{
 	@FXML private TextField AgeList;
 	@FXML private TextField StateList;
 	
-	
+	@FXML Text text;
 	@FXML private Button bt1;
 	@FXML private Button bt2;
 	
+	Connection con = null;
 	
 	//private Desktop desktop = Desktop.getDesktop();
 	
@@ -48,10 +52,10 @@ public class DeletePerson implements Initializable{
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
-		 PrintWriter writer = null;
+		 FileWriter writer = null;
 	 		
 	 		try {
-	 			writer = new PrintWriter("peoples.txt");
+	 			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt");
 	 			BufferedWriter bwriter = new BufferedWriter(writer);
 	 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
 	 			//appending the file
@@ -61,14 +65,21 @@ public class DeletePerson implements Initializable{
 	 			System.exit(0);
 	 		}
 	 		
-	 		writer.write(NameList.getText() + " , ");
-	 		writer.write(StatusList.getText() + " , ");
-	 		writer.write(GenderList.getText() + " , ");
-	 		writer.write(AgeList.getText() + " , ");
-	 		writer.write(StateList.getText() + " ");
+	 		writer.write(NameList.getText() + "  ");
+	 		writer.write(StatusList.getText() + "  ");
+	 		writer.write(GenderList.getText()+ "  ");
+	 		writer.write(AgeList.getText() + "  ");
+	 		writer.write(StateList.getText() + "  ");
 	 		
-	 		writer.flush();
+	 		
 	 		writer.close();	
+	 		if (con != null) {
+		        text.setText("Database connection successful");
+		        text.setVisible(true);
+		        }else  {
+			    text.setText("Database connection successful");
+			    text.setVisible(true);
+		        }
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

@@ -1,14 +1,16 @@
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Adult extends Person {
 	//Editted by Wenpeng
 	//This program is to add all the Adult relationship. If they have no relation it will throws an exception.
-	public Adult() {
-		super();
+	public Adult(String name, String status, String gender, int age, String state) {
+		super(name, status, gender, age, state);
 		// TODO Auto-generated constructor stub
 	}
-
+//where name
 	List<Adult> friendslist = new ArrayList<Adult>();
 	List<Adult> couplelist = new ArrayList<Adult>();
 	List<Adult> colleaguelist = new ArrayList<Adult>();

@@ -1,44 +1,64 @@
-//package application;
+
 
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
+import java.sql.Statement;
+//import org.hsqldb.Server;
 import javafx.application.Application;
 
 import javafx.scene.Scene;
-
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class MiniNet extends Application{
+	
 	//Editted by Chit Hang Kwok
 	//This program is to open all the gui file.
 
 		// TODO Auto-generated constructor stub
 	  public void start(Stage primaryStage) throws Exception{
-			//try {
-		   // primaryStage.setTitle("DisplayFile");
+			try {
+		    primaryStage.setTitle("DisplayFile");
 			Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
 			Scene scene = new Scene(root);
 		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					primaryStage.setScene(scene);
 					primaryStage.show();
-		//}catch(Exception e) {
-		//	e.printStackTrace();
-		//}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		}
 	
 	  
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		//Connection con = null;
 		
-			//WriteFile();
+		//try {
+			//Registering the HSQLDB JDBC driver
+			//Class.forName("org.hsqldb.jdbc.JDBCDriver");
+			//Creating the connection with HSQLDB
+			//con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/testdb", "SA", "");
+		//}catch (Exception e) {
+		//	e.printStackTrace(System.out);
+		//}
+		
+		
+		
+		
+			WriteFile();
 			
 			launch(args);
 
@@ -80,8 +100,8 @@ public class MiniNet extends Application{
 		}
 		
 		else if (input == 2) {
-			Person p = new Person();
-			p.addperson();
+			//Person p = new Person(name, status, gender, age, state);
+			//p.addperson();
 		}
 		
 		else if (input == 3) {
@@ -348,7 +368,7 @@ public class MiniNet extends Application{
 	}
 	}
 	
-	/*public static void WriteFile() {
+	public static void WriteFile() {
 		FileWriter writer = null;
 		FileWriter writer1 = null;
 		
@@ -358,12 +378,12 @@ public class MiniNet extends Application{
 
 			writer.write("Alex Smith, 'AlexSmith.jpg', 'student at RMIT', M, 35, WA, \n");
 			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
-			writer.write("Hannah Write, 'HannahWrite.jpg', 'student at PLC', M, 12, VIC, \n");
+			writer.write("Hannah White, 'HannahWhite.jpg', 'student at PLC', M, 12, VIC, \n");
 			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
 			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
 			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
 			writer.write("Mary Hopkin, 'MaryHopkin.jpeg, 'House Worker', F, 38, TAS, \n");
-			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 12, VIC, \n");
+			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 22, VIC, \n");
 			writer.write("Klay Thomas, 'KlayThomas.jpeg, 'House Worker', F, 33, NSW, \n");
 			
 
@@ -389,7 +409,7 @@ public class MiniNet extends Application{
 			System.err.println("File cannot be created, or cannot be opened");
 			System.exit(0);
 		}
-	}*/
+	}
 }
 
 	        
