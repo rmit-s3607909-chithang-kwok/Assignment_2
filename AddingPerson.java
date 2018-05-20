@@ -69,11 +69,11 @@ public class AddingPerson implements Initializable{
 	@FXML private Button bt2;
 	
 	@FXML private TableView<Person> tablePerson;
-	@FXML private TableColumn<?, ?> ColumnName;
-	@FXML private TableColumn<?, ?> ColumnStatus;
-	@FXML private TableColumn<?, ?> ColumnGender;
-	@FXML private TableColumn<?, ?> ColumnAge;
-	@FXML private TableColumn<?, ?> ColumnState;
+	@FXML private TableColumn<Person, String> ColumnName;
+	@FXML private TableColumn<Person, String> ColumnStatus;
+	@FXML private TableColumn<Person, String> ColumnGender;
+	@FXML private TableColumn<Person, Integer> ColumnAge;
+	@FXML private TableColumn<Person, String> ColumnState;
 	
 	
 	private Connection con = null;
@@ -81,23 +81,17 @@ public class AddingPerson implements Initializable{
 	private ResultSet rs = null;
 	private ObservableList<Person> data;
 	
-	@FXML public void Add(ActionEvent event) throws SQLException {
+	
+	
+	@FXML public void Add(ActionEvent event) throws Exception {
 
 	String NLIST=NameList.getText();
 	String SLIST=StatusList.getText();
 	String GLIST=GenderList.getText();
 	Integer ALIST = Integer.valueOf(AgeList.getText());
 	String STLIST=StateList.getText();
-		String sql = "INSERT INTO people (NLIST,SLIST, GLIST, ALIST, STLIST)  VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO people(Name, Status , Gender, Age, State) VALUES (?,?,?,?,?)";
 		
-		//Stage primaryStage = new Stage();
-		//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		//Scene scene = new Scene(root);
-	//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-	//	primaryStage.setScene(scene);
-	//	primaryStage.show();
-		
-		 
 	 		/*FileWriter writer = null;
 	 		try {
 	 			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt", true);
@@ -133,7 +127,7 @@ public class AddingPerson implements Initializable{
 	 		
 	 		int i = pst.executeUpdate();
 	 		if (i == 1) {
-	 		    System.out.println("data insert successfully");
+	 		  System.out.println("data insert successfully");
 	 		    
 	 		}
 	 		 }catch(SQLException ex) {
@@ -151,7 +145,6 @@ public class AddingPerson implements Initializable{
 		        }
 	            }
 	 		
-
 	}
 	
 	 public void BackToPreviousMenu(ActionEvent event) throws Exception{
@@ -169,8 +162,9 @@ public class AddingPerson implements Initializable{
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub
 	
-
+		
 		con = DBConnection.pmartConnection();
+		
 		data=FXCollections.observableArrayList();
 			setCellTable();
 			LoadDataFromDatabase();

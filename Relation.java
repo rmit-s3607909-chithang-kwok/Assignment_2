@@ -1,5 +1,7 @@
 
 public class Relation{
+	//Editted by Chit Hang Kwok. This program is to create a sql table for two person relationship. Both of them are uniquely
+	//identify as the Primary Key of the relationship. It is not replaceable.
 	private String Name1;
 	private String Name2;
 	private String Relationship;

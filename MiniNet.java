@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+
+import org.hsqldb.Server;
+
 import java.sql.Statement;
 //import org.hsqldb.Server;
 import javafx.application.Application;
@@ -43,17 +46,26 @@ public class MiniNet extends Application{
 	  
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		//Connection con = null;
+		Server hsqlServer = null;
+		Connection connection = null;
+		ResultSet rs = null;
+		hsqlServer = new Server();
+		hsqlServer.setLogWriter(null);
+		hsqlServer.setSilent(true);
+		hsqlServer.setDatabaseName(0, "TestDB");
+		hsqlServer.setDatabasePath(0, "file:MYDB");
+		hsqlServer.start();
+		// making a connection
+		try {
+		Class.forName("org.hsqldb.jdbcDriver");
+		Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/testdb", "SA", "");
 		
-		//try {
-			//Registering the HSQLDB JDBC driver
-			//Class.forName("org.hsqldb.jdbc.JDBCDriver");
-			//Creating the connection with HSQLDB
-			//con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/testdb", "SA", "");
-		//}catch (Exception e) {
-		//	e.printStackTrace(System.out);
-		//}
+		} catch (SQLException e2) {
+		e2.printStackTrace();
+		} catch (ClassNotFoundException e2) {
+		e2.printStackTrace();
+		}
+		// end of stub code for in/out stub
 		
 		
 		
@@ -62,7 +74,7 @@ public class MiniNet extends Application{
 			
 			launch(args);
 
-	
+			
 			class TooYoungException extends Exception{}
 			class NoChildException extends Exception{}
 			class NotToBeClassmateException extends Exception{}
@@ -380,7 +392,7 @@ public class MiniNet extends Application{
 			writer.write("Ben Turner, 'BenTurner.jpg', 'manager at ZFX', M, 45, VIC, \n");
 			writer.write("Hannah White, 'HannahWhite.jpg', 'student at PLC', M, 12, VIC, \n");
 			writer.write("Zoe Foster, 'ZoeFoster.jpg', 'Founder of ZFX', M, 33, VIC, \n");
-			writer.write("Mark Turner, 'MarkTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
+			writer.write("Mary Turner, 'MaryTurner.jpeg', 'looking for jobs', F, 2 VIC, \n");
 			writer.write("John Smith, 'JohnSmith.jpeg, 'student at PLC', M, 12, VIC, \n");
 			writer.write("Mary Hopkin, 'MaryHopkin.jpeg, 'House Worker', F, 38, TAS, \n");
 			writer.write("Alex Turner, 'AlexTurner.jpeg, 'student at LaTrobe', M, 22, VIC, \n");
@@ -392,10 +404,10 @@ public class MiniNet extends Application{
 			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
 
 			writer1.write("Alex Smith, Ben Turner, friend, \n");
-			writer1.write("Ben Turner, Mark Hopkin, couple, \n");
+			writer1.write("Ben Turner, Mary Hopkin, couple, \n");
 			writer1.write("Ben Turner, Mary Turner, parent, \n");
-			writer1.write("Mark Hopkin, Mary Turner, parent, \n");
-			writer1.write("Alex Turner, Mark Hopkin, parent, \n");
+			writer1.write("Mary Hopkin, Mary Turner, parent, \n");
+			writer1.write("Alex Turner, Mary Hopkin, parent, \n");
 			writer1.write("Alex Turner, Ben Turner, parent, \n");
 			writer1.write("Alex Smith, Klay Thomas, couple, \n");
 			writer1.write("Alex Turner, John Smith, friend, \n");

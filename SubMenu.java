@@ -80,7 +80,7 @@ public class SubMenu implements Initializable{
 	public void PersonIdentity(ActionEvent event) throws Exception{
 		
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("Connection.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("DeleteConnection.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
