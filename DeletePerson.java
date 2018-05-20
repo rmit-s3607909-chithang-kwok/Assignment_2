@@ -73,7 +73,7 @@ public class DeletePerson implements Initializable{
 	String GLIST=GenderList.getText();
 	Integer ALIST = Integer.valueOf(AgeList.getText());
 	String STLIST=StateList.getText();
-	String sql = "DELETE FROM people where Name = ? and State = ? and Gender = ? and Age = ? and State = ? ";
+	String sql = "DELETE FROM people where Name = ? and Status = ? and Gender = ? and Age = ? and State = ? ";
 	
 		
 		
@@ -113,8 +113,8 @@ public class DeletePerson implements Initializable{
 	 		
 	 		int i = pst.executeUpdate();
 	 		if (i == 1) {
-	 		    text.setText("Data delete successfully");
-	 		    text.setVisible(true);
+	 		    System.out.println("Data delete successfully");
+	 		    
 	 		}
 	 		 }catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
