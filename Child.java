@@ -6,8 +6,8 @@ import java.util.List;
 public class Child extends Person {
 	//Editted by Wenpeng
 		//This program is to add all the Child relationship. If they have no relation it will throws an exception.
-	public Child(String name, String status, String gender, int age, String state) {
-		super(name, status, gender, age, state);
+	public Child(String Name, String Status, String Gender, int Age, String State) {
+		super(Name, Status, Gender, Age, State);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -54,10 +54,10 @@ public class Connections implements Initializable {
 	    @FXML TextField SecondPeopleName; 
 	    @FXML TextField TheirRelationship;
 
-	    @FXML private TableView<Person> tablePerson;
-		@FXML private TableColumn<Person, String> ColumnName1;
-		@FXML private TableColumn<Person, String> ColumnName2;
-		@FXML private TableColumn<Person, String> ColumnRelationship;
+	    @FXML private TableView<Relation> tableRelation;
+		@FXML private TableColumn<?, ?> ColumnName1;
+		@FXML private TableColumn<?, ?> ColumnName2;
+		@FXML private TableColumn<?, ?> ColumnRelationship;
 	    @FXML Button bt1;
 	    @FXML Button bt2;
 	    @FXML Button bt3;
@@ -69,7 +69,7 @@ public class Connections implements Initializable {
 	    private Connection con = null;
 		private PreparedStatement pst = null;
 		private ResultSet rs = null;
-		private ObservableList<Person> data;
+		private ObservableList<Relation> data;
 		
 		
 			
@@ -88,22 +88,22 @@ public class Connections implements Initializable {
 
 		//Add button clicked
 	    public void addButtonClicked(ActionEvent event)throws Exception{
-	    	String NaList=FirstPeopleName.getText();
-	    	String NbList=SecondPeopleName.getText();
-	    	String RList=TheirRelationship.getText();
+	    	String NALIST=FirstPeopleName.getText();
+	    	String NBLIST=SecondPeopleName.getText();
+	    	String RLIST=TheirRelationship.getText();
 	    
-	    		String sql = "INSERT INTO relation VALUES (NaList,NbList, RList, Values(?,?,?)";
+	    		String sql = "INSERT INTO relation (NALIST,NBLIST, RLIST) VALUES(?,?,?)";
 	    	
 	    	
 	    	
 	    	
 	    	
-	    	Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();		
+	    	//Stage primaryStage = new Stage();
+			//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		//	Scene scene = new Scene(root);
+		//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		//	primaryStage.setScene(scene);
+		//	primaryStage.show();		
 	         
 	        // FileWriter writer = null;
 		 		
@@ -138,15 +138,15 @@ public class Connections implements Initializable {
 		 			 pst = con.prepareStatement(sql);
 		 			 
 		 		 
-		 		pst.setString(1, NaList);
-		 		pst.setString(2, NbList);
-		 		pst.setString(3, RList);
+		 		pst.setString(1, NALIST);
+		 		pst.setString(2, NBLIST);
+		 		pst.setString(3, RLIST);
 		 	
 		 		
 		 		int i = pst.executeUpdate();
 		 		if (i == 1) {
-		 		    text.setText("data insert successfully");
-		 		    text.setVisible(true);
+		 		    System.out.println("data insert successfully");
+		 		   // text.setVisible(true);
 		 		}
 		 		 }catch(SQLException ex) {
 		 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,13 +166,8 @@ public class Connections implements Initializable {
 	    
 	  //Add button clicked
 	    public void deleteButtonClicked(ActionEvent event)throws Exception{
-	    	Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-					
-	         
-	         PrintWriter writer = null;
+	    	
+	      /*   PrintWriter writer = null;
 		 		
 		 		try {
 		 			writer = new PrintWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
@@ -194,7 +189,37 @@ public class Connections implements Initializable {
 		 		writer.close();		
 	         
 		 		primaryStage.setScene(scene);
-				primaryStage.show();
+				primaryStage.show();*/
+	    	/* try {
+		 			
+			 		
+	 			 pst = con.prepareStatement(sql);
+	 			 
+	 		 
+	 		pst.setString(1, NALIST);
+	 		pst.setString(2, NBLIST);
+	 		pst.setString(3, RLIST);
+	 	
+	 		
+	 		int i = pst.executeUpdate();
+	 		if (i == 1) {
+	 		    text.setText("data delete successfully");
+	 		    text.setVisible(true);
+	 		}
+	 		 }catch(SQLException ex) {
+	 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+	 		} catch (Exception e) {
+	 			e.printStackTrace(System.out);
+	 		}
+	 		finally {
+	 		pst.close();
+	            if (con != null) {
+		        text.setText("Database connection successfully");
+		        text.setVisible(true);
+		        }else {
+		        	text.setText("Database Connection Failure");;
+		        }
+	            }*/
 	    }
 
 	   
@@ -216,16 +241,16 @@ public class Connections implements Initializable {
 			// TODO Auto-generated method stub
 			
 			
-		//con = DBConnection.pmartConnection();
-		//data=FXCollections.observableArrayList();
-		//setCellTable();
-		//LoadDataFromDatabase();
+		con = DBConnection.pmartConnection();
+		data=FXCollections.observableArrayList();
+		setCellTable();
+		LoadDataFromDatabase();
 		}
    
 		private void setCellTable() {
-	ColumnName1.setCellValueFactory(new PropertyValueFactory<>("name"));
-	ColumnName2.setCellValueFactory(new PropertyValueFactory<>("name"));
-	ColumnRelationship.setCellValueFactory(new PropertyValueFactory<>("status"));
+	ColumnName1.setCellValueFactory(new PropertyValueFactory<>("Name1"));
+	ColumnName2.setCellValueFactory(new PropertyValueFactory<>("Name2"));
+	ColumnRelationship.setCellValueFactory(new PropertyValueFactory<>("Relationship"));
 	
 	
 }
@@ -236,11 +261,11 @@ private void LoadDataFromDatabase() {
 		rs=pst.executeQuery();
 		while(rs.next())
 		{
-			data.add(new Person(rs.getString(1), rs.getString(2), rs.getString(3)));
+			data.add(new Relation(rs.getString(1), rs.getString(2), rs.getString(3)));
 		}
 	}catch(SQLException ex) {
 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
 		}
-	tablePerson.setItems(data);
+	tableRelation.setItems(data);
 }
 }

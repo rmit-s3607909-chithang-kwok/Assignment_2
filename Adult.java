@@ -6,8 +6,8 @@ import java.util.List;
 public class Adult extends Person {
 	//Editted by Wenpeng
 	//This program is to add all the Adult relationship. If they have no relation it will throws an exception.
-	public Adult(String name, String status, String gender, int age, String state) {
-		super(name, status, gender, age, state);
+	public Adult(String Name, String Status, String Gender, int Age, String State) {
+		super(Name, Status, Gender, Age, State);
 		// TODO Auto-generated constructor stub
 	}
 //where name

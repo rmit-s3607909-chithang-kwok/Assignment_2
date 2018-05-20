@@ -14,65 +14,61 @@ public class Person {
 	public class NoSuchAgeException extends Exception{}
 	
 	static ArrayList<Person> profile = new ArrayList<Person>();
-	int age;
-	String name;
-	Image file;
-	String gender;
-	String status;
-	String state;
+	int Age;
+	String Name;
+	Image File;
+	String Gender;
+	String Status;
+	String State;
 	
 	
-	public Person(String name, String status, String gender, int age, String state) {
+	public Person(String Name, String Status, String Gender, int Age, String State) {
 		//super();
-		this.age = age;
-		this.name = name;
+		this.Age = Age;
+		this.Name = Name;
 		//this.file = file;
-		this.gender = gender;
-		this.status = status;
-		this.state = state;
+		this.Gender = Gender;
+		this.Status = Status;
+		this.State = State;
 	}	
-	public Person(String name1, String name2, String relation) {
-		this.name=name1;
-		this.name=name2;
-		this.status=relation;
-	}
+	
 	
 	
 	public int getAge() {
-		return age;
+		return Age;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setAge(int Age) {
+		this.Age = Age;
 	}
 	public String getName() {
-		return name;
+		return Name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String Name) {
+		this.Name = Name;
 	}
 	public Image getFile() {
-		return file;
+		return File;
 	}
 	public void setFile(Image file) {
-		this.file = file;
+		this.File = File;
 	}
 	public String getGender() {
-		return gender;
+		return Gender;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGender(String Gender) {
+		this.Gender = Gender;
 	}
 	public String getStatus() {
-		return status;
+		return Status;
 	}
 	public void setStatus(String status) {
-		this.status = status;
+		this.Status = Status;
 	}
 	public String getState() {
-		return state;
+		return State;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setState(String State) {
+		this.State = State;
 	}
 	
 
@@ -82,60 +78,60 @@ public class Person {
 		Scanner sc1 = new Scanner (System.in);
 		
 		System.out.println("Name: ");
-		name = sc1.nextLine();
+		Name = sc1.nextLine();
 		System.out.println("Gender: ");
-		gender = sc1.nextLine();
+		Gender = sc1.nextLine();
 		System.out.println("Age: ");
-		age = sc1.nextInt();
+		Age = sc1.nextInt();
 //		System.out.println("Field:");
 //		file = sc1.nextLine();
 		System.out.println("Status: ");
-		status = sc1.nextLine();
+		Status = sc1.nextLine();
 	System.out.println("State:");
-		state = sc1.nextLine();
+		State = sc1.nextLine();
 		
 		
 		
 		
-		if (age >= 0 && age <=2) {
-			YoungChild y = new YoungChild(name, status, gender, age, state);
+		if (Age >= 0 && Age <=2) {
+			YoungChild y = new YoungChild(Name, Status, Gender, Age, State);
 			System.out.println("You have added this person as YoungChild");
 				
-			y.setAge(age);
+			y.setAge(Age);
 		//	y.setFile(file);
-			y.setName(name);
-			y.setGender(gender);
-			y.setStatus(status);
-			y.setState(state);
+			y.setName(Name);
+			y.setGender(Gender);
+			y.setStatus(Status);
+			y.setState(State);
 			
 			profile.add(y);
 				
 		}
 		
-		else if (age <= 16 && age > 2) {
-			Child c = new Child(name, status, gender, age, state);
+		else if (Age <= 16 && Age > 2) {
+			Child c = new Child(Name, Status, Gender, Age, State);
 			System.out.println("You have added this person as Child");
 				
-			c.setAge(age);
+			c.setAge(Age);
 		//	c.setFile(file);
-			c.setName(name);
-			c.setGender(gender);
-			c.setStatus(status);
-			c.setState(state);
+			c.setName(Name);
+			c.setGender(Gender);
+			c.setStatus(Status);
+			c.setState(State);
 			
 			profile.add(c);
 		}
 		
-		else if (age > 16) {
-			Adult a = new Adult(name, status, gender, age, state);
+		else if (Age > 16) {
+			Adult a = new Adult(Name, Status, Gender, Age, State);
 			System.out.println("You have added this person as Adult");
 				
-			a.setAge(age);
+			a.setAge(Age);
 		//	a.setFile(file);
-			a.setName(name);
-			a.setGender(gender);
-			a.setStatus(status);
-			a.setState(state);
+			a.setName(Name);
+			a.setGender(Gender);
+			a.setStatus(Status);
+			a.setState(State);
 				
 			profile.add(a);
 		}

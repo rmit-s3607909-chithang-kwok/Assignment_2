@@ -14,11 +14,11 @@ public class InsertData {
             con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/testdb", "SA", "");
             stmt = con.createStatement();
             
-            //result = stmt.executeUpdate("INSERT INTO people VALUES ('Klay Thomas','House Worker', 'F', 33, 'NSW')");// A replace.(person.profile.getName())
+            //result = stmt.executeUpdate("INSERT INTO people VALUES ('Klay Thomas','House Worker', 'F', 33, 'NSW')");
             result = stmt.executeUpdate("INSERT INTO relation VALUES ('John Smith','Hannah White', 'classmate')");
             con.commit();																		                     // where name = person.profile.getName()
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            e.printStackTrace(System.out);																				// A replace.(person.profile.getName())
         }
         System.out.println(result + " rows effected");
         System.out.println("Rows inserted successfully");

@@ -42,6 +42,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.sql.Connection;
@@ -68,11 +69,11 @@ public class AddingPerson implements Initializable{
 	@FXML private Button bt2;
 	
 	@FXML private TableView<Person> tablePerson;
-	@FXML private TableColumn<Person, String> ColumnName;
-	@FXML private TableColumn<Person, String> ColumnStatus;
-	@FXML private TableColumn<Person, String> ColumnGender;
-	@FXML private TableColumn<Person, Integer> ColumnAge;
-	@FXML private TableColumn<Person, String> ColumnState;
+	@FXML private TableColumn<?, ?> ColumnName;
+	@FXML private TableColumn<?, ?> ColumnStatus;
+	@FXML private TableColumn<?, ?> ColumnGender;
+	@FXML private TableColumn<?, ?> ColumnAge;
+	@FXML private TableColumn<?, ?> ColumnState;
 	
 	
 	private Connection con = null;
@@ -80,21 +81,21 @@ public class AddingPerson implements Initializable{
 	private ResultSet rs = null;
 	private ObservableList<Person> data;
 	
-	public void Add(ActionEvent event) throws Exception {
+	@FXML public void Add(ActionEvent event) throws SQLException {
 
-	String NList=NameList.getText();
-	String SList=StatusList.getText();
-	String GList=GenderList.getText();
-	Integer AList = Integer.valueOf(AgeList.getText());
-	String StList=StateList.getText();
-		String sql = "INSERT INTO people VALUES (NList,SList, GList, AList, StList), Values(?,?,?,?,?)";
+	String NLIST=NameList.getText();
+	String SLIST=StatusList.getText();
+	String GLIST=GenderList.getText();
+	Integer ALIST = Integer.valueOf(AgeList.getText());
+	String STLIST=StateList.getText();
+		String sql = "INSERT INTO people (NLIST,SLIST, GLIST, ALIST, STLIST)  VALUES (?, ?, ?, ?, ?)";
 		
-		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		//Stage primaryStage = new Stage();
+		//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
+		//Scene scene = new Scene(root);
+	//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	//	primaryStage.setScene(scene);
+	//	primaryStage.show();
 		
 		 
 	 		/*FileWriter writer = null;
@@ -124,16 +125,16 @@ public class AddingPerson implements Initializable{
 	 			 pst = con.prepareStatement(sql);
 	 			 
 	 		 
-	 		pst.setString(1, NList);
-	 		pst.setString(2, SList);
-	 		pst.setString(3, GList);
-	 		pst.setInt(4, AList);
-	 		pst.setString(5, StList);
+	 		pst.setString(1, NLIST);
+	 		pst.setString(2, SLIST);
+	 		pst.setString(3, GLIST);
+	 		pst.setInt(4, ALIST);
+	 		pst.setString(5, STLIST);
 	 		
 	 		int i = pst.executeUpdate();
 	 		if (i == 1) {
-	 		    text.setText("data insert successfully");
-	 		    text.setVisible(true);
+	 		    System.out.println("data insert successfully");
+	 		    
 	 		}
 	 		 }catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
@@ -179,11 +180,11 @@ public class AddingPerson implements Initializable{
 	}
        
 	private void setCellTable() {
-		ColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-		ColumnStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-		ColumnGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-		ColumnAge.setCellValueFactory(new PropertyValueFactory<>("age"));
-		ColumnState.setCellValueFactory(new PropertyValueFactory<>("state"));
+		ColumnName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+		ColumnStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+		ColumnGender.setCellValueFactory(new PropertyValueFactory<>("Gender"));
+		ColumnAge.setCellValueFactory(new PropertyValueFactory<>("Age"));
+		ColumnState.setCellValueFactory(new PropertyValueFactory<>("State"));
 		
 	}
 	private void LoadDataFromDatabase() {

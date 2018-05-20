@@ -29,7 +29,7 @@ public class UpdateData{
     				"SELECT * FROM relation");
 				
             //while(output.next()){
-              //  System.out.println(output.getString("name")+" | "+output.getString("status")+" | "+output.getString("gender")+"|"+output.getInt("Age")+" | "+output.getString("state"));
+              //  System.out.println(output.getString("Name")+" | "+output.getString("Status")+" | "+output.getString("Gender")+"|"+output.getInt("Age")+" | "+output.getString("State"));
                // }	
             while(output.next()){
                 System.out.println(output.getString("Name1")+" | "+output.getString("Name2")+" | "+output.getString("Relationship"));
