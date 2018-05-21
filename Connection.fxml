@@ -17,7 +17,7 @@
    <children>
       <Button fx:id="bt1" layoutX="114.0" layoutY="347.0" mnemonicParsing="false" onAction="#addButtonClicked" text="Add" />
       <Button fx:id="bt2" layoutX="464.0" layoutY="347.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back" />
-      <Label layoutX="227.0" layoutY="14.0" text="Connections">
+      <Label layoutX="98.0" layoutY="14.0" text="Please choose the relation that you wanna add?">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

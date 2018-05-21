@@ -58,7 +58,7 @@ public class SubMenu implements Initializable{
 	public void SelectPerson(ActionEvent event) throws Exception{
 		
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("SelectPerson.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("DeletePerson.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
@@ -69,7 +69,7 @@ public class SubMenu implements Initializable{
 	public void PersonConnect(ActionEvent event) throws Exception{
 		
 		Stage primaryStage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("ConnectPerson.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Connection.fxml"));
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);

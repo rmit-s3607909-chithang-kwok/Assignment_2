@@ -16,7 +16,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Identify">
    <children>
       <Button fx:id="bt2" layoutX="464.0" layoutY="347.0" mnemonicParsing="false" onAction="#BackToPreviousMenu" text="Back" />
-      <Label layoutX="227.0" layoutY="14.0" text="Connections">
+      <Label layoutX="81.0" layoutY="14.0" text="Please choose the relationship that you wanna break apart.">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

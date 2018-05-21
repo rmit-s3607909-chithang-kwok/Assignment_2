@@ -78,26 +78,6 @@ public class DeletePerson implements Initializable{
 		
 		
 		 
-	 		/*FileWriter writer = null;
-	 		try {
-	 			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt", true);
-	 			BufferedWriter bwriter = new BufferedWriter(writer);
-	 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
-	 			//appending the file
-	 			
-	 		} catch (FileNotFoundException e) {
-	 			System.err.println("File cannot be created, or cannot be opened");
-	 			System.exit(0);
-	 		}
-	 		
-	 		writer.append(NameList.getText() + " , ");
-	 		writer.append(StatusList.getText() + " , ");
-	 		writer.append(GenderList.getText()+ " , ");
-	 		writer.append(AgeList.getText() + " , ");
-	 		writer.append(StateList.getText() + " . ");
-	 		
-	 		
-	 		writer.close();*/
 	 		
 	 		 try {
 	 			

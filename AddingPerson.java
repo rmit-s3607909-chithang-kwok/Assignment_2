@@ -109,9 +109,11 @@ public class AddingPerson implements Initializable{
  			if (i == 1) {
 	 		  System.out.println("data insert successfully");
  			}else if (ALIST < 0 || ALIST > 150) throw new NoSuchAgeException();
- 			System.err.println("Please dont put Age less than zero or greater than 150.");
- 			System.err.println("Please remove it from the Table.");
- 			
+ 				
+ 			}catch (NoSuchAgeException e1) {
+ 				System.err.println("Please dont put Age less than zero or greater than 150.");
+	 			System.err.println("Please remove it from the Table.");
+ 	 			e1.printStackTrace(System.out);
  			
 	 		}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);

@@ -45,6 +45,13 @@ public class Identify implements Initializable{
 	    @FXML Button bt3;
 	 
 	    @FXML Text text;
+	    
+	    public class NoParentException extends Exception{}
+	    public class NoParentException2 extends Exception{}
+	    public class NoParentException3 extends Exception{}
+		public class NotToBeFriendsException extends Exception{}
+		public class TooYoungException extends Exception{}
+		public class NotToBeClassmateException extends Exception{}
 		
 	    //connect to the database and then set Text from invisible	
 	    
@@ -81,36 +88,7 @@ public class Identify implements Initializable{
 	    	
 	    	
 	    	
-	    	
-	    	//Stage primaryStage = new Stage();
-			//Parent root = FXMLLoader.load(getClass().getResource("SubMenu.fxml"));
-		//	Scene scene = new Scene(root);
-		//	scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		//	primaryStage.setScene(scene);
-		//	primaryStage.show();		
-	         
-	        // FileWriter writer = null;
-		 		
-		 		//try {
-		 			
-		 			
-		 			//writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt", true);
-		 			//BufferedWriter bwriter = new BufferedWriter(writer);
-		 			
-		 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
-		 			//appending the file
-		 			
-		 		//} catch (FileNotFoundException e) {
-		 		//	System.err.println("File cannot be created, or cannot be opened");
-		 		//	System.exit(0);
-		 		//}
-		 		
-		 		//writer.write(FirstPeopleName.getText() + " , ");
-		 		//writer.write(SecondPeopleName.getText() + " , " );
-	    		//	writer.write(TheirRelationship.getText() + " . ");
-		 		
-		 		
-		 		//writer.close();	
+	    
 		 		
 				
 				 try {
@@ -127,13 +105,25 @@ public class Identify implements Initializable{
 		 		int i = pst.executeUpdate();
 		 		if (i == 1) {
 		 		    System.out.println("data delete successfully");
-		 		   // text.setVisible(true);
+		 		}else if ((NALIST.equals("Mary Turner")&&!(NBLIST.equals("Ben Turner"))&&(RLIST.equals("parent")))||(NALIST.equals("Mary Turner")&&!(NBLIST.equals("Mary Hopkin"))&&(RLIST.equals("parent"))))
+		 		{throw new NoParentException();
+		 		}else if ((NALIST.equals("Alex Turner")&&!(NBLIST.equals("Ben Turner"))&&(RLIST.equals("parent")))||(NALIST.equals("Alex Turner")&&!(NBLIST.equals("Mary Hopkin"))&&(RLIST.equals("parent"))))
+		 		{throw new NoParentException2();
+		 		}else if ((!(NALIST.equals("Alex Smith"))&&NBLIST.equals("John Smith")&&(RLIST.equals("parent")))||(NALIST.equals("John Smith"))&&!(NBLIST.equals("Klay Thomas"))&&(RLIST.equals("parent")))
+		 		{throw new NoParentException3();
 		 		}
+				 }catch (NoParentException eh) {
+			 			System.err.println("Mary Turner have parents name Ben Turner and Mary Hopkin respectively. Other person she just cannot accept it.");
+				 }catch (NoParentException2 ek) {
+				 			System.err.println("Alex Turner have parents name Ben Turner and Mary Hopkin respectively. Other person he just cannot accept it.");
+				 }catch (NoParentException3 ep) {
+					 			System.err.println("John Smith have parents name Alex Smith and Klay Thomas respectively. Other person he just cannot accept it.");
 		 		 }catch(SQLException ex) {
 		 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
 		 		} catch (Exception e) {
 		 			e.printStackTrace(System.out);
 		 		}
+		 		
 		 		finally {
 		 		pst.close();
 		            if (con != null) {
@@ -143,43 +133,9 @@ public class Identify implements Initializable{
 			        	text.setText("Database Connection Failure");;
 			        }
 		            }
-	      /*   PrintWriter writer = null;
-		 		
-		 		try {
-		 			writer = new PrintWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt");
-		 			BufferedWriter bwriter = new BufferedWriter(writer);
-		 			
-		 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
-		 			//appending the file
-		 			
-		 		} catch (FileNotFoundException e) {
-		 			System.err.println("File cannot be created, or cannot be opened");
-		 			System.exit(0);
-		 		}
-		 		
-		 		writer.write(FirstPeopleName.getText() + "   ");
-		 		writer.write(SecondPeopleName.getText() + "   " );
-		 		writer.write(TheirRelationship.getText() + " ");
-		 		
-		 		
-		 		writer.close();		
-	         
-		 		primaryStage.setScene(scene);
-				primaryStage.show();*/
+	     
 	    	
 	    }
-
-	   
-
-	   
-	  
-			
-		
-
-
-
-
-
 
 
 

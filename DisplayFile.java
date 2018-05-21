@@ -35,6 +35,7 @@ public class DisplayFile implements Initializable{
 	//Editted by Chit Hang Kwok
 	//This program is to open the txt file and see the peoples details or relationship between them plus
 	// the photo for each people.
+	//I have set the default location into Desktop\\AllPersonFile. Please get the file document on there.
 	@FXML private Button bt1;
 	
 	@FXML private Button bt2;
@@ -49,7 +50,7 @@ public class DisplayFile implements Initializable{
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
+		//fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt"));
 		File selectFile = fc.showOpenDialog(null);
 		
@@ -72,7 +73,7 @@ public class DisplayFile implements Initializable{
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("FileChooser.fxml"));
 		FileChooser fc = new FileChooser();
-		fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
+		//fc.setInitialDirectory(new File("C:\\Users\\PC\\Desktop\\AllPersonFile"));
 		fc.getExtensionFilters().addAll(new ExtensionFilter("txt files", "*.txt", "image file", "*.jpg*"));
 		List<File> selectFiles = fc.showOpenMultipleDialog(null);
 		
