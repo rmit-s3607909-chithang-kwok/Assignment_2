@@ -5,8 +5,8 @@ import java.util.List;
 public class YoungChild extends Person {
 	//Editted by Wenpeng
 		//This program is to add all the YoungChild relationship. If they have no relation it will throws an exception.
-	public YoungChild(String name, String gender, String status, int age, String state) {
-		super(name, status, gender, age, state);
+	public YoungChild(String Name, String Gender, String Status, int Age, String State) {
+		super(Name, Status, Gender, Age, State);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -44,7 +44,7 @@ public class YoungChild extends Person {
 				System.out.println("They are not family");
 			}
 		}catch(NoParentException e){
-			System.out.println("No parents");
+			System.err.println("No parents");
 		}
 		
 	}

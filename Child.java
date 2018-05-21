@@ -45,9 +45,9 @@ public class Child extends Person {
 			}
 			
 		}catch (NotToBeFriendsException e) {
-			System.out.println("Cannot make friends with an adult or child with an age gap larger than 3");
+			System.err.println("Cannot make friends with an adult or child with an age gap larger than 3");
 		}catch (TooYoungException e) {
-			System.out.println("Cannot make friends with a young child");
+			System.err.println("Cannot make friends with a young child");
 		}
 	}
 	

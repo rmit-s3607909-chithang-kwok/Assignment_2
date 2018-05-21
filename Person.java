@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 
 
-public class Person {
+public class Person{
 	//Editted by Wenpeng
 	// This program is to define the Person Class and inherit to all subclass.
 	public class NoSuchAgeException extends Exception{}
@@ -23,7 +23,7 @@ public class Person {
 	
 	
 	public Person(String Name, String Status, String Gender, int Age, String State) {
-		//super();
+		
 		this.Age = Age;
 		this.Name = Name;
 		//this.file = file;
@@ -31,6 +31,8 @@ public class Person {
 		this.Status = Status;
 		this.State = State;
 	}	
+	
+	
 	
 	
 	
@@ -134,7 +136,12 @@ public class Person {
 			a.setState(State);
 				
 			profile.add(a);
-		}
+		}else if (Age < 0 || Age > 150)
+			try {
+				throw new NoSuchAgeException();
+			} catch (NoSuchAgeException e) {
+				System.err.println("Please dont put Age less than zero or More than 150.");
+			}
 	}
 	
 	public String toString() {

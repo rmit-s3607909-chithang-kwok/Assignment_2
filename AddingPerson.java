@@ -21,8 +21,6 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,8 +60,8 @@ public class AddingPerson implements Initializable{
 	@FXML private TextField AgeList;
 	@FXML private TextField StateList;
 	
+	public class NoSuchAgeException extends Exception{}
 	
-
 	@FXML Text text;
 	@FXML private Button bt1;
 	@FXML private Button bt2;
@@ -83,7 +81,7 @@ public class AddingPerson implements Initializable{
 	
 	
 	
-	@FXML public void Add(ActionEvent event) throws Exception {
+	@FXML public void Add(ActionEvent event) throws Exception, NoSuchAgeException {
 
 	String NLIST=NameList.getText();
 	String SLIST=StatusList.getText();
@@ -92,26 +90,7 @@ public class AddingPerson implements Initializable{
 	String STLIST=StateList.getText();
 		String sql = "INSERT INTO people(Name, Status , Gender, Age, State) VALUES (?,?,?,?,?)";
 		
-	 		/*FileWriter writer = null;
-	 		try {
-	 			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt", true);
-	 			BufferedWriter bwriter = new BufferedWriter(writer);
-	 			//writer = new PrintWriter(new FileOutputStream("output.txt", true));
-	 			//appending the file
-	 			
-	 		} catch (FileNotFoundException e) {
-	 			System.err.println("File cannot be created, or cannot be opened");
-	 			System.exit(0);
-	 		}
-	 		
-	 		writer.append(NameList.getText() + " , ");
-	 		writer.append(StatusList.getText() + " , ");
-	 		writer.append(GenderList.getText()+ " , ");
-	 		writer.append(AgeList.getText() + " , ");
-	 		writer.append(StateList.getText() + " . ");
-	 		
-	 		
-	 		writer.close();*/
+	 	
 	 		
 	 		 try {
 	 			
@@ -126,16 +105,24 @@ public class AddingPerson implements Initializable{
 	 		pst.setString(5, STLIST);
 	 		
 	 		int i = pst.executeUpdate();
-	 		if (i == 1) {
+	 		
+ 			if (i == 1) {
 	 		  System.out.println("data insert successfully");
-	 		    
-	 		}
-	 		 }catch(SQLException ex) {
+ 			}else if (ALIST < 0 || ALIST > 150) throw new NoSuchAgeException();
+ 			System.err.println("Please dont put Age less than zero or greater than 150.");
+ 			System.err.println("Please remove it from the Table.");
+ 			
+ 			
+	 		}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
-	 		} catch (Exception e) {
+	 		}catch (Exception e) {
 	 			e.printStackTrace(System.out);
+	 		
 	 		}
+	 		
+	 		
 	 		finally {
+	 		
 	 		pst.close();
 	            if (con != null) {
 		        text.setText("Database connection successfully");

@@ -45,9 +45,9 @@ public class Adult extends Person {
 				
 			}
 		}catch (NotToBeFriendsException e){
-			System.out.println("Cannot make friends with a child ");
+			System.err.println("Cannot make friends with a child ");
 		}catch (TooYoungException e) {
-			System.out.println("Cannot make friends with a young child");
+			System.err.println("Cannot make friends with a young child");
 		}
 	
 	}
@@ -70,9 +70,9 @@ public class Adult extends Person {
 				}						
 			}
 		}catch(NoAvailableException e) {
-			System.out.println("Has been coupled with others");
+			System.err.println("Has been coupled with others");
 		}catch(NotToBeCoupledException e) {
-			System.out.println("Not an Adult");
+			System.err.println("Not an Adult");
 		}
 			
 	}
@@ -91,7 +91,7 @@ public class Adult extends Person {
 				}
 			}
 		}catch (NotToBeColleagueException e) {
-			System.out.println("Cannot connect a child or young child in a colleague relation");
+			System.err.println("Cannot connect a child or young child in a colleague relation");
 		}	
 	}
 	
@@ -153,7 +153,7 @@ public class Adult extends Person {
 				}
 			}
 		}catch (NotToBeClassmateException e) {
-			System.out.println("Cannot connect a young child in a classmate relation");
+			System.err.println("Cannot connect a young child in a classmate relation");
 		}
 	}
 	
