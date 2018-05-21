@@ -1,15 +1,7 @@
 
 import java.awt.Desktop;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,18 +23,22 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.FileChooser.ExtensionFilter;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Dialog;
 import java.sql.Connection;
 
 public class AddingPerson implements Initializable{
@@ -107,14 +103,19 @@ public class AddingPerson implements Initializable{
 	 		int i = pst.executeUpdate();
 	 		
  			if (i == 1) {
-	 		  System.out.println("data insert successfully");
- 			}else if (ALIST < 0 || ALIST > 150) throw new NoSuchAgeException();
- 				
- 			}catch (NoSuchAgeException e1) {
- 				System.err.println("Please dont put Age less than zero or greater than 150.");
-	 			System.err.println("Please remove it from the Table.");
- 	 			e1.printStackTrace(System.out);
- 			
+	 		  //System.out.println("data insert successfully");
+ 					Alert alert = new Alert(AlertType.INFORMATION, "data insert successfully", ButtonType.OK);
+	 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+	 				alert.show();
+	 			try { 
+	 					if (ALIST < 0 || ALIST > 150) throw new NoSuchAgeException();
+ 						Alert alert1 = new Alert(AlertType.INFORMATION, "Please dont put Age less than zero or greater than 150. Please remove it asap.", ButtonType.OK);
+		 				alert1.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+		 				alert1.show();
+	 		 }catch(NoSuchAgeException eq) {
+	 			eq.printStackTrace(System.out);
+	 		 }
+ 			}
 	 		}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
 	 		}catch (Exception e) {
