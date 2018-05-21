@@ -47,7 +47,7 @@ import java.sql.Connection;
 
 public class AddingPerson implements Initializable{
 	//Editted by Chit Hang Kwok
-	//This program is to add the peoples information to the txt file.
+	//This program is to add the peoples information to the sql database.
 	@FXML private Label NameL;
 	@FXML private Label StatusL;
 	@FXML private Label GenderL;

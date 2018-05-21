@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 
 
 public class Person{
-	//Editted by Wenpeng
+	//Editted by Chit Hang Kwok
 	// This program is to define the Person Class and inherit to all subclass. Name in this cases is the primary key for Relation.
 	public class NoSuchAgeException extends Exception{}
 	

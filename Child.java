@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public class Child extends Person {
-	//Editted by Wenpeng
+	//Editted by Chit Hang Kwok
 		//This program is to add all the Child relationship. If they have no relation it will throws an exception.
 	public Child(String Name, String Status, String Gender, int Age, String State) {
 		super(Name, Status, Gender, Age, State);

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YoungChild extends Person {
-	//Editted by Wenpeng
+	//Editted by Chit Hang Kwok
 		//This program is to add all the YoungChild relationship. If they have no relation it will throws an exception.
 	public YoungChild(String Name, String Gender, String Status, int Age, String State) {
 		super(Name, Status, Gender, Age, State);

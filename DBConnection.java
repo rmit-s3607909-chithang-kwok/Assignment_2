@@ -5,7 +5,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBConnection {
-
+//Edit by Chit Hang Kwok
+//This program is to conect the database to the java program
 	public static Connection pmartConnection() {
 		// TODO Auto-generated constructor stub
 		Connection con = null;

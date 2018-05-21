@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 
 public class DeletePerson implements Initializable{
 	//Editted by Chit Hang Kwok
-	//This program is to delete the peoples information from the txt file.
+	//This program is to delete the peoples information from the sql database.
 
 	@FXML private Label NameL;
 	@FXML private Label StatusL;
