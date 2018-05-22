@@ -14,7 +14,8 @@ public class YoungChild extends Person {
 	List<Adult> parentslist = new ArrayList<Adult>();
 	public class NoParentException extends Exception{}
 
-	public void connectparents(Object obj) {
+	//This method is to identify the parent of the Children. They can only add two parent on the list.
+	public void parents(Object obj) {
 		if (this.parentslist.size() == 2) {
 			System.out.println("Fail to add parents");
 		}
@@ -28,12 +29,13 @@ public class YoungChild extends Person {
 		}
 	}
 	
+	//This method is to identify the relationship of the parent categories.
 	public void identify(Object obj) throws Exception{
 		try {
-			if (this.parentslist.size() < 2) {   //No parents or only one parent
+			if (this.parentslist.size() < 2) { 
 				throw new NoParentException();
 			}
-			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { // Parents are not couple
+			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { 
 				throw new NoParentException();
 			}
 			if (this.parentslist.contains(obj)) {

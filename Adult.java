@@ -10,13 +10,13 @@ public class Adult extends Person {
 		super(Name, Status, Gender, Age, State);
 		// TODO Auto-generated constructor stub
 	}
-//where name
+//Define the categories of each relation when you compare two person in the relation list.
 	List<Adult> friendslist = new ArrayList<Adult>();
 	List<Adult> couplelist = new ArrayList<Adult>();
 	List<Adult> colleaguelist = new ArrayList<Adult>();
 	List<Adult> parentslist = new ArrayList<Adult>();
-	List<Person> childrenlist = new ArrayList<Person>();
 	List<Person> classmatelist = new ArrayList<Person>();
+	List<Person> childrenlist = new ArrayList<Person>();
 	
 	public class TooYoungException extends Exception{}
 	public class NotToBeFriendsException extends Exception{}
@@ -26,22 +26,22 @@ public class Adult extends Person {
 	public class NotToBeClassmateException extends Exception{}
 
 
-	
-	public void connectfriends(Object obj) throws Exception{
+	//This method is to identify friend define by Age of two person.If they are not the same group type them throws an Exception
+	public void friend(Object obj) throws Exception{
 		try {
 			if (obj instanceof Adult) {
 				Adult a = (Adult) obj;
-				this.friendslist.add(a); 			//add friends
+				this.friendslist.add(a); 			
 				System.out.println("You add friends");
 				if (!(a.friendslist.contains(this))) {
-					a.friendslist.add(this);		//add back
+					a.friendslist.add(this);		
 				}					
 			} 
 			if (obj instanceof Child) {
-				throw new NotToBeFriendsException(); 
+				throw new NotToBeFriendsException(); //Children cannot be friend with Adult
 			}
 			if (obj instanceof YoungChild) {
-				throw new TooYoungException(); //age
+				throw new TooYoungException(); //Young Children cannot talk therefore they cannot have friends.
 				
 			}
 		}catch (NotToBeFriendsException e){
@@ -51,22 +51,22 @@ public class Adult extends Person {
 		}
 	
 	}
-	
-	public void connectcouple(Object obj) throws Exception{
+	//This method is to identify two person relationship in couple. If one have got marry another cannot be couple again.
+	public void couple(Object obj) throws Exception{
 		try {
 			if (!(obj instanceof Adult)) {
-				throw new NotToBeCoupledException();
+				throw new NotToBeCoupledException();//Child and YougChild cannot get married.
 			}
 			
 			Adult a = (Adult) obj;
 			if (this.couplelist.size() == 1 || a.couplelist.size() == 1) {
-				throw new NoAvailableException();
+				throw new NoAvailableException();    //They have got married before so cannot get married again except divorce.
 			}
 			else {
 				this.couplelist.add(a);
 				System.out.println("You add couple");
 				if (!(a.couplelist.contains(this))) {
-					a.couplelist.add(this);				//add back
+					a.couplelist.add(this);				
 				}						
 			}
 		}catch(NoAvailableException e) {
@@ -76,18 +76,18 @@ public class Adult extends Person {
 		}
 			
 	}
-	
-	public void connectcolleague(Object obj) throws Exception{
+	//This method is to define the colleague relationship between two people if they are working together and they are over 16.
+	public void colleague(Object obj) throws Exception{
 		try {
 			if (!(obj instanceof Adult)) {
-				throw new NotToBeColleagueException();
+				throw new NotToBeColleagueException();//Child and youngchild cannot be colleague because they are too young.
 			}
 			else {
 				Adult a = (Adult) obj;
 				this.colleaguelist.add(a);
 				System.out.println("You add colleagues");
 				if (!(a.colleaguelist.contains(this))) {
-					a.colleaguelist.add(this);						//add back
+					a.colleaguelist.add(this);						
 				}
 			}
 		}catch (NotToBeColleagueException e) {
@@ -95,7 +95,8 @@ public class Adult extends Person {
 		}	
 	}
 	
-	public void connectparents(Object obj) {
+	//This method define the parent relationship if they have more than two parent it is not allowed.
+	public void parents(Object obj) {
 		if (this.parentslist.size() == 2) {
 			System.out.println("Fail to add parents");
 		}
@@ -108,14 +109,14 @@ public class Adult extends Person {
 				}
 		}
 	}
-	
-	public void connectchildren(Object obj) {
+	//This method define the children relation only when they are child and YoungChild
+	public void children(Object obj) {
 		if (obj instanceof YoungChild) {
 			YoungChild y = (YoungChild) obj;
 			this.childrenlist.add(y);
 			System.out.println("You add children");
 			if (!(y.parentslist.contains(this))) {
-				y.parentslist.add(this);					//add back
+				y.parentslist.add(this);					
 			}
 		}
 		if (obj instanceof Child) {
@@ -130,8 +131,8 @@ public class Adult extends Person {
 			System.out.println(" You cannot add adult as your children");
 		}
 	}
-	
-	public void connectclassmates(Object obj) throws Exception{
+	//This method define the classmate relationship if they are YoungChild they cannot be classmate.
+	public void classmates(Object obj) throws Exception{
 		try {
 			if (obj instanceof YoungChild) {
 				throw new NotToBeClassmateException();
@@ -156,9 +157,9 @@ public class Adult extends Person {
 			System.err.println("Cannot connect a young child in a classmate relation");
 		}
 	}
-	
+	//This method is to put two person in parent, colleague, classmate, children, friend and couple relationship.
 	public void identify(Object obj) {
-		if (this.friendslist.contains(obj)) { // identify friends
+		if (this.friendslist.contains(obj)) {
 			Child c = (Child) obj;
 			System.out.println(c.getName() + " " + this.getName() + " friends");
 		}
@@ -166,7 +167,7 @@ public class Adult extends Person {
 			System.out.println("They are not friends");
 		}
 		
-		if (this.classmatelist.contains(obj)) { // identify classmates
+		if (this.classmatelist.contains(obj)) {
 			Person p = (Person) obj;
 			System.out.println(p.getName() + " " + this.getName() + " classmates");
 		}
@@ -174,12 +175,12 @@ public class Adult extends Person {
 			System.out.println("They are not classmates");
 		}
 		
-		if (this.parentslist.contains(obj)) {	// identify parents
+		if (this.parentslist.contains(obj)) {
 			Adult a = (Adult) obj;
 			System.out.println(a.getName() + " " + this.getName() + " parents");
 		}else 
 		
-		if (this.couplelist.contains(obj)) {	//identify couple
+		if (this.couplelist.contains(obj)) {
 			Adult a = (Adult) obj;
 			System.out.println(a.getName() + " " + this.getName() + " couple");
 		} 
@@ -187,7 +188,7 @@ public class Adult extends Person {
 			System.out.println("They are not couple");
 		}
 		
-		if (this.colleaguelist.contains(obj)) {  	//identify colleagues
+		if (this.colleaguelist.contains(obj)) { 
 			Adult a = (Adult) obj;
 			System.out.println(a.getName() + " " + this.getName() + " colleagues");
 		}
@@ -195,7 +196,7 @@ public class Adult extends Person {
 			System.out.println("They are not colleagues");
 		}
 		
-		if (this.childrenlist.contains(obj)) { 		// identify children
+		if (this.childrenlist.contains(obj)) { 
 			Person p = (Person) obj;
 			System.out.println(p.getName() + " " + this.getName() + " child");
 		}

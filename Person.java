@@ -74,23 +74,12 @@ public class Person{
 	}
 	
 
-	
-	public void addperson() {
+	// This method is to identify the relationship of Person. If they are 0 - 2 years Old They are YoungChild. For 
+	// 3-16 years old they are Child. And 16-149 years old they are Adult. Age below zero or more than 150 consider to be 
+	// a monster. So Throws An Exception.
+	public void personidentification() {
 		
-		Scanner sc1 = new Scanner (System.in);
 		
-		System.out.println("Name: ");
-		Name = sc1.nextLine();
-		System.out.println("Gender: ");
-		Gender = sc1.nextLine();
-		System.out.println("Age: ");
-		Age = sc1.nextInt();
-//		System.out.println("Field:");
-//		file = sc1.nextLine();
-		System.out.println("Status: ");
-		Status = sc1.nextLine();
-	System.out.println("State:");
-		State = sc1.nextLine();
 		
 		
 		

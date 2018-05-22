@@ -20,8 +20,8 @@ public class Child extends Person {
 	public class TooYoungException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 	
-	
-	public void connectfriends(Object obj) throws Exception{
+	// This method is to make a friend relationship for Child only. Adult and Child are not allowed to be friend.
+	public void friends(Object obj) throws Exception{
 		try {
 			if (obj instanceof Adult) {
 				throw new NotToBeFriendsException();
@@ -51,7 +51,8 @@ public class Child extends Person {
 		}
 	}
 	
-	public void connectparents(Object obj) {	
+	//This method is to identify the parent relationship between Children and Adult.
+	public void parents(Object obj) {	
 		if (this.parentslist.size() == 2) {
 			System.out.println("Fail to add parents");
 		}
@@ -65,7 +66,8 @@ public class Child extends Person {
 		}
 	}
 	
-	public void connectclassmates(Object obj) throws Exception{
+	//This method explained only Children (3-16) can be classmate. YoungChild cannot talk so they can't go to school.
+	public void classmates(Object obj) throws Exception{
 		try {
 			if (obj instanceof YoungChild) {
 				throw new NotToBeClassmateException();
@@ -91,12 +93,13 @@ public class Child extends Person {
 		}
 	}
 	
+	//This method is to identify the relation of the Children in different categories.
 	public void identify(Object obj) {
 		try {
-			if (this.parentslist.size() < 2) {   //No parents or only one parent
+			if (this.parentslist.size() < 2) {  
 				throw new NoParentException();
 			}
-			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { // Parents are not couple
+			if (!(this.parentslist.get(0).couplelist.contains(this.parentslist.get(1)))) { 
 				throw new NoParentException();
 			}
 			if (this.parentslist.contains(obj)) {
