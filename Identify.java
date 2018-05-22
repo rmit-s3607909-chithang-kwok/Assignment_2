@@ -51,11 +51,14 @@ public class Identify implements Initializable{
 	    @FXML Text text;
 	    
 	    public class NoParentException extends Exception{}
-	    public class NoParentException2 extends Exception{}
-	    public class NoParentException3 extends Exception{}
 		public class NotToBeFriendsException extends Exception{}
 		public class TooYoungException extends Exception{}
 		public class NotToBeClassmateException extends Exception{}
+		public class NoSuchAgeException extends Exception{}
+		public class NoAvailableException extends Exception{}
+		public class NotToBeCoupledException extends Exception{}
+		public class NotToBeColleagueException extends Exception{}
+		
 		
 	    //connect to the database and then set Text from invisible	
 	    
@@ -82,7 +85,8 @@ public class Identify implements Initializable{
 		
 	    
 	  //Delete button clicked
-	    public void deleteButtonClicked(ActionEvent event)throws Exception{
+	    public void deleteButtonClicked(ActionEvent event)throws Exception, NoSuchAgeException, TooYoungException, NotToBeFriendsException,
+		NoAvailableException,NotToBeCoupledException, NotToBeColleagueException,NotToBeClassmateException{
 	    	String NALIST=FirstPeopleName.getText();
 	    	String NBLIST=SecondPeopleName.getText();
 	    	String RLIST=TheirRelationship.getText();

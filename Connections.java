@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -65,12 +64,14 @@ public class Connections implements Initializable {
 	 
 	    @FXML Text text;
 	    
-	    public class TooYoungException extends Exception{}
+	    public class NoSuchAgeException extends Exception{}
+		public class TooYoungException extends Exception{}
 		public class NotToBeFriendsException extends Exception{}
 		public class NoAvailableException extends Exception{}
 		public class NotToBeCoupledException extends Exception{}
 		public class NotToBeColleagueException extends Exception{}
 		public class NotToBeClassmateException extends Exception{}
+		
 		
 	    //connect to the database and then set Text from invisible	
 	    
@@ -95,7 +96,8 @@ public class Connections implements Initializable {
 		}
 
 		//Add button clicked
-	    public void addButtonClicked(ActionEvent event)throws Exception {
+	    public void addButtonClicked(ActionEvent event)throws Exception, NoSuchAgeException, TooYoungException, NotToBeFriendsException,
+		NoAvailableException,NotToBeCoupledException, NotToBeColleagueException,NotToBeClassmateException {
 	    	String NALIST=FirstPeopleName.getText();
 	    	String NBLIST=SecondPeopleName.getText();
 	    	String RLIST=TheirRelationship.getText();

@@ -70,7 +70,17 @@ public class DeletePerson implements Initializable{
 	private ResultSet rs = null;
 	private ObservableList<Person> data;
 	
-	public void Delete(ActionEvent event) throws Exception {
+	public class NoSuchAgeException extends Exception{}
+	public class TooYoungException extends Exception{}
+	public class NotToBeFriendsException extends Exception{}
+	public class NoAvailableException extends Exception{}
+	public class NotToBeCoupledException extends Exception{}
+	public class NotToBeColleagueException extends Exception{}
+	public class NotToBeClassmateException extends Exception{}
+	
+	
+	public void Delete(ActionEvent event) throws Exception, NoSuchAgeException, TooYoungException, NotToBeFriendsException,
+	NoAvailableException,NotToBeCoupledException, NotToBeColleagueException,NotToBeClassmateException {
 
 	String NLIST=NameList.getText();
 	String SLIST=StatusList.getText();

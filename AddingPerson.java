@@ -1,45 +1,33 @@
 
-import java.awt.Desktop;
-
-
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Dialog;
-import java.sql.Connection;
 
 public class AddingPerson implements Initializable{
 	//Editted by Chit Hang Kwok
@@ -56,7 +44,6 @@ public class AddingPerson implements Initializable{
 	@FXML private TextField AgeList;
 	@FXML private TextField StateList;
 	
-	public class NoSuchAgeException extends Exception{}
 	
 	@FXML Text text;
 	@FXML private Button bt1;
@@ -75,9 +62,16 @@ public class AddingPerson implements Initializable{
 	private ResultSet rs = null;
 	private ObservableList<Person> data;
 	
+	public class NoSuchAgeException extends Exception{}
+	public class TooYoungException extends Exception{}
+	public class NotToBeFriendsException extends Exception{}
+	public class NoAvailableException extends Exception{}
+	public class NotToBeCoupledException extends Exception{}
+	public class NotToBeColleagueException extends Exception{}
+	public class NotToBeClassmateException extends Exception{}
 	
-	
-	@FXML public void Add(ActionEvent event) throws Exception, NoSuchAgeException {
+	@FXML public void Add(ActionEvent event) throws Exception, NoSuchAgeException, TooYoungException, NotToBeFriendsException,
+	NoAvailableException,NotToBeCoupledException, NotToBeColleagueException,NotToBeClassmateException{
 
 	String NLIST=NameList.getText();
 	String SLIST=StatusList.getText();
@@ -109,7 +103,7 @@ public class AddingPerson implements Initializable{
 	 				alert.show();
  			
  			}
-	 		}catch(SQLException ex) {
+ 			}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
 	 		}catch (Exception e) {
 	 			e.printStackTrace(System.out);
@@ -178,6 +172,7 @@ public class AddingPerson implements Initializable{
  		}
 		tablePerson.setItems(data);
 	}
+
 }
       
        
