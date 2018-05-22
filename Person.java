@@ -3,9 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
 
 
 public class Person{
@@ -32,7 +36,7 @@ public class Person{
 		this.State = State;
 	}	
 	
-	
+
 	
 	
 	
@@ -74,30 +78,12 @@ public class Person{
 	}
 	
 
-	
-	public void addperson() {
-		
-		Scanner sc1 = new Scanner (System.in);
-		
-		System.out.println("Name: ");
-		Name = sc1.nextLine();
-		System.out.println("Gender: ");
-		Gender = sc1.nextLine();
-		System.out.println("Age: ");
-		Age = sc1.nextInt();
-//		System.out.println("Field:");
-//		file = sc1.nextLine();
-		System.out.println("Status: ");
-		Status = sc1.nextLine();
-	System.out.println("State:");
-		State = sc1.nextLine();
-		
-		
+public void personAgeVertify() {
 		
 		
 		if (Age >= 0 && Age <=2) {
 			YoungChild y = new YoungChild(Name, Status, Gender, Age, State);
-			System.out.println("You have added this person as YoungChild");
+			//System.out.println("You have added this person as YoungChild");
 				
 			y.setAge(Age);
 		//	y.setFile(file);
@@ -112,7 +98,7 @@ public class Person{
 		
 		else if (Age <= 16 && Age > 2) {
 			Child c = new Child(Name, Status, Gender, Age, State);
-			System.out.println("You have added this person as Child");
+			//System.out.println("You have added this person as Child");
 				
 			c.setAge(Age);
 		//	c.setFile(file);
@@ -126,7 +112,7 @@ public class Person{
 		
 		else if (Age > 16) {
 			Adult a = new Adult(Name, Status, Gender, Age, State);
-			System.out.println("You have added this person as Adult");
+			//System.out.println("You have added this person as Adult");
 				
 			a.setAge(Age);
 		//	a.setFile(file);
@@ -140,9 +126,12 @@ public class Person{
 			try {
 				throw new NoSuchAgeException();
 			} catch (NoSuchAgeException e) {
-				System.err.println("Please dont put Age less than zero or More than 150.");
+				Alert alert = new Alert(AlertType.INFORMATION,"Please dont put Age less than zero or greater than 150", ButtonType.OK);
+				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+				alert.show();
 			}
 	}
+	
 	
 	public String toString() {
 		return (this.getName() + " " + this.getStatus()+ "" + this.getGender() + "" + this.getAge() + " " + this.getState());
