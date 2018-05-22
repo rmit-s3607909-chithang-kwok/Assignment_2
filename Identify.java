@@ -15,12 +15,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -104,26 +108,13 @@ public class Identify implements Initializable{
 		 		
 		 		int i = pst.executeUpdate();
 		 		if (i == 1) {
-		 		    System.out.println("data delete successfully");
-		 		}else if ((NALIST.equals("Mary Turner")&&!(NBLIST.equals("Ben Turner"))&&(RLIST.equals("parent")))||(NALIST.equals("Mary Turner")&&!(NBLIST.equals("Mary Hopkin"))&&(RLIST.equals("parent"))))
-		 		{throw new NoParentException();
-		 		}else if ((NALIST.equals("Alex Turner")&&!(NBLIST.equals("Ben Turner"))&&(RLIST.equals("parent")))||(NALIST.equals("Alex Turner")&&!(NBLIST.equals("Mary Hopkin"))&&(RLIST.equals("parent"))))
-		 		{throw new NoParentException2();
-		 		}else if ((!(NALIST.equals("Alex Smith"))&&NBLIST.equals("John Smith")&&(RLIST.equals("parent")))||(NALIST.equals("John Smith"))&&!(NBLIST.equals("Klay Thomas"))&&(RLIST.equals("parent")))
-		 		{throw new NoParentException3();
-		 		}
-				 }catch (NoParentException eh) {
-			 			System.err.println("Mary Turner have parents name Ben Turner and Mary Hopkin respectively. Other person she just cannot accept it.");
-				 }catch (NoParentException2 ek) {
-				 			System.err.println("Alex Turner have parents name Ben Turner and Mary Hopkin respectively. Other person he just cannot accept it.");
-				 }catch (NoParentException3 ep) {
-					 			System.err.println("John Smith have parents name Alex Smith and Klay Thomas respectively. Other person he just cannot accept it.");
-		 		 }catch(SQLException ex) {
-		 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
-		 		} catch (Exception e) {
-		 			e.printStackTrace(System.out);
-		 		}
+		 		    //System.out.println("data delete successfully");
+		 			Alert alert = new Alert(AlertType.INFORMATION, "data delete successfully", ButtonType.OK);
+	 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+	 				alert.show();
 		 		
+		 		 }
+				 }
 		 		finally {
 		 		pst.close();
 		            if (con != null) {

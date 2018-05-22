@@ -22,12 +22,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -93,8 +97,10 @@ public class DeletePerson implements Initializable{
 	 		
 	 		int i = pst.executeUpdate();
 	 		if (i == 1) {
-	 		    System.out.println("Data delete successfully");
-	 		    
+	 		   // System.out.println("Data delete successfully");
+	 		   Alert alert = new Alert(AlertType.INFORMATION, "data delete successfully", ButtonType.OK);
+				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+				alert.show();
 	 		}
 	 		 }catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);

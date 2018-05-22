@@ -40,8 +40,8 @@ public class MainController implements Initializable{
 	
 	public void Login(ActionEvent event) throws Exception{
 		try {
-		if (txtUsername.getText().equals("user") && txPassword.getText().equals("pass")) {
-			lblStatus.setText("Login Success");
+		//if (txtUsername.getText().equals("user") && txPassword.getText().equals("pass")) {
+		//	lblStatus.setText("Login Success");
 			
 		Stage primaryStage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("Submenu.fxml"));
@@ -49,9 +49,9 @@ public class MainController implements Initializable{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
 				primaryStage.show();
-	} else {
-		lblStatus.setText("Login Failure");
-		}
+	//} else {
+	//	lblStatus.setText("Login Failure");
+	//	}
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 		}

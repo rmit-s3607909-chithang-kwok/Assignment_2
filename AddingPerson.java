@@ -107,14 +107,7 @@ public class AddingPerson implements Initializable{
  					Alert alert = new Alert(AlertType.INFORMATION, "data insert successfully", ButtonType.OK);
 	 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 	 				alert.show();
-	 			try { 
-	 					if (ALIST < 0 || ALIST > 150) throw new NoSuchAgeException();
- 						Alert alert1 = new Alert(AlertType.INFORMATION, "Please dont put Age less than zero or greater than 150. Please remove it asap.", ButtonType.OK);
-		 				alert1.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-		 				alert1.show();
-	 		 }catch(NoSuchAgeException eq) {
-	 			eq.printStackTrace(System.out);
-	 		 }
+ 			
  			}
 	 		}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
