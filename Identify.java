@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -93,9 +95,22 @@ public class Identify implements Initializable{
 	    
 	    		String sql = "DELETE FROM relation where Name1 = ? and Name2 = ? and Relationship = ?";
 	    	
+	    		/* FileWriter writer1 = null;
+		 		try {
+		 		
+	 			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt", true);
+	 			
+	 			
+	 			
+				 } catch (IOException e) {
+						System.err.println("File cannot be created, or cannot be opened");
+						System.exit(0);
+					}
+		 		writer1.append("" + NALIST + " , " + NBLIST + " , " + RLIST + "  ");
+	 			
+	 			writer1.close();
 	    	
-	    	
-	    	
+	    		*/
 	    
 		 		
 				

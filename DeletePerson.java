@@ -3,6 +3,7 @@ import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.Connection;
@@ -39,6 +40,8 @@ public class DeletePerson implements Initializable{
 	//Editted by Chit Hang Kwok
 	//This program is to delete the peoples information from the sql database.
 
+	
+	
 	@FXML private Label NameL;
 	@FXML private Label StatusL;
 	@FXML private Label GenderL;
@@ -90,16 +93,28 @@ public class DeletePerson implements Initializable{
 	String sql = "DELETE FROM people where Name = ? and Status = ? and Gender = ? and Age = ? and State = ? ";
 	
 		
-		
+	/*FileWriter writer = null;
+	try {
+	
+	writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt", true);
+	
+	
+	} catch (IOException e) {
+	System.err.println("File cannot be created, or cannot be opened");
+	System.exit(0);
+	}
+	writer.append("" + NLIST + " , " + SLIST + " , " + GLIST + " , " + ALIST + " , " + STLIST + " ");
+	
+	writer.close();
 		 
-	 		
+	 		*/
 	 		 try {
-	 			
+	 	
 	 		
 	 			 pst = con.prepareStatement(sql);
 	 			 
 	 		 
-	 		pst.setString(1, NLIST);
+ 		pst.setString(1, NLIST);
 	 		pst.setString(2, SLIST);
 	 		pst.setString(3, GLIST);
 	 		pst.setInt(4, ALIST);

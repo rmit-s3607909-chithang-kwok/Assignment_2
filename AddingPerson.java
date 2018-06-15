@@ -1,9 +1,12 @@
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +47,7 @@ public class AddingPerson implements Initializable{
 	@FXML private TextField AgeList;
 	@FXML private TextField StateList;
 	
+	static ArrayList<Person> profile = new ArrayList<Person>();
 	
 	@FXML Text text;
 	@FXML private Button bt1;
@@ -55,7 +59,6 @@ public class AddingPerson implements Initializable{
 	@FXML private TableColumn<Person, String> ColumnGender;
 	@FXML private TableColumn<Person, Integer> ColumnAge;
 	@FXML private TableColumn<Person, String> ColumnState;
-	
 	
 	private Connection con = null;
 	private PreparedStatement pst = null;
@@ -70,7 +73,7 @@ public class AddingPerson implements Initializable{
 	public class NotToBeColleagueException extends Exception{}
 	public class NotToBeClassmateException extends Exception{}
 	
-	@FXML public void Add(ActionEvent event) throws Exception, NoSuchAgeException, TooYoungException, NotToBeFriendsException,
+	@FXML public void Add(ActionEvent event) throws Exception, TooYoungException, NotToBeFriendsException,
 	NoAvailableException,NotToBeCoupledException, NotToBeColleagueException,NotToBeClassmateException{
 
 	String NLIST=NameList.getText();
@@ -80,7 +83,19 @@ public class AddingPerson implements Initializable{
 	String STLIST=StateList.getText();
 		String sql = "INSERT INTO people(Name, Status , Gender, Age, State) VALUES (?,?,?,?,?)";
 		
-	 	
+		FileWriter writer = null;
+			try {
+			
+			writer = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\peoples.txt", true);
+			
+			
+ 		} catch (IOException e) {
+			System.err.println("File cannot be created, or cannot be opened");
+			System.exit(0);
+		}
+			writer.append("" + NLIST + " , " + SLIST + " , " + GLIST + " , " + ALIST + " , " + STLIST + " ");
+			
+			writer.close();
 	 		
 	 		 try {
 	 			
@@ -94,6 +109,10 @@ public class AddingPerson implements Initializable{
 	 		pst.setInt(4, ALIST);
 	 		pst.setString(5, STLIST);
 	 		
+	 		
+	 		
+	 		
+	 		
 	 		int i = pst.executeUpdate();
 	 		
  			if (i == 1) {
@@ -101,15 +120,73 @@ public class AddingPerson implements Initializable{
  					Alert alert = new Alert(AlertType.INFORMATION, "data insert successfully", ButtonType.OK);
 	 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 	 				alert.show();
- 			
+ 			}if (ALIST >= 0 && ALIST <=2) {
+ 				YoungChild y = new YoungChild(NLIST, SLIST, GLIST, ALIST, STLIST);
+ 				Alert alert1 = new Alert(AlertType.INFORMATION, "You have add this person as YoungChild", ButtonType.OK);
+					alert1.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+					alert1.show();
+ 					
+ 				y.setAge(ALIST);
+ 			//	y.setFile(file);
+ 				y.setName(NLIST);
+ 				y.setGender(GLIST);
+ 				y.setStatus(SLIST);
+ 				y.setState(STLIST);
+ 				
+ 				profile.add(y);
+ 					
  			}
+ 			
+ 			else if (ALIST <= 16 && ALIST > 2) {
+ 				Child c = new Child(NLIST, SLIST, GLIST, ALIST, STLIST);
+ 				Alert alert1 = new Alert(AlertType.INFORMATION, "You have add this person as Child", ButtonType.OK);
+				alert1.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+				alert1.show();
+ 					
+ 				c.setAge(ALIST);
+ 			//	c.setFile(file);
+ 				c.setName(NLIST);
+ 				c.setGender(GLIST);
+ 				c.setStatus(SLIST);
+ 				c.setState(STLIST);
+ 				
+ 				profile.add(c);
+ 			}
+ 			
+ 			else if (ALIST > 16 || ALIST < 149) {
+ 				Adult a = new Adult(NLIST, SLIST, GLIST, ALIST, STLIST);
+ 				Alert alert1 = new Alert(AlertType.INFORMATION, "You have add this person as Adult.", ButtonType.OK);
+					alert1.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+					alert1.show();
+ 					
+ 				a.setAge(ALIST);
+ 			//	a.setFile(file);
+ 				a.setName(NLIST);
+ 				a.setGender(GLIST);
+ 				a.setStatus(SLIST);
+ 				a.setState(STLIST);
+ 					
+ 				profile.add(a);
+ 			}
+ 			if (ALIST < 0 || ALIST > 149)
+ 				try{
+ 				throw new NoSuchAgeException();
+ 		
+ 				 
+	 		 }catch(NoSuchAgeException e1)	{	
+	 			Alert alert4 = new Alert(AlertType.INFORMATION, "People cannot have Age less than zero or greater than 150", ButtonType.OK);
+				alert4.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+				alert4.show();
+	 		 }
+ 			
+ 			
+ 			
  			}catch(SQLException ex) {
 	 			Logger.getLogger(AddingPerson.class.getName()).log(Level.SEVERE, null, ex);
 	 		}catch (Exception e) {
 	 			e.printStackTrace(System.out);
 	 		
 	 		}
-	 		
 	 		
 	 		finally {
 	 		
@@ -172,7 +249,9 @@ public class AddingPerson implements Initializable{
  		}
 		tablePerson.setItems(data);
 	}
-
+	public String toString() {
+		return (NameList + " " + StatusList + "" + GenderList + "" + AgeList + " " + StateList);
+	}
 }
       
        

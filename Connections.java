@@ -1,5 +1,7 @@
 
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -104,7 +106,20 @@ public class Connections implements Initializable {
 	    
 	    	String sql = "INSERT INTO relation  (Name1, Name2, Relationship) VALUES (?,?,?)";
 	    	
-	    	
+	    	FileWriter writer1 = null;
+	 		try {
+	 		
+ 			writer1 = new FileWriter("C:\\Users\\PC\\Desktop\\AllPersonFile\\relation.txt", true);
+ 			
+ 			
+ 			
+			 } catch (IOException e) {
+					System.err.println("File cannot be created, or cannot be opened");
+					System.exit(0);
+				}
+	 		writer1.append("" + NALIST + " , " + NBLIST + " , " + RLIST + "  ");
+ 			
+ 			writer1.close();
 		 		
 				
 				 try {
@@ -128,6 +143,8 @@ public class Connections implements Initializable {
 	 				
 		 		
 				 }
+		 		
+		 		
 		 		 }catch(SQLException ex) {
 		 			Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
 		 		} catch (Exception e) {
@@ -184,4 +201,8 @@ public class Connections implements Initializable {
 		}
 	tableRelation.setItems(data);
 }
+		
+		//public String toString1() {
+		//	return (FirstPeopleName + " " + SecondPeopleName + "" + TheirRelationship);
+		//}
 }
